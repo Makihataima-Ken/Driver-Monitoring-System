@@ -1,0 +1,36 @@
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+venv/
+.venv/
+env/
+
+# Weights — download separately
+weights/*.pt
+weights/*.onnx
+weights/*.tflite
+
+# Screenshots / logs
+screenshot_*.jpg
+*.log
+logs/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+
+# uv specific ignores
+uv.lock
+pyproject.toml
+
+# extension specific ignores
+driver_monitor-output.md
+driver_monitor-output.txt

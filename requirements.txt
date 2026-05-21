@@ -1,0 +1,28 @@
+# Driver Monitoring System — Python Dependencies
+# Install with: pip install -r requirements.txt
+
+# Core vision
+opencv-python>=4.8.0
+numpy>=1.24.0
+
+# MediaPipe (FaceMesh)
+mediapipe>=0.10.0
+
+# YOLO inference
+ultralytics>=8.0.0
+
+# Configuration
+pyyaml>=6.0
+
+# System metrics
+psutil>=5.9.0
+
+# Optional: sound alerts
+# pygame>=2.5.0
+
+# Optional: Raspberry Pi camera
+# picamera2>=0.3.12   # Pi only — install separately via apt on Pi
+
+# Development / testing
+# pytest>=7.0
+# pytest-mock>=3.0

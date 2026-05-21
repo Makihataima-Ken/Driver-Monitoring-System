@@ -1,0 +1,55 @@
+# Driver Monitoring System - Default Configuration
+# Edit this file to tune thresholds for your hardware.
+
+camera:
+  index: 0
+  width: 640
+  height: 480
+  fps_target: 20
+  use_picamera2: false        # true to force Picamera2 on Pi
+  auto_detect_pi: true
+  buffer_size: 2
+  flip_horizontal: false
+  flip_vertical: false
+
+mediapipe:
+  max_faces: 1
+  refine_landmarks: false     # Set true for iris tracking (more CPU)
+  min_detection_confidence: 0.6
+  min_tracking_confidence: 0.5
+  ear_threshold: 0.22
+  ear_consec_frames: 20
+  mar_threshold: 0.60
+  mar_consec_frames: 15
+  yaw_threshold: 30.0
+  pitch_threshold: 20.0
+  distraction_consec_frames: 25
+
+yolo:
+  model_path: weights/yolov8n.pt
+  conf_threshold: 0.45
+  iou_threshold: 0.45
+  imgsz: 320                  # 320 for Pi, 640 for PC
+  device: cpu
+  half: false
+  classes_of_interest: [0, 2, 5, 7, 67]
+
+alert:
+  sound_enabled: false
+  sound_file: assets/alert.wav
+  overlay_enabled: true
+  console_enabled: true
+  cooldown_seconds: 3.0
+
+display:
+  show: true
+  window_name: "Driver Monitor"
+  show_fps: true
+  show_landmarks: true
+  show_metrics: true
+  overlay_alpha: 0.6
+
+pipeline:
+  mode: interior              # interior | exterior | both
+  interior_enabled: true
+  exterior_enabled: false
