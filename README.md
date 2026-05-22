@@ -1,4 +1,4 @@
-# 🚗 Driver Monitoring & Vehicle Safety System (DMS)
+# Driver Monitoring & Vehicle Safety System (DMS)
 
 Real-time driver monitoring built for **Raspberry Pi** and PC development.  
 Combines **MediaPipe FaceMesh**, **YOLOv8n**, and **OpenCV** for low-latency edge inference.
@@ -7,7 +7,7 @@ Combines **MediaPipe FaceMesh**, **YOLOv8n**, and **OpenCV** for low-latency edg
 
 ## Features
 
-### ✅ Implemented (Demo v1)
+### Implemented (Demo v1)
 | Event | Method | Status |
 |---|---|---|
 | `FATIGUE_DRIVING` | EAR via MediaPipe FaceMesh | ✅ Active |
@@ -19,7 +19,7 @@ Combines **MediaPipe FaceMesh**, **YOLOv8n**, and **OpenCV** for low-latency edg
 | `SEAT_BELT_DETECTION` | Custom weights (stub with base) | ⚠️ Needs fine-tuned weights |
 | `MOTION_DETECTION` | Frame differencing | ✅ Active (exterior) |
 
-### 🔄 Planned (v2)
+### Planned (v2)
 `LANE_DEPARTURE`, `FRONT_CAR_COLLISION`, `PEDESTRIAN_COLLISION`, `DISTANCE_ALARM`, `COVER`, `REVERSE_CAM_*`
 
 ---
