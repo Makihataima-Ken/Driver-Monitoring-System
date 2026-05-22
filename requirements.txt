@@ -6,7 +6,7 @@ opencv-python>=4.8.0
 numpy>=1.24.0
 
 # MediaPipe (FaceMesh)
-mediapipe>=0.10.0
+mediapipe==0.10.14
 
 # YOLO inference
 ultralytics>=8.0.0

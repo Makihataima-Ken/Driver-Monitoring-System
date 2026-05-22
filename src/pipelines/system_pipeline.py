@@ -13,10 +13,12 @@ from __future__ import annotations
 
 import logging
 import time
+from typing import Callable, Optional
 
 import cv2
 import numpy as np
 
+from src.alerts.event_types import DmsEvent
 from src.config.settings import SystemConfig
 from src.camera.camera_manager import CameraManager
 from src.pipelines.interior_pipeline import InteriorPipeline
@@ -29,11 +31,16 @@ logger = logging.getLogger("dms.system")
 
 
 class SystemPipeline:
-    def __init__(self, config: SystemConfig):
+    def __init__(
+        self,
+        config: SystemConfig,
+        event_callback: Optional[Callable[[DmsEvent], None]] = None,
+    ):
         self._cfg = config
         self._camera = CameraManager(config.camera)
         self._alert_mgr = AlertManager(config.alert)
         self._metrics = PerformanceMonitor(window=30)
+        self._event_callback = event_callback
 
         self._interior: InteriorPipeline | None = None
         self._exterior: ExteriorPipeline | None = None
@@ -100,6 +107,8 @@ class SystemPipeline:
 
             # ── Dispatch alerts ──────────────────────────────────────────
             for evt in all_events:
+                if self._event_callback:
+                    self._event_callback(evt)
                 self._alert_mgr.dispatch(evt)
 
             # ── Performance metrics ──────────────────────────────────────
