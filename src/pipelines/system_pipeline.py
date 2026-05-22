@@ -139,6 +139,18 @@ class SystemPipeline:
                     cv2.imwrite(fname, display_frame)
                     logger.info(f"Screenshot saved: {fname}")
 
+                # If the user closed the window (clicking the X), OpenCV
+                # reports the window as not visible via getWindowProperty.
+                # Detect that and exit the main loop so the program stops.
+                try:
+                    if cv2.getWindowProperty(self._cfg.display.window_name, cv2.WND_PROP_VISIBLE) < 1:
+                        logger.info("Display window closed by user.")
+                        break
+                except Exception:
+                    # Some OpenCV builds/contexts may raise if property is invalid;
+                    # ignore and continue so we don't crash on unsupported platforms.
+                    pass
+
             # ── FPS throttle ─────────────────────────────────────────────
             elapsed = time.perf_counter() - t0
             sleep = frame_interval - elapsed
