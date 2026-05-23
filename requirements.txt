@@ -11,6 +11,11 @@ mediapipe==0.10.14
 # YOLO inference
 ultralytics>=8.0.0
 
+# Drowsiness vector DNN (SafeDrive AI)
+tensorflow>=2.15.0
+pandas>=2.0.0
+scikit-learn>=1.3.0
+
 # Configuration
 pyyaml>=6.0
 

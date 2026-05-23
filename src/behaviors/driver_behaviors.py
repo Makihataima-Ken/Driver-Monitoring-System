@@ -13,8 +13,9 @@ import logging
 from typing import Optional, List
 
 from src.alerts.event_types import DmsEvent, EventType, Severity
-from src.config.settings import MediaPipeConfig
+from src.config.settings import MediaPipeConfig, DrowsinessConfig
 from src.detectors.face_mesh_detector import FaceResult
+from src.detectors.drowsiness_detector import DrowsinessResult
 
 logger = logging.getLogger("dms.behaviors")
 
@@ -71,6 +72,60 @@ class FatigueAnalyzer:
     @property
     def consec_frames(self) -> int:
         return self._consec
+
+
+class DrowsinessAnalyzer:
+    """
+    Emits FATIGUE_DRIVING when the Vector DNN engine raises alarm.
+
+    Alarm timing (probability > threshold for alarm_seconds) is handled
+    inside DrowsinessEngine per the SafeDrive AI integration guide.
+    """
+
+    def __init__(self, cfg: DrowsinessConfig):
+        self._cfg = cfg
+        self._alert_active = False
+        self._last_probability = 0.0
+        self._last_status = ""
+
+    def analyze(self, result: Optional[DrowsinessResult]) -> Optional[DmsEvent]:
+        if result is None or not result.calibrated:
+            self._alert_active = False
+            return None
+
+        self._last_probability = result.probability
+        self._last_status = result.status
+
+        if result.alarm:
+            if not self._alert_active:
+                self._alert_active = True
+                logger.warning(
+                    "DROWSINESS detected — prob=%.3f",
+                    result.probability,
+                )
+                return DmsEvent.make(
+                    EventType.FATIGUE_DRIVING,
+                    Severity.CRITICAL,
+                    f"Driver drowsiness detected (model={result.probability:.2f})",
+                    confidence=result.probability,
+                    drowsiness_prob=result.probability,
+                )
+            return None
+
+        self._alert_active = False
+        return None
+
+    @property
+    def is_drowsy(self) -> bool:
+        return self._alert_active
+
+    @property
+    def probability(self) -> float:
+        return self._last_probability
+
+    @property
+    def status(self) -> str:
+        return self._last_status
 
 
 class YawnAnalyzer:

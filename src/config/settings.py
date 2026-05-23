@@ -61,6 +61,19 @@ class YOLOConfig:
 
 
 @dataclass
+class DrowsinessConfig:
+    """Vector DNN settings (SafeDrive AI integration guide)."""
+    enabled: bool = True
+    model_path: str = "vector_dnn_drowsiness_model.keras"
+    csv_path: str = "data/robust_driver_features.csv"
+    window_size: int = 60               # Frames buffered before inference (~2s @ 30fps)
+    threshold: float = 0.5
+    alarm_seconds: float = 1.5          # Seconds above threshold → CRITICAL alarm
+    calibration_frames: int = 50        # Frames to learn open-eye baseline EAR
+    use_ear_fallback: bool = True
+
+
+@dataclass
 class AlertConfig:
     sound_enabled: bool = False
     sound_file: str = "assets/alert.wav"
@@ -90,6 +103,7 @@ class PipelineConfig:
 class SystemConfig:
     camera: CameraConfig = field(default_factory=CameraConfig)
     mediapipe: MediaPipeConfig = field(default_factory=MediaPipeConfig)
+    drowsiness: DrowsinessConfig = field(default_factory=DrowsinessConfig)
     yolo: YOLOConfig = field(default_factory=YOLOConfig)
     alert: AlertConfig = field(default_factory=AlertConfig)
     display: DisplayConfig = field(default_factory=DisplayConfig)

@@ -21,8 +21,10 @@ from src.config.settings import SystemConfig
 from src.detectors.face_mesh_detector import FaceMeshDetector, FaceResult
 from src.detectors.yolo_detector import YOLODetector, Detection
 from src.behaviors.driver_behaviors import (
-    FatigueAnalyzer, YawnAnalyzer, DistractionAnalyzer, NoDriverAnalyzer
+    FatigueAnalyzer, DrowsinessAnalyzer, YawnAnalyzer,
+    DistractionAnalyzer, NoDriverAnalyzer,
 )
+from src.detectors.drowsiness_detector import DrowsinessDetector
 from src.behaviors.yolo_behaviors import PhoneCallAnalyzer, SmokingAnalyzer, SeatbeltAnalyzer
 from src.alerts.event_types import DmsEvent
 from src.utils.drawing import (
@@ -47,9 +49,11 @@ class InteriorPipeline:
         self._cfg = config
         self._face_detector: Optional[FaceMeshDetector] = None
         self._yolo: Optional[YOLODetector] = None
+        self._drowsiness_detector: Optional[DrowsinessDetector] = None
 
         # Behavior state machines
         self._fatigue = FatigueAnalyzer(config.mediapipe)
+        self._drowsiness = DrowsinessAnalyzer(config.drowsiness)
         self._yawn = YawnAnalyzer(config.mediapipe)
         self._distraction = DistractionAnalyzer(config.mediapipe)
         self._no_driver = NoDriverAnalyzer()
@@ -82,6 +86,17 @@ class InteriorPipeline:
             logger.warning(f"YOLO failed to load: {e} — running without YOLO")
             self._yolo = None
 
+        if self._cfg.drowsiness.enabled:
+            logger.info("Loading drowsiness model...")
+            try:
+                self._drowsiness_detector = DrowsinessDetector(self._cfg.drowsiness)
+                self._drowsiness_detector.load()
+            except Exception as e:
+                logger.warning(f"Drowsiness model failed to load: {e}")
+                self._drowsiness_detector = None
+                if not self._cfg.drowsiness.use_ear_fallback:
+                    logger.warning("EAR fallback disabled — fatigue detection unavailable")
+
         logger.info("InteriorPipeline ready.")
 
     def process(self, frame: np.ndarray) -> Tuple[List[DmsEvent], np.ndarray]:
@@ -100,9 +115,20 @@ class InteriorPipeline:
         if self._face_detector:
             face = self._face_detector.process(frame)
 
+        # ── Drowsiness model (vector DNN) ────────────────────────────────
+        drowsiness_result = None
+        if self._drowsiness_detector and face is not None:
+            drowsiness_result = self._drowsiness_detector.process(face)
+
         # ── Behavior analysis (face) ─────────────────────────────────────
+        fatigue_evt = None
+        if self._drowsiness_detector and drowsiness_result is not None:
+            fatigue_evt = self._drowsiness.analyze(drowsiness_result)
+        elif self._cfg.drowsiness.use_ear_fallback or not self._cfg.drowsiness.enabled:
+            fatigue_evt = self._fatigue.analyze(face)
+
         for evt in [
-            self._fatigue.analyze(face),
+            fatigue_evt,
             self._yawn.analyze(face),
             self._distraction.analyze(face),
             self._no_driver.analyze(face),
@@ -136,7 +162,7 @@ class InteriorPipeline:
         # Face bounding box + state label
         if face:
             state = "OK"
-            if self._fatigue.is_fatigued:
+            if self._drowsiness.is_drowsy or self._fatigue.is_fatigued:
                 state = "FATIGUE"
             elif self._yawn.is_yawning:
                 state = "YAWN"
@@ -150,13 +176,36 @@ class InteriorPipeline:
             if cfg.show_landmarks:
                 draw_ear_mar(frame, face.ear, face.mar)
 
+            if self._drowsiness_detector:
+                if not self._drowsiness_detector.is_calibrated:
+                    draw_text_box(
+                        frame, "DNN calibrating EAR...", (8, 188),
+                        color=COLORS["yellow"], scale=0.42,
+                    )
+                elif not self._drowsiness_detector.buffer_ready:
+                    draw_text_box(
+                        frame, self._drowsiness.status or "DNN buffering...",
+                        (8, 188), color=COLORS["yellow"], scale=0.42,
+                    )
+                else:
+                    prob_txt = f"DNN:{self._drowsiness.probability:.2f}"
+                    draw_text_box(frame, prob_txt, (8, 188), color=COLORS["cyan"], scale=0.48)
+                    if self._drowsiness.status and "Normal" not in self._drowsiness.status:
+                        draw_text_box(
+                            frame, self._drowsiness.status[:40], (8, 210),
+                            color=COLORS["orange"], scale=0.40,
+                        )
+
             # Head pose info
             pose_txt = f"Y:{face.yaw:.1f} P:{face.pitch:.1f} R:{face.roll:.1f}"
             draw_text_box(frame, pose_txt, (8, 165), color=COLORS["gray"], scale=0.42)
 
-            # Fatigue countdown bar
-            if self._fatigue.consec_frames > 0:
-                frac = min(self._fatigue.consec_frames / self._cfg.mediapipe.ear_consec_frames, 1.0)
+            # Fatigue progress bar (EAR fallback only)
+            if not self._drowsiness_detector and self._fatigue.consec_frames > 0:
+                frac = min(
+                    self._fatigue.consec_frames / self._cfg.mediapipe.ear_consec_frames,
+                    1.0,
+                )
                 h, w = frame.shape[:2]
                 bar_w = int(w * frac)
                 cv2.rectangle(frame, (0, h - 8), (bar_w, h), COLORS["alert"], -1)

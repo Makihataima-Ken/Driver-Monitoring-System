@@ -25,6 +25,16 @@ mediapipe:
   pitch_threshold: 20.0
   distraction_consec_frames: 25
 
+drowsiness:
+  enabled: true
+  model_path: vector_dnn_drowsiness_model.keras
+  csv_path: data/robust_driver_features.csv
+  window_size: 60
+  threshold: 0.5
+  alarm_seconds: 1.5
+  calibration_frames: 50
+  use_ear_fallback: true
+
 yolo:
   model_path: weights/yolov8n.pt
   conf_threshold: 0.45
