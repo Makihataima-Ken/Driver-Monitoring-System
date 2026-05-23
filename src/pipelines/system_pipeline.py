@@ -45,6 +45,7 @@ class SystemPipeline:
         self._interior: InteriorPipeline | None = None
         self._exterior: ExteriorPipeline | None = None
         self._running = False
+        self._start_time: Optional[float] = None
 
         mode = config.pipeline.mode
         if mode in ("interior", "both"):
@@ -69,6 +70,7 @@ class SystemPipeline:
             time.sleep(0.05)
 
         self._running = True
+        self._start_time = time.time()
         logger.info("SystemPipeline running.")
 
     def run(self):
@@ -117,6 +119,7 @@ class SystemPipeline:
             # ── HUD overlay ──────────────────────────────────────────────
             if self._cfg.display.show_metrics:
                 active_labels = self._alert_mgr.get_active_event_labels()
+                elapsed_seconds = time.time() - self._start_time if self._start_time else 0
                 draw_hud(
                     display_frame,
                     fps=perf.fps,
@@ -124,6 +127,7 @@ class SystemPipeline:
                     cpu=perf.cpu_percent,
                     ram_mb=perf.ram_mb,
                     events=active_labels,
+                    elapsed_seconds=elapsed_seconds,
                 )
 
             # ── Display window ────────────────────────────────────────────
