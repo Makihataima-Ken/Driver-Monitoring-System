@@ -6,6 +6,7 @@ camera:
   width: 640
   height: 480
   fps_target: 20
+  backend: auto               # auto | opencv | picamera2 | rpicam
   use_picamera2: false        # true to force Picamera2 on Pi
   auto_detect_pi: true
   buffer_size: 2

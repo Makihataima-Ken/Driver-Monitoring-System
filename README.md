@@ -130,8 +130,8 @@ sudo apt install -y python3-pip python3-venv libopencv-dev python3-opencv \
     libatlas-base-dev libhdf5-dev libjpeg-dev libpng-dev libwebp-dev \
     libtiff-dev libopenjp2-7-dev
 
-# For Picamera2 (CSI camera)
-sudo apt install -y python3-picamera2
+# For CSI cameras
+sudo apt install -y rpicam-apps-lite
 ```
 
 ### Python Environment on Pi
@@ -165,13 +165,13 @@ target FPS, latency, captured frames, dropped frames, and RAM use.
 
 ### Pi Camera (CSI)
 ```bash
-# Enable camera in raspi-config
-sudo raspi-config
-# → Interface Options → Camera → Enable
-
-# Test camera
-libcamera-hello
+# Confirm that the sensor is visible
+rpicam-hello --list-cameras
 ```
+
+The application uses `Picamera2` when it is importable. In isolated Python
+environments, such as a Python 3.12 environment installed by `uv`, it
+automatically falls back to the `rpicam-vid` command-line backend.
 
 ### Pi-Optimised Config
 Edit `src/config/default.yaml`:
@@ -180,6 +180,7 @@ camera:
   width: 320      # Smaller resolution → faster
   height: 240
   fps_target: 15  # Target 15 FPS on Pi 4
+  backend: auto   # auto | opencv | picamera2 | rpicam
 
 mediapipe:
   refine_landmarks: false   # Save ~20% CPU
@@ -193,16 +194,16 @@ yolo:
 ### Run on Pi
 ```bash
 # USB webcam
-python3 main.py --width 320 --height 240 --fps-target 15
+python main.py --camera-backend opencv --width 320 --height 240 --fps-target 15
 
 # Pi CSI camera (auto-detected)
-python3 main.py --width 320 --height 240 --fps-target 15
+python main.py --width 320 --height 240 --fps-target 15
 
-# Force CSI camera
-# Edit default.yaml: camera.use_picamera2: true
+# Force the CSI camera backend in an isolated Python environment
+python main.py --camera-backend rpicam --width 320 --height 240 --fps-target 15
 
 # Headless (SSH session, no monitor)
-python3 main.py --no-show
+python main.py --web --no-show --camera-backend rpicam
 ```
 
 ### Pi Performance Notes
@@ -261,16 +262,19 @@ CUSTOM_CLASSES = {
 **`ImportError: ultralytics`**  
 → `pip install ultralytics`
 
-**Camera index 0 not found**  
-→ Try `--camera 1` or `--camera 2`
+**USB camera index 0 not found**
+→ Check `/dev/video*`, then try `--camera-backend opencv --camera 1`
+
+**CSI camera is detected by `rpicam-hello` but browser shows `WAITING FOR CAMERA`**
+→ Run with `--camera-backend rpicam --camera 0`
 
 **Very low FPS on Pi**  
 → Lower resolution: `--width 320 --height 240 --fps-target 10`  
 → Ensure heatsink is installed and throttling isn't active: `vcgencmd get_throttled`
 
-**Picamera2 not detected**  
-→ Enable camera in `raspi-config` and reboot  
-→ Install: `sudo apt install python3-picamera2`
+**Picamera2 not detected**
+→ Use the built-in fallback: `--camera-backend rpicam`
+→ Ensure the command exists: `sudo apt install rpicam-apps-lite`
 
 ---
 

@@ -22,6 +22,12 @@ def parse_args() -> argparse.Namespace:
         help="Camera index (default: 0)"
     )
     parser.add_argument(
+        "--camera-backend",
+        choices=["auto", "opencv", "picamera2", "rpicam"],
+        default=None,
+        help="Camera capture backend (default: config value)"
+    )
+    parser.add_argument(
         "--config", type=str, default="src/config/default.yaml",
         help="Path to config YAML"
     )
@@ -78,6 +84,8 @@ def main():
 
     config = SystemConfig.from_yaml(args.config)
     config.camera.index = args.camera
+    if args.camera_backend is not None:
+        config.camera.backend = args.camera_backend
     config.camera.width = args.width
     config.camera.height = args.height
     config.camera.fps_target = args.fps_target

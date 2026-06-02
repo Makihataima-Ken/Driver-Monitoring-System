@@ -16,6 +16,7 @@ class CameraConfig:
     width: int = 640
     height: int = 480
     fps_target: int = 20
+    backend: str = "auto"                 # auto | opencv | picamera2 | rpicam
     use_picamera2: bool = False          # Auto-detected if not set
     auto_detect_pi: bool = True
     buffer_size: int = 2                 # Threaded capture queue depth

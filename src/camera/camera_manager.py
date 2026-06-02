@@ -14,6 +14,8 @@ from __future__ import annotations
 import threading
 import time
 import logging
+import shutil
+import subprocess
 from collections import deque
 from typing import Optional, Tuple
 
@@ -21,7 +23,11 @@ import cv2
 import numpy as np
 
 from src.config.settings import CameraConfig
-from src.utils.platform_detect import is_raspberry_pi, picamera2_available
+from src.utils.platform_detect import (
+    is_raspberry_pi,
+    picamera2_available,
+    rpicam_camera_available,
+)
 
 logger = logging.getLogger("dms.camera")
 
@@ -97,6 +103,99 @@ class _Picamera2Backend:
             self._cam = None
 
 
+class _RpicamVidBackend:
+    """CSI camera backend using the rpicam-vid command-line application."""
+
+    def __init__(self, cfg: CameraConfig):
+        self._cfg = cfg
+        self._process: Optional[subprocess.Popen] = None
+        self._buffer = b""
+
+    def open(self):
+        command = shutil.which("rpicam-vid")
+        if command is None:
+            raise RuntimeError(
+                "rpicam-vid is not installed. Install it with: "
+                "sudo apt install rpicam-apps-lite"
+            )
+
+        args = [
+            command,
+            "--camera", str(self._cfg.index),
+            "--nopreview",
+            "--codec", "mjpeg",
+            "--width", str(self._cfg.width),
+            "--height", str(self._cfg.height),
+            "--framerate", str(self._cfg.fps_target),
+            "--timeout", "0",
+            "--output", "-",
+        ]
+        logger.info(
+            "Opening rpicam-vid CSI camera index=%d at %dx%d",
+            self._cfg.index,
+            self._cfg.width,
+            self._cfg.height,
+        )
+        self._process = subprocess.Popen(
+            args,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.DEVNULL,
+            bufsize=0,
+        )
+        time.sleep(0.5)
+        if self._process.poll() is not None:
+            self.release()
+            raise RuntimeError(
+                "rpicam-vid could not start. Check the CSI camera with: "
+                "rpicam-hello --list-cameras"
+            )
+
+    def read(self) -> Tuple[bool, Optional[np.ndarray]]:
+        if self._process is None or self._process.stdout is None:
+            return False, None
+
+        while self._process.poll() is None:
+            frame = self._extract_frame()
+            if frame is not None:
+                return True, frame
+
+            chunk = self._process.stdout.read(4096)
+            if not chunk:
+                return False, None
+            self._buffer += chunk
+
+        return False, None
+
+    def _extract_frame(self) -> Optional[np.ndarray]:
+        start = self._buffer.find(b"\xff\xd8")
+        if start < 0:
+            self._buffer = self._buffer[-1:]
+            return None
+
+        end = self._buffer.find(b"\xff\xd9", start + 2)
+        if end < 0:
+            if start > 0:
+                self._buffer = self._buffer[start:]
+            return None
+
+        jpeg = self._buffer[start:end + 2]
+        self._buffer = self._buffer[end + 2:]
+        encoded = np.frombuffer(jpeg, dtype=np.uint8)
+        return cv2.imdecode(encoded, cv2.IMREAD_COLOR)
+
+    def release(self):
+        if self._process is None:
+            return
+        self._process.terminate()
+        try:
+            self._process.wait(timeout=2)
+        except subprocess.TimeoutExpired:
+            self._process.kill()
+            self._process.wait(timeout=2)
+        self._process = None
+        self._buffer = b""
+
+
 class CameraManager:
     """
     Thread-safe camera manager.
@@ -118,15 +217,36 @@ class CameraManager:
         self._capture_timestamps = deque(maxlen=60)
 
     def _choose_backend(self):
-        if self._cfg.use_picamera2:
+        backend = self._cfg.backend.lower()
+        if backend not in {"auto", "opencv", "picamera2", "rpicam"}:
+            raise ValueError(
+                f"Unsupported camera backend '{self._cfg.backend}'. "
+                "Choose: auto, opencv, picamera2, or rpicam"
+            )
+
+        if backend == "opencv":
+            return _OpenCVBackend(self._cfg)
+
+        if backend == "rpicam":
+            return _RpicamVidBackend(self._cfg)
+
+        if backend == "picamera2" or self._cfg.use_picamera2:
             if picamera2_available():
                 return _Picamera2Backend(self._cfg)
-            else:
-                logger.warning("Picamera2 requested but not available — falling back to OpenCV")
+            if backend == "picamera2":
+                raise RuntimeError(
+                    "Picamera2 requested but not available. "
+                    "Use camera backend 'rpicam' with an isolated Python environment."
+                )
+            logger.warning("Picamera2 requested but not available - trying another backend")
 
-        if self._cfg.auto_detect_pi and is_raspberry_pi() and picamera2_available():
-            logger.info("Raspberry Pi detected — trying Picamera2 backend")
-            return _Picamera2Backend(self._cfg)
+        if self._cfg.auto_detect_pi and is_raspberry_pi():
+            if picamera2_available():
+                logger.info("Raspberry Pi detected - using Picamera2 backend")
+                return _Picamera2Backend(self._cfg)
+            if rpicam_camera_available():
+                logger.info("Raspberry Pi CSI camera detected - using rpicam-vid backend")
+                return _RpicamVidBackend(self._cfg)
 
         return _OpenCVBackend(self._cfg)
 
@@ -173,10 +293,10 @@ class CameraManager:
     def stop(self):
         was_active = self._running or self._thread is not None
         self._running = False
+        self._backend.release()
         if self._thread:
             self._thread.join(timeout=2.0)
             self._thread = None
-        self._backend.release()
         if not was_active:
             return
         logger.info(f"Camera stopped. Captured={self._frame_count}, Dropped={self._drop_count}")
