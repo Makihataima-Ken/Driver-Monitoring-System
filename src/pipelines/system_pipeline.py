@@ -12,6 +12,7 @@ Coordinates:
 from __future__ import annotations
 
 import logging
+import threading
 import time
 from typing import Callable, Optional
 
@@ -24,7 +25,7 @@ from src.camera.camera_manager import CameraManager
 from src.pipelines.interior_pipeline import InteriorPipeline
 from src.pipelines.exterior_pipeline import ExteriorPipeline
 from src.alerts.alert_manager import AlertManager
-from src.utils.metrics import PerformanceMonitor
+from src.utils.metrics import FrameMetrics, PerformanceMonitor
 from src.utils.drawing import draw_hud
 
 logger = logging.getLogger("dms.system")
@@ -45,6 +46,12 @@ class SystemPipeline:
         self._interior: InteriorPipeline | None = None
         self._exterior: ExteriorPipeline | None = None
         self._running = False
+        self._stopped = False
+        self._stop_lock = threading.Lock()
+        self._stream_condition = threading.Condition()
+        self._stream_frame: np.ndarray | None = None
+        self._stream_sequence = 0
+        self._latest_perf = FrameMetrics()
 
         mode = config.pipeline.mode
         if mode in ("interior", "both"):
@@ -67,6 +74,11 @@ class SystemPipeline:
             if self._camera.read() is not None:
                 break
             time.sleep(0.05)
+        else:
+            logger.warning(
+                "No camera frame received after 2.5s. "
+                "The web dashboard will report camera diagnostics."
+            )
 
         self._running = True
         logger.info("SystemPipeline running.")
@@ -126,6 +138,9 @@ class SystemPipeline:
                     events=active_labels,
                 )
 
+            if self._cfg.web.enabled:
+                self._publish_stream_frame(display_frame, perf)
+
             # ── Display window ────────────────────────────────────────────
             if self._cfg.display.show:
                 cv2.imshow(self._cfg.display.window_name, display_frame)
@@ -157,14 +172,86 @@ class SystemPipeline:
             if sleep > 0:
                 time.sleep(sleep)
 
-        cv2.destroyAllWindows()
+        if self._cfg.display.show:
+            cv2.destroyAllWindows()
+
+    def _publish_stream_frame(self, frame: np.ndarray, perf: FrameMetrics):
+        with self._stream_condition:
+            self._stream_frame = frame.copy()
+            self._stream_sequence += 1
+            self._latest_perf = perf
+            self._stream_condition.notify_all()
+
+    def wait_for_stream_frame(
+        self,
+        last_sequence: int,
+        timeout: float = 2.0,
+    ) -> tuple[int, np.ndarray | None]:
+        """Wait for a new annotated frame without reading the camera twice."""
+        with self._stream_condition:
+            self._stream_condition.wait_for(
+                lambda: self._stream_sequence > last_sequence or not self._running,
+                timeout=timeout,
+            )
+            if self._stream_frame is None:
+                return self._stream_sequence, None
+            return self._stream_sequence, self._stream_frame.copy()
+
+    def get_status(self) -> dict:
+        camera = self._camera.get_stats()
+        with self._stream_condition:
+            perf = self._latest_perf
+            stream_sequence = self._stream_sequence
+
+        if camera["width"] and camera["height"]:
+            resolution = f'{camera["width"]}x{camera["height"]}'
+        else:
+            resolution = "waiting for camera"
+
+        if not self._running:
+            state = "stopped"
+        elif camera["captured_frames"] == 0:
+            state = "waiting_for_camera"
+        else:
+            state = "running"
+
+        return {
+            "state": state,
+            "resolution": resolution,
+            "processing_fps": perf.fps,
+            "camera_fps": camera["capture_fps"],
+            "target_fps": float(self._cfg.camera.fps_target),
+            "latency_ms": perf.latency_ms,
+            "cpu_percent": perf.cpu_percent,
+            "ram_mb": perf.ram_mb,
+            "captured_frames": camera["captured_frames"],
+            "dropped_frames": camera["dropped_frames"],
+            "stream_frames": stream_sequence,
+            "events": self._alert_mgr.get_active_event_labels(),
+        }
+
+    @property
+    def is_running(self) -> bool:
+        return self._running
+
+    def request_stop(self):
+        """Ask the main loop to exit; resource cleanup happens in stop()."""
+        self._running = False
+        with self._stream_condition:
+            self._stream_condition.notify_all()
 
     def stop(self):
-        self._running = False
+        with self._stop_lock:
+            if self._stopped:
+                return
+            self._stopped = True
+
+        self.request_stop()
         if self._interior:
             self._interior.stop()
         if self._exterior:
             self._exterior.stop()
         self._camera.stop()
-        cv2.destroyAllWindows()
+        if self._cfg.display.show:
+            cv2.destroyAllWindows()
         logger.info("SystemPipeline stopped.")

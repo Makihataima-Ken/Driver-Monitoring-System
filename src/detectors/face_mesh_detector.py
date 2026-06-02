@@ -216,5 +216,9 @@ class FaceMeshDetector:
         )
 
     def release(self):
-        self._face_mesh.close()
+        face_mesh = self._face_mesh
+        self._face_mesh = None
+        if face_mesh is None:
+            return
+        face_mesh.close()
         logger.info("FaceMeshDetector released")

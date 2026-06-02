@@ -22,6 +22,9 @@ pyyaml>=6.0
 # System metrics
 psutil>=5.9.0
 
+# Browser dashboard for headless deployments
+flask>=3.0.0
+
 # Optional: sound alerts
 # pygame>=2.5.0
 

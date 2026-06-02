@@ -93,6 +93,14 @@ class DisplayConfig:
 
 
 @dataclass
+class WebConfig:
+    enabled: bool = False
+    host: str = "0.0.0.0"
+    port: int = 5000
+    jpeg_quality: int = 80
+
+
+@dataclass
 class PipelineConfig:
     mode: str = "interior"               # interior | exterior | both
     interior_enabled: bool = True
@@ -107,6 +115,7 @@ class SystemConfig:
     yolo: YOLOConfig = field(default_factory=YOLOConfig)
     alert: AlertConfig = field(default_factory=AlertConfig)
     display: DisplayConfig = field(default_factory=DisplayConfig)
+    web: WebConfig = field(default_factory=WebConfig)
     pipeline: PipelineConfig = field(default_factory=PipelineConfig)
 
     @classmethod

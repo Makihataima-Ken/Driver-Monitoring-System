@@ -6,7 +6,6 @@ Entry point for real-time inference on PC or Raspberry Pi.
 
 import argparse
 import signal
-import sys
 import logging
 
 from src.config.settings import SystemConfig
@@ -55,6 +54,18 @@ def parse_args() -> argparse.Namespace:
         "--fps-target", type=int, default=20,
         help="Target FPS (lower = less CPU)"
     )
+    parser.add_argument(
+        "--web", action="store_true",
+        help="Serve the annotated video and metrics in a browser"
+    )
+    parser.add_argument(
+        "--web-host", type=str, default=None,
+        help="Web dashboard bind address (default: config value)"
+    )
+    parser.add_argument(
+        "--web-port", type=int, default=None,
+        help="Web dashboard port (default: config value)"
+    )
     return parser.parse_args()
 
 
@@ -72,24 +83,43 @@ def main():
     config.camera.fps_target = args.fps_target
     config.display.show = args.show
     config.pipeline.mode = args.pipeline
+    if args.web:
+        config.web.enabled = True
+    if args.web_host is not None:
+        config.web.host = args.web_host
+    if args.web_port is not None:
+        config.web.port = args.web_port
 
     pipeline = SystemPipeline(config)
+    web_server = None
 
     # Graceful shutdown
     def _shutdown(sig, frame):
         logger.info("Shutdown signal received.")
-        pipeline.stop()
-        sys.exit(0)
+        pipeline.request_stop()
 
     signal.signal(signal.SIGINT, _shutdown)
     signal.signal(signal.SIGTERM, _shutdown)
 
     try:
         pipeline.start()
+        if config.web.enabled:
+            try:
+                from src.web.server import WebServer
+            except ImportError as e:
+                raise RuntimeError(
+                    "Flask is required for --web. Install it with: "
+                    "uv pip install flask"
+                ) from e
+            web_server = WebServer(config.web, pipeline)
+            web_server.start()
         pipeline.run()
     except Exception as e:
         logger.exception(f"Fatal error: {e}")
     finally:
+        pipeline.request_stop()
+        if web_server:
+            web_server.stop()
         pipeline.stop()
         logger.info("System stopped cleanly.")
 

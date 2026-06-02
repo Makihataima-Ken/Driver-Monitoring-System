@@ -151,7 +151,7 @@ class InteriorPipeline:
                 events.append(evt)
 
         # ── Drawing ──────────────────────────────────────────────────────
-        if self._cfg.display.show:
+        if self._cfg.display.show or self._cfg.web.enabled:
             self._draw(annotated, face, dets)
 
         return events, annotated
@@ -223,4 +223,5 @@ class InteriorPipeline:
     def stop(self):
         if self._face_detector:
             self._face_detector.release()
+            self._face_detector = None
         logger.info("InteriorPipeline stopped.")

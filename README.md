@@ -51,11 +51,13 @@ driver_monitor/
 │   ├── alerts/
 │   │   ├── event_types.py          # DmsEvent + EventType enum
 │   │   └── alert_manager.py        # Console + overlay + sound dispatch
-│   └── utils/
-│       ├── drawing.py              # OpenCV overlay helpers
-│       ├── metrics.py              # FPS / latency / CPU / RAM monitor
-│       ├── platform_detect.py      # Pi auto-detection
-│       └── logger.py               # Centralized logging
+│   ├── utils/
+│   │   ├── drawing.py              # OpenCV overlay helpers
+│   │   ├── metrics.py              # FPS / latency / CPU / RAM monitor
+│   │   ├── platform_detect.py      # Pi auto-detection
+│   │   └── logger.py               # Centralized logging
+│   └── web/
+│       └── server.py               # Flask MJPEG dashboard for headless systems
 └── weights/                        # Model weights (gitignored)
 ```
 
@@ -138,6 +140,28 @@ python3 -m venv venv --system-site-packages  # Include system opencv/picamera2
 source venv/bin/activate
 pip install -r requirements.txt
 ```
+
+For a Raspberry Pi Lite deployment without YOLO or the TensorFlow DNN, install
+the lightweight dependency set. FaceMesh-based EAR fatigue detection remains
+active as a fallback:
+```bash
+uv pip install -r requirements-pi-lite.txt
+```
+
+### Browser Dashboard on Raspberry Pi Lite
+Run without an OpenCV desktop window and expose the annotated stream over HTTP:
+```bash
+python main.py --web --no-show --width 320 --height 240 --fps-target 15
+```
+
+Find the Pi IP address:
+```bash
+hostname -I
+```
+
+Open `http://<PI_IP>:5000` from another device on the same network. The page
+shows the annotated MJPEG stream, resolution, processing FPS, camera FPS,
+target FPS, latency, captured frames, dropped frames, and RAM use.
 
 ### Pi Camera (CSI)
 ```bash

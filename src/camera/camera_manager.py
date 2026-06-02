@@ -14,6 +14,7 @@ from __future__ import annotations
 import threading
 import time
 import logging
+from collections import deque
 from typing import Optional, Tuple
 
 import cv2
@@ -114,6 +115,7 @@ class CameraManager:
         self._thread: Optional[threading.Thread] = None
         self._frame_count = 0
         self._drop_count = 0
+        self._capture_timestamps = deque(maxlen=60)
 
     def _choose_backend(self):
         if self._cfg.use_picamera2:
@@ -148,10 +150,13 @@ class CameraManager:
                 with self._lock:
                     self._frame = frame
                     self._frame_count += 1
+                    self._capture_timestamps.append(time.perf_counter())
             else:
-                self._drop_count += 1
-                if self._drop_count % 30 == 0:
-                    logger.warning(f"Camera: {self._drop_count} dropped frames")
+                with self._lock:
+                    self._drop_count += 1
+                    drop_count = self._drop_count
+                if drop_count % 30 == 0:
+                    logger.warning(f"Camera: {drop_count} dropped frames")
 
             elapsed = time.perf_counter() - t0
             sleep = interval - elapsed
@@ -166,12 +171,41 @@ class CameraManager:
             return self._frame.copy()
 
     def stop(self):
+        was_active = self._running or self._thread is not None
         self._running = False
         if self._thread:
             self._thread.join(timeout=2.0)
+            self._thread = None
         self._backend.release()
+        if not was_active:
+            return
         logger.info(f"Camera stopped. Captured={self._frame_count}, Dropped={self._drop_count}")
 
     @property
     def frame_count(self) -> int:
         return self._frame_count
+
+    def get_stats(self) -> dict:
+        """Return a thread-safe snapshot for the web status endpoint."""
+        with self._lock:
+            timestamps = list(self._capture_timestamps)
+            frame_count = self._frame_count
+            drop_count = self._drop_count
+            if self._frame is None:
+                width, height = 0, 0
+            else:
+                height, width = self._frame.shape[:2]
+
+        if len(timestamps) >= 2:
+            span = timestamps[-1] - timestamps[0]
+            capture_fps = (len(timestamps) - 1) / max(span, 1e-6)
+        else:
+            capture_fps = 0.0
+
+        return {
+            "capture_fps": round(capture_fps, 1),
+            "captured_frames": frame_count,
+            "dropped_frames": drop_count,
+            "width": width,
+            "height": height,
+        }

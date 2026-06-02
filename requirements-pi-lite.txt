@@ -1,0 +1,8 @@
+# Raspberry Pi Lite: FaceMesh, EAR fallback, and browser dashboard.
+# MediaPipe installs opencv-contrib-python, which provides cv2.
+
+numpy>=1.24.0
+mediapipe==0.10.14
+pyyaml>=6.0
+psutil>=5.9.0
+flask>=3.0.0
