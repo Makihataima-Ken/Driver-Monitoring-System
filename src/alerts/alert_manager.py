@@ -19,12 +19,11 @@ from src.config.settings import AlertConfig
 
 logger = logging.getLogger("dms.alerts")
 
-_SEVERITY_COLOR = {
-    Severity.INFO: "\033[36m",      # Cyan
-    Severity.WARNING: "\033[33m",   # Yellow
-    Severity.CRITICAL: "\033[31m",  # Red
+_SEVERITY_LEVEL = {
+    Severity.INFO: logging.INFO,
+    Severity.WARNING: logging.WARNING,
+    Severity.CRITICAL: logging.CRITICAL,
 }
-_RESET = "\033[0m"
 
 
 class AlertManager:
@@ -59,17 +58,19 @@ class AlertManager:
         self._active_events.append(event)
 
         if self._cfg.console_enabled:
-            self._console_alert(event)
+            self._log_alert(event)
 
         if self._cfg.sound_enabled and self._sound_available:
             self._sound_alert(event)
 
-    def _console_alert(self, event: DmsEvent):
-        color = _SEVERITY_COLOR.get(event.severity, "")
-        ts = time.strftime("%H:%M:%S", time.localtime(event.timestamp))
-        print(
-            f"{color}[{ts}] [{event.severity.value}] "
-            f"{event.event_type.value}: {event.message}{_RESET}"
+    def _log_alert(self, event: DmsEvent):
+        logger.log(
+            _SEVERITY_LEVEL.get(event.severity, logging.WARNING),
+            "MODEL EVENT %s: %s | confidence=%.3f | metadata=%s",
+            event.event_type.value,
+            event.message,
+            event.confidence,
+            event.metadata,
         )
 
     def _sound_alert(self, event: DmsEvent):

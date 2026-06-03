@@ -7,10 +7,11 @@ import threading
 from typing import Protocol
 
 import cv2
-from flask import Flask, Response, jsonify, render_template_string
+from flask import Flask, Response, jsonify, render_template_string, request
 from werkzeug.serving import make_server
 
 from src.config.settings import WebConfig
+from src.utils.logger import get_log_path, get_recent_logs
 
 logger = logging.getLogger("dms.web")
 
@@ -92,6 +93,13 @@ _DASHBOARD_HTML = """
     .events { padding: 14px; border-top: 1px solid var(--line); min-height: 78px; }
     .events h2 { margin: 0 0 8px; color: var(--muted); font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; }
     #events { color: var(--text); font: .82rem monospace; line-height: 1.55; }
+    .log-panel { margin-top: 16px; padding: 14px; }
+    .log-panel h2 { margin: 0 0 10px; color: var(--muted); font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; }
+    #logs {
+      height: 220px; margin: 0; overflow: auto; white-space: pre-wrap; overflow-wrap: anywhere;
+      color: #bad9cc; background: rgba(0, 0, 0, .32); border: 1px solid var(--line);
+      border-radius: 8px; padding: 10px; font: .76rem/1.45 monospace;
+    }
     @media (max-width: 820px) {
       .grid { grid-template-columns: 1fr; }
       .video-shell { min-height: 220px; }
@@ -129,6 +137,10 @@ _DASHBOARD_HTML = """
         </div>
       </aside>
     </section>
+    <section class="panel log-panel">
+      <h2>Live logs / <span id="log_file">logs/dms.log</span></h2>
+      <pre id="logs">Waiting for application logs...</pre>
+    </section>
   </main>
   <script>
     const setText = (id, value) => document.getElementById(id).textContent = value;
@@ -154,8 +166,23 @@ _DASHBOARD_HTML = """
         state.className = "status stopped";
       }
     }
+    async function refreshLogs() {
+      try {
+        const response = await fetch("/api/logs?limit=120", { cache: "no-store" });
+        const data = await response.json();
+        const logs = document.getElementById("logs");
+        const nearBottom = logs.scrollHeight - logs.scrollTop - logs.clientHeight < 48;
+        setText("log_file", data.log_file);
+        logs.textContent = data.logs.length ? data.logs.join("\\n") : "No logs yet.";
+        if (nearBottom) logs.scrollTop = logs.scrollHeight;
+      } catch (error) {
+        document.getElementById("logs").textContent = "Unable to load logs.";
+      }
+    }
     refresh();
+    refreshLogs();
     setInterval(refresh, 1000);
+    setInterval(refreshLogs, 1000);
   </script>
 </body>
 </html>
@@ -179,6 +206,14 @@ class WebServer:
         @self._app.get("/api/status")
         def status():
             return jsonify(self._provider.get_status())
+
+        @self._app.get("/api/logs")
+        def logs():
+            try:
+                limit = int(request.args.get("limit", 120))
+            except ValueError:
+                limit = 120
+            return jsonify({"log_file": get_log_path(), "logs": get_recent_logs(limit)})
 
         @self._app.get("/video_feed")
         def video_feed():

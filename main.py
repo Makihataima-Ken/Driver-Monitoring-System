@@ -49,6 +49,10 @@ def parse_args() -> argparse.Namespace:
         help="Enable debug logging"
     )
     parser.add_argument(
+        "--log-file", type=str, default="logs/dms.log",
+        help="Application log file path (default: logs/dms.log)"
+    )
+    parser.add_argument(
         "--width", type=int, default=640,
         help="Frame width"
     )
@@ -79,7 +83,7 @@ def main():
     args = parse_args()
 
     log_level = logging.DEBUG if args.debug else logging.INFO
-    logger = setup_logger("dms", log_level)
+    logger = setup_logger("dms", log_level, args.log_file)
     logger.info("=== Driver Monitoring System Starting ===")
 
     config = SystemConfig.from_yaml(args.config)

@@ -161,7 +161,22 @@ hostname -I
 
 Open `http://<PI_IP>:5000` from another device on the same network. The page
 shows the annotated MJPEG stream, resolution, processing FPS, camera FPS,
-target FPS, latency, captured frames, dropped frames, and RAM use.
+target FPS, latency, captured frames, dropped frames, RAM use, and live logs.
+
+Application logs are also stored in `logs/dms.log`. The logger keeps up to
+three rotated 5MB backup files to prevent unbounded SD card usage. Monitor the
+file over SSH with:
+```bash
+tail -f logs/dms.log
+```
+
+The log includes model loading messages, alert events, and a FaceMesh telemetry
+snapshot every five seconds with EAR, MAR, head pose, and YOLO detection count.
+
+To store logs at another path:
+```bash
+python main.py --log-file /tmp/dms.log
+```
 
 ### Pi Camera (CSI)
 ```bash

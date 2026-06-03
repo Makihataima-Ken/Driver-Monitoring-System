@@ -24,7 +24,7 @@ from src.behaviors.driver_behaviors import (
     FatigueAnalyzer, DrowsinessAnalyzer, YawnAnalyzer,
     DistractionAnalyzer, NoDriverAnalyzer,
 )
-from src.detectors.drowsiness_detector import DrowsinessDetector
+from src.detectors.drowsiness_detector import DrowsinessDetector, DrowsinessResult
 from src.behaviors.yolo_behaviors import PhoneCallAnalyzer, SmokingAnalyzer, SeatbeltAnalyzer
 from src.alerts.event_types import DmsEvent
 from src.utils.drawing import (
@@ -65,6 +65,8 @@ class InteriorPipeline:
         self._yolo_frame_interval = 3   # Run YOLO every 3 frames
         self._yolo_frame_counter = 0
         self._last_yolo_dets: List[Detection] = []
+        self._model_log_interval = 5.0
+        self._last_model_log_time = 0.0
 
     def start(self):
         logger.info("Initialising InteriorPipeline...")
@@ -150,11 +152,49 @@ class InteriorPipeline:
             if evt:
                 events.append(evt)
 
+        self._log_model_snapshot(face, drowsiness_result, dets)
+
         # ── Drawing ──────────────────────────────────────────────────────
         if self._cfg.display.show or self._cfg.web.enabled:
             self._draw(annotated, face, dets)
 
         return events, annotated
+
+    def _log_model_snapshot(
+        self,
+        face: Optional[FaceResult],
+        drowsiness_result: Optional[DrowsinessResult],
+        dets: List[Detection],
+    ):
+        """Log lightweight model telemetry without writing on every frame."""
+        now = time.monotonic()
+        if now - self._last_model_log_time < self._model_log_interval:
+            return
+        self._last_model_log_time = now
+
+        if face is None:
+            logger.info("MODEL RESULT face=not_detected yolo_detections=%d", len(dets))
+            return
+
+        if drowsiness_result is None:
+            drowsiness = "ear_fallback"
+        else:
+            drowsiness = (
+                f"prob={drowsiness_result.probability:.3f},"
+                f"status={drowsiness_result.status}"
+            )
+
+        logger.info(
+            "MODEL RESULT face=detected ear=%.3f mar=%.3f "
+            "yaw=%.1f pitch=%.1f roll=%.1f drowsiness=%s yolo_detections=%d",
+            face.ear,
+            face.mar,
+            face.yaw,
+            face.pitch,
+            face.roll,
+            drowsiness,
+            len(dets),
+        )
 
     def _draw(self, frame: np.ndarray, face: Optional[FaceResult], dets: List[Detection]):
         cfg = self._cfg.display
