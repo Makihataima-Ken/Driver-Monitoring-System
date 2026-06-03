@@ -11,7 +11,7 @@ from __future__ import annotations
 
 import logging
 import time
-from typing import List, Dict
+from typing import Callable, Dict, List
 from collections import deque
 
 from src.alerts.event_types import DmsEvent, EventType, Severity
@@ -31,7 +31,8 @@ class AlertManager:
     def __init__(self, cfg: AlertConfig):
         self._cfg = cfg
         self._cooldowns: Dict[EventType, float] = {}
-        self._active_events: deque = deque(maxlen=8)  # For overlay
+        self._active_events: deque = deque(maxlen=32)  # For overlay and API queries
+        self._listeners: List[Callable[[DmsEvent], None]] = []
         self._sound_available = False
 
         if cfg.sound_enabled:
@@ -51,6 +52,14 @@ class AlertManager:
         last = self._cooldowns.get(event_type, 0.0)
         return time.time() - last < self._cfg.cooldown_seconds
 
+    def register_listener(self, listener: Callable[[DmsEvent], None]) -> None:
+        """Register a callback to receive alerts when they are dispatched."""
+        self._listeners.append(listener)
+
+    def get_recent_events(self) -> List[DmsEvent]:
+        """Return the most recent dispatched events."""
+        return list(self._active_events)
+
     def dispatch(self, event: DmsEvent):
         if self._is_cooling_down(event.event_type):
             return
@@ -63,6 +72,12 @@ class AlertManager:
 
         if self._cfg.sound_enabled and self._sound_available:
             self._sound_alert(event)
+
+        for listener in self._listeners:
+            try:
+                listener(event)
+            except Exception:
+                logger.exception("Alert listener failed")
 
     def _console_alert(self, event: DmsEvent):
         color = _SEVERITY_COLOR.get(event.severity, "")

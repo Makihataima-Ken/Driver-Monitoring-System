@@ -34,11 +34,12 @@ class SystemPipeline:
     def __init__(
         self,
         config: SystemConfig,
+        alert_manager: Optional[AlertManager] = None,
         event_callback: Optional[Callable[[DmsEvent], None]] = None,
     ):
         self._cfg = config
         self._camera = CameraManager(config.camera)
-        self._alert_mgr = AlertManager(config.alert)
+        self._alert_mgr = alert_manager or AlertManager(config.alert)
         self._metrics = PerformanceMonitor(window=30)
         self._event_callback = event_callback
 

@@ -9,6 +9,8 @@ import signal
 import sys
 import logging
 
+from src.alerts.alert_manager import AlertManager
+from src.api.server import ApiServer
 from src.config.settings import SystemConfig
 from src.pipelines.system_pipeline import SystemPipeline
 from src.utils.logger import setup_logger
@@ -44,6 +46,18 @@ def parse_args() -> argparse.Namespace:
         help="Enable debug logging"
     )
     parser.add_argument(
+        "--http-api", action="store_true", default=False,
+        help="Start FastAPI HTTP alert API"
+    )
+    parser.add_argument(
+        "--api-host", type=str, default="0.0.0.0",
+        help="HTTP API host"
+    )
+    parser.add_argument(
+        "--api-port", type=int, default=8000,
+        help="HTTP API port"
+    )
+    parser.add_argument(
         "--width", type=int, default=640,
         help="Frame width"
     )
@@ -73,11 +87,24 @@ def main():
     config.display.show = args.show
     config.pipeline.mode = args.pipeline
 
-    pipeline = SystemPipeline(config)
+    alert_manager = AlertManager(config.alert)
+    pipeline = SystemPipeline(config, alert_manager=alert_manager)
+
+    api_server = None
+    if args.http_api:
+        logger.info("Starting HTTP alert API...")
+        api_server = ApiServer(
+            alert_manager=alert_manager,
+            host=args.api_host,
+            port=args.api_port,
+        )
+        api_server.start()
 
     # Graceful shutdown
     def _shutdown(sig, frame):
         logger.info("Shutdown signal received.")
+        if api_server:
+            api_server.stop()
         pipeline.stop()
         sys.exit(0)
 
@@ -90,6 +117,8 @@ def main():
     except Exception as e:
         logger.exception(f"Fatal error: {e}")
     finally:
+        if api_server:
+            api_server.stop()
         pipeline.stop()
         logger.info("System stopped cleanly.")
 
