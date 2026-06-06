@@ -20,8 +20,14 @@ mediapipe:
   min_tracking_confidence: 0.5
   ear_threshold: 0.22
   ear_consec_frames: 20
+  ear_calibration_frames: 50
+  ear_baseline_ratio: 0.65
+  perclos_window_frames: 60
+  perclos_threshold: 0.35
   mar_threshold: 0.60
   mar_consec_frames: 15
+  mar_calibration_frames: 50
+  mar_baseline_margin: 0.06
   yaw_threshold: 30.0
   pitch_threshold: 20.0
   distraction_consec_frames: 25

@@ -35,8 +35,14 @@ class MediaPipeConfig:
     # Thresholds
     ear_threshold: float = 0.22          # Eye Aspect Ratio → fatigue
     ear_consec_frames: int = 20          # Frames below EAR → alert
+    ear_calibration_frames: int = 50     # Learn personal open-eye baseline
+    ear_baseline_ratio: float = 0.65     # Closed-eye threshold = baseline * ratio
+    perclos_window_frames: int = 60      # Rolling eye-closure window
+    perclos_threshold: float = 0.35      # % closed eyes over window → fatigue
     mar_threshold: float = 0.6           # Mouth Aspect Ratio → yawn
     mar_consec_frames: int = 15
+    mar_calibration_frames: int = 50     # Learn normal mouth baseline
+    mar_baseline_margin: float = 0.06    # Yawn threshold = baseline + margin
 
     # Head pose distraction angles (degrees)
     yaw_threshold: float = 30.0

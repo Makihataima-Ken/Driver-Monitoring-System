@@ -123,11 +123,21 @@ class InteriorPipeline:
             drowsiness_result = self._drowsiness_detector.process(face)
 
         # ── Behavior analysis (face) ─────────────────────────────────────
-        fatigue_evt = None
+        dnn_fatigue_evt = None
         if self._drowsiness_detector and drowsiness_result is not None:
-            fatigue_evt = self._drowsiness.analyze(drowsiness_result)
-        elif self._cfg.drowsiness.use_ear_fallback or not self._cfg.drowsiness.enabled:
-            fatigue_evt = self._fatigue.analyze(face)
+            dnn_fatigue_evt = self._drowsiness.analyze(drowsiness_result)
+        elif self._drowsiness_detector:
+            self._drowsiness.analyze(None)
+
+        ear_fallback_evt = None
+        fallback_enabled = (
+            self._cfg.drowsiness.use_ear_fallback or
+            not self._cfg.drowsiness.enabled
+        )
+        if fallback_enabled:
+            ear_fallback_evt = self._fatigue.analyze(face)
+
+        fatigue_evt = dnn_fatigue_evt or ear_fallback_evt
 
         for evt in [
             fatigue_evt,
@@ -186,13 +196,17 @@ class InteriorPipeline:
 
         logger.info(
             "MODEL RESULT face=detected ear=%.3f mar=%.3f "
-            "yaw=%.1f pitch=%.1f roll=%.1f drowsiness=%s yolo_detections=%d",
+            "yaw=%.1f pitch=%.1f roll=%.1f drowsiness=%s "
+            "ear_thr=%.3f perclos=%.2f mar_thr=%.3f yolo_detections=%d",
             face.ear,
             face.mar,
             face.yaw,
             face.pitch,
             face.roll,
             drowsiness,
+            self._fatigue.effective_ear_threshold,
+            self._fatigue.perclos,
+            self._yawn.effective_mar_threshold,
             len(dets),
         )
 
@@ -240,8 +254,15 @@ class InteriorPipeline:
             pose_txt = f"Y:{face.yaw:.1f} P:{face.pitch:.1f} R:{face.roll:.1f}"
             draw_text_box(frame, pose_txt, (8, 165), color=COLORS["gray"], scale=0.42)
 
-            # Fatigue progress bar (EAR fallback only)
-            if not self._drowsiness_detector and self._fatigue.consec_frames > 0:
+            if self._cfg.drowsiness.use_ear_fallback:
+                fallback_txt = (
+                    f"EARthr:{self._fatigue.effective_ear_threshold:.2f} "
+                    f"PERCLOS:{self._fatigue.perclos:.2f}"
+                )
+                draw_text_box(frame, fallback_txt, (8, 232), color=COLORS["gray"], scale=0.38)
+
+            # Fatigue progress bar for the lightweight EAR/PERCLOS safety net.
+            if self._fatigue.consec_frames > 0:
                 frac = min(
                     self._fatigue.consec_frames / self._cfg.mediapipe.ear_consec_frames,
                     1.0,

@@ -10,8 +10,8 @@ Combines **MediaPipe FaceMesh**, **YOLOv8n**, and **OpenCV** for low-latency edg
 ### Implemented (Demo v1)
 | Event | Method | Status |
 |---|---|---|
-| `FATIGUE_DRIVING` | EAR via MediaPipe FaceMesh | ✅ Active |
-| `DRIVER_YAWNS` | MAR via MediaPipe FaceMesh | ✅ Active |
+| `FATIGUE_DRIVING` | Adaptive EAR + rolling PERCLOS via MediaPipe FaceMesh | ✅ Active |
+| `DRIVER_YAWNS` | Adaptive MAR baseline via MediaPipe FaceMesh | ✅ Active |
 | `DRIVER_UNDER_DISTRACTION` | Head pose (yaw/pitch) via PnP | ✅ Active |
 | `NO_DRIVER` | Face absence counter | ✅ Active |
 | `DRIVER_CALL` | YOLOv8n class 67 (cell phone) | ✅ Active |
@@ -171,7 +171,8 @@ tail -f logs/dms.log
 ```
 
 The log includes model loading messages, alert events, and a FaceMesh telemetry
-snapshot every five seconds with EAR, MAR, head pose, and YOLO detection count.
+snapshot every five seconds with EAR, MAR, adaptive thresholds, PERCLOS, head
+pose, and YOLO detection count.
 
 To store logs at another path:
 ```bash
