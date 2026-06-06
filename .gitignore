@@ -14,8 +14,7 @@ weights/*.tflite
 
 # Screenshots / logs
 screenshot_*.jpg
-*.log
-logs/
+
 
 # IDE
 .vscode/
