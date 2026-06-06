@@ -249,3 +249,532 @@ Run: pip install ultralytics — running without YOLO
 [2026-06-06 14:36:05] [INFO] dms.camera: Camera stopped. Captured=1590, Dropped=1
 [2026-06-06 14:36:05] [INFO] dms.system: SystemPipeline stopped.
 [2026-06-06 14:36:05] [INFO] dms: System stopped cleanly.
+[2026-06-06 14:55:13] [INFO] dms: Logging to /home/pi/Driver-Monitoring-System/logs/dms.log
+[2026-06-06 14:55:13] [INFO] dms: === Driver Monitoring System Starting ===
+[2026-06-06 14:55:13] [INFO] dms.system: Starting SystemPipeline...
+[2026-06-06 14:55:13] [INFO] dms.camera: Opening rpicam-vid CSI camera index=0 at 640x480
+[2026-06-06 14:55:14] [INFO] dms.camera: Camera capture thread started
+[2026-06-06 14:55:14] [INFO] dms.interior: Initialising InteriorPipeline...
+[2026-06-06 14:55:14] [INFO] dms.interior: Loading FaceMesh...
+[2026-06-06 14:55:14] [INFO] dms.mediapipe: FaceMeshDetector initialised
+[2026-06-06 14:55:14] [INFO] dms.interior: Loading YOLO...
+[2026-06-06 14:55:14] [WARNING] dms.interior: YOLO failed to load: ultralytics is not installed.
+Run: pip install ultralytics — running without YOLO
+[2026-06-06 14:55:14] [INFO] dms.interior: Loading drowsiness model...
+[2026-06-06 14:55:14] [WARNING] dms.interior: Drowsiness model failed to load: tensorflow is required. Install with: pip install tensorflow
+[2026-06-06 14:55:14] [INFO] dms.interior: InteriorPipeline ready.
+[2026-06-06 14:55:14] [INFO] dms.system: Waiting for first camera frame...
+[2026-06-06 14:55:14] [INFO] dms.system: SystemPipeline running.
+[2026-06-06 14:55:14] [INFO] dms.web: Web dashboard listening on http://0.0.0.0:5000
+[2026-06-06 14:55:14] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=0
+[2026-06-06 14:55:17] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=46.8°, pitch=26.3°) | confidence=0.800 | metadata={'yaw': 46.79, 'pitch': 26.32}
+[2026-06-06 14:55:19] [INFO] dms.behaviors: EAR fallback calibration done — baseline=0.445 threshold=0.289
+[2026-06-06 14:55:19] [INFO] dms.behaviors: MAR calibration done — baseline=0.598 threshold=0.657
+[2026-06-06 14:55:19] [INFO] dms.interior: MODEL RESULT face=detected ear=0.342 mar=0.596 yaw=-2.2 pitch=-16.9 roll=-0.7 drowsiness=ear_fallback ear_thr=0.289 perclos=0.00 mar_thr=0.657 yolo_detections=0
+[2026-06-06 14:55:24] [CRITICAL] dms.alerts: MODEL EVENT NO_DRIVER: No driver detected in frame | confidence=1.000 | metadata={}
+[2026-06-06 14:55:24] [INFO] dms.interior: MODEL RESULT face=detected ear=0.416 mar=0.570 yaw=66.4 pitch=5.4 roll=-170.2 drowsiness=ear_fallback ear_thr=0.289 perclos=0.00 mar_thr=0.657 yolo_detections=0
+[2026-06-06 14:55:29] [INFO] dms.interior: MODEL RESULT face=detected ear=0.360 mar=0.588 yaw=39.1 pitch=16.3 roll=-172.1 drowsiness=ear_fallback ear_thr=0.289 perclos=0.00 mar_thr=0.657 yolo_detections=0
+[2026-06-06 14:55:30] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=39.1°, pitch=15.1°) | confidence=0.800 | metadata={'yaw': 39.13, 'pitch': 15.05}
+[2026-06-06 14:55:34] [INFO] dms.interior: MODEL RESULT face=detected ear=0.215 mar=0.594 yaw=-3.3 pitch=-25.8 roll=-1.4 drowsiness=ear_fallback ear_thr=0.289 perclos=0.23 mar_thr=0.657 yolo_detections=0
+[2026-06-06 14:55:35] [WARNING] dms.behaviors: FATIGUE detected — method=PERCLOS EAR=0.283 threshold=0.289 frames=18 perclos=0.35
+[2026-06-06 14:55:35] [CRITICAL] dms.alerts: MODEL EVENT FATIGUE_DRIVING: Driver fatigue detected (PERCLOS, EAR=0.283) | confidence=0.450 | metadata={'ear': 0.2826, 'ear_threshold': 0.289445, 'perclos': 0.35, 'method': 'PERCLOS', 'consec_frames': 18}
+[2026-06-06 14:55:35] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=-4.2°, pitch=-25.7°) | confidence=0.800 | metadata={'yaw': -4.24, 'pitch': -25.74}
+[2026-06-06 14:55:39] [INFO] dms.interior: MODEL RESULT face=detected ear=0.376 mar=0.623 yaw=-2.4 pitch=-25.8 roll=-2.9 drowsiness=ear_fallback ear_thr=0.289 perclos=0.00 mar_thr=0.657 yolo_detections=0
+[2026-06-06 14:55:39] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=-1.2°, pitch=-29.1°) | confidence=0.800 | metadata={'yaw': -1.19, 'pitch': -29.07}
+[2026-06-06 14:55:44] [INFO] dms.interior: MODEL RESULT face=detected ear=0.309 mar=0.596 yaw=34.9 pitch=12.3 roll=-173.5 drowsiness=ear_fallback ear_thr=0.289 perclos=0.00 mar_thr=0.657 yolo_detections=0
+[2026-06-06 14:55:49] [INFO] dms.interior: MODEL RESULT face=detected ear=0.370 mar=0.592 yaw=-5.6 pitch=-17.1 roll=-2.2 drowsiness=ear_fallback ear_thr=0.289 perclos=0.00 mar_thr=0.657 yolo_detections=0
+[2026-06-06 14:55:54] [INFO] dms.interior: MODEL RESULT face=detected ear=0.271 mar=0.609 yaw=40.5 pitch=13.0 roll=-175.6 drowsiness=ear_fallback ear_thr=0.289 perclos=0.02 mar_thr=0.657 yolo_detections=0
+[2026-06-06 14:55:59] [INFO] dms.interior: MODEL RESULT face=detected ear=0.372 mar=0.594 yaw=47.2 pitch=14.2 roll=-169.7 drowsiness=ear_fallback ear_thr=0.289 perclos=0.02 mar_thr=0.657 yolo_detections=0
+[2026-06-06 14:56:04] [INFO] dms.interior: MODEL RESULT face=detected ear=0.355 mar=0.594 yaw=36.0 pitch=19.0 roll=-173.1 drowsiness=ear_fallback ear_thr=0.289 perclos=0.00 mar_thr=0.657 yolo_detections=0
+[2026-06-06 14:56:04] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=36.3°, pitch=16.8°) | confidence=0.800 | metadata={'yaw': 36.29, 'pitch': 16.81}
+[2026-06-06 14:56:09] [INFO] dms.interior: MODEL RESULT face=detected ear=0.356 mar=0.604 yaw=36.3 pitch=17.9 roll=-173.7 drowsiness=ear_fallback ear_thr=0.289 perclos=0.00 mar_thr=0.657 yolo_detections=0
+[2026-06-06 14:56:14] [INFO] dms.interior: MODEL RESULT face=detected ear=0.324 mar=0.597 yaw=33.3 pitch=20.4 roll=-172.5 drowsiness=ear_fallback ear_thr=0.289 perclos=0.27 mar_thr=0.657 yolo_detections=0
+[2026-06-06 14:56:14] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=33.8°, pitch=20.0°) | confidence=0.800 | metadata={'yaw': 33.79, 'pitch': 19.99}
+[2026-06-06 14:56:19] [INFO] dms.interior: MODEL RESULT face=detected ear=0.339 mar=0.623 yaw=26.6 pitch=39.5 roll=-172.2 drowsiness=ear_fallback ear_thr=0.289 perclos=0.02 mar_thr=0.657 yolo_detections=0
+[2026-06-06 14:56:24] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=27.5°, pitch=43.1°) | confidence=0.800 | metadata={'yaw': 27.49, 'pitch': 43.08}
+[2026-06-06 14:56:24] [INFO] dms.interior: MODEL RESULT face=detected ear=0.350 mar=0.610 yaw=32.4 pitch=40.2 roll=-174.9 drowsiness=ear_fallback ear_thr=0.289 perclos=0.00 mar_thr=0.657 yolo_detections=0
+[2026-06-06 14:56:28] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=32.0°, pitch=24.1°) | confidence=0.800 | metadata={'yaw': 31.97, 'pitch': 24.09}
+[2026-06-06 14:56:29] [INFO] dms.interior: MODEL RESULT face=detected ear=0.338 mar=0.604 yaw=27.2 pitch=33.4 roll=-171.2 drowsiness=ear_fallback ear_thr=0.289 perclos=0.00 mar_thr=0.657 yolo_detections=0
+[2026-06-06 14:56:34] [INFO] dms.interior: MODEL RESULT face=detected ear=0.348 mar=0.599 yaw=34.4 pitch=23.2 roll=-174.6 drowsiness=ear_fallback ear_thr=0.289 perclos=0.00 mar_thr=0.657 yolo_detections=0
+[2026-06-06 14:56:35] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=35.1°, pitch=25.2°) | confidence=0.800 | metadata={'yaw': 35.1, 'pitch': 25.17}
+[2026-06-06 14:56:39] [INFO] dms.interior: MODEL RESULT face=detected ear=0.356 mar=0.602 yaw=32.4 pitch=22.1 roll=-173.9 drowsiness=ear_fallback ear_thr=0.289 perclos=0.00 mar_thr=0.657 yolo_detections=0
+[2026-06-06 14:56:44] [INFO] dms.interior: MODEL RESULT face=detected ear=0.342 mar=0.596 yaw=28.6 pitch=17.6 roll=-170.8 drowsiness=ear_fallback ear_thr=0.289 perclos=0.00 mar_thr=0.657 yolo_detections=0
+[2026-06-06 14:56:49] [INFO] dms.interior: MODEL RESULT face=detected ear=0.349 mar=0.608 yaw=-15.3 pitch=-10.8 roll=-0.9 drowsiness=ear_fallback ear_thr=0.289 perclos=0.00 mar_thr=0.657 yolo_detections=0
+[2026-06-06 14:56:54] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=56.9°, pitch=19.7°) | confidence=0.800 | metadata={'yaw': 56.93, 'pitch': 19.69}
+[2026-06-06 14:56:54] [INFO] dms.interior: MODEL RESULT face=detected ear=0.376 mar=0.594 yaw=58.5 pitch=13.1 roll=-174.1 drowsiness=ear_fallback ear_thr=0.289 perclos=0.00 mar_thr=0.657 yolo_detections=0
+[2026-06-06 14:56:57] [CRITICAL] dms.alerts: MODEL EVENT NO_DRIVER: No driver detected in frame | confidence=1.000 | metadata={}
+[2026-06-06 14:56:59] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=37.6°, pitch=27.3°) | confidence=0.800 | metadata={'yaw': 37.64, 'pitch': 27.29}
+[2026-06-06 14:56:59] [INFO] dms.interior: MODEL RESULT face=detected ear=0.353 mar=0.588 yaw=38.0 pitch=29.4 roll=-174.7 drowsiness=ear_fallback ear_thr=0.289 perclos=0.00 mar_thr=0.657 yolo_detections=0
+[2026-06-06 14:57:04] [INFO] dms.interior: MODEL RESULT face=detected ear=0.346 mar=0.592 yaw=44.1 pitch=11.2 roll=-172.5 drowsiness=ear_fallback ear_thr=0.289 perclos=0.00 mar_thr=0.657 yolo_detections=0
+[2026-06-06 14:57:09] [INFO] dms.interior: MODEL RESULT face=detected ear=0.338 mar=0.584 yaw=-6.7 pitch=-21.4 roll=2.2 drowsiness=ear_fallback ear_thr=0.289 perclos=0.00 mar_thr=0.657 yolo_detections=0
+[2026-06-06 14:57:12] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=43.9°, pitch=36.6°) | confidence=0.800 | metadata={'yaw': 43.86, 'pitch': 36.58}
+[2026-06-06 14:57:14] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=0
+[2026-06-06 14:57:17] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=44.8°, pitch=16.9°) | confidence=0.800 | metadata={'yaw': 44.77, 'pitch': 16.95}
+[2026-06-06 14:57:19] [INFO] dms.interior: MODEL RESULT face=detected ear=0.396 mar=0.630 yaw=54.9 pitch=22.1 roll=-177.6 drowsiness=ear_fallback ear_thr=0.289 perclos=0.00 mar_thr=0.657 yolo_detections=0
+[2026-06-06 14:57:24] [INFO] dms.interior: MODEL RESULT face=detected ear=0.376 mar=0.598 yaw=38.4 pitch=20.0 roll=-170.5 drowsiness=ear_fallback ear_thr=0.289 perclos=0.00 mar_thr=0.657 yolo_detections=0
+[2026-06-06 14:57:25] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=35.6°, pitch=19.5°) | confidence=0.800 | metadata={'yaw': 35.61, 'pitch': 19.46}
+[2026-06-06 14:57:29] [INFO] dms.interior: MODEL RESULT face=detected ear=0.389 mar=0.599 yaw=46.7 pitch=18.7 roll=-167.8 drowsiness=ear_fallback ear_thr=0.289 perclos=0.00 mar_thr=0.657 yolo_detections=0
+[2026-06-06 14:57:34] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=0
+[2026-06-06 14:57:36] [CRITICAL] dms.alerts: MODEL EVENT NO_DRIVER: No driver detected in frame | confidence=1.000 | metadata={}
+[2026-06-06 14:57:39] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=0
+[2026-06-06 14:57:44] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=0
+[2026-06-06 14:57:49] [INFO] dms.interior: MODEL RESULT face=detected ear=0.381 mar=0.592 yaw=47.7 pitch=20.1 roll=-168.0 drowsiness=ear_fallback ear_thr=0.289 perclos=0.02 mar_thr=0.657 yolo_detections=0
+[2026-06-06 14:57:52] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=57.6°, pitch=18.3°) | confidence=0.800 | metadata={'yaw': 57.64, 'pitch': 18.29}
+[2026-06-06 14:57:54] [INFO] dms.interior: MODEL RESULT face=detected ear=0.414 mar=0.595 yaw=55.2 pitch=20.6 roll=-166.1 drowsiness=ear_fallback ear_thr=0.289 perclos=0.00 mar_thr=0.657 yolo_detections=0
+[2026-06-06 14:57:58] [CRITICAL] dms.alerts: MODEL EVENT NO_DRIVER: No driver detected in frame | confidence=1.000 | metadata={}
+[2026-06-06 14:57:59] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=0
+[2026-06-06 14:58:04] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=0
+[2026-06-06 14:58:09] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=0
+[2026-06-06 14:58:11] [CRITICAL] dms.alerts: MODEL EVENT NO_DRIVER: No driver detected in frame | confidence=1.000 | metadata={}
+[2026-06-06 14:58:14] [INFO] dms.interior: MODEL RESULT face=detected ear=0.363 mar=0.591 yaw=48.8 pitch=20.7 roll=-170.3 drowsiness=ear_fallback ear_thr=0.289 perclos=0.00 mar_thr=0.657 yolo_detections=0
+[2026-06-06 14:58:19] [INFO] dms.interior: MODEL RESULT face=detected ear=0.351 mar=0.586 yaw=32.6 pitch=16.3 roll=-170.9 drowsiness=ear_fallback ear_thr=0.289 perclos=0.00 mar_thr=0.657 yolo_detections=0
+[2026-06-06 14:58:24] [INFO] dms.interior: MODEL RESULT face=detected ear=0.439 mar=0.600 yaw=55.0 pitch=20.9 roll=-168.7 drowsiness=ear_fallback ear_thr=0.289 perclos=0.00 mar_thr=0.657 yolo_detections=0
+[2026-06-06 14:58:25] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=56.7°, pitch=20.2°) | confidence=0.800 | metadata={'yaw': 56.67, 'pitch': 20.2}
+[2026-06-06 14:58:27] [CRITICAL] dms.alerts: MODEL EVENT NO_DRIVER: No driver detected in frame | confidence=1.000 | metadata={}
+[2026-06-06 14:58:29] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=0
+[2026-06-06 14:58:34] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=0
+[2026-06-06 14:58:39] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=0
+[2026-06-06 14:58:43] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=53.8°, pitch=15.4°) | confidence=0.800 | metadata={'yaw': 53.83, 'pitch': 15.44}
+[2026-06-06 14:58:44] [INFO] dms.interior: MODEL RESULT face=detected ear=0.373 mar=0.581 yaw=58.2 pitch=10.9 roll=-172.1 drowsiness=ear_fallback ear_thr=0.289 perclos=0.00 mar_thr=0.657 yolo_detections=0
+[2026-06-06 14:58:49] [INFO] dms.interior: MODEL RESULT face=detected ear=0.404 mar=0.586 yaw=59.6 pitch=12.3 roll=-170.1 drowsiness=ear_fallback ear_thr=0.289 perclos=0.00 mar_thr=0.657 yolo_detections=0
+[2026-06-06 14:58:53] [CRITICAL] dms.alerts: MODEL EVENT NO_DRIVER: No driver detected in frame | confidence=1.000 | metadata={}
+[2026-06-06 14:58:54] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=0
+[2026-06-06 14:58:58] [CRITICAL] dms.alerts: MODEL EVENT NO_DRIVER: No driver detected in frame | confidence=1.000 | metadata={}
+[2026-06-06 14:58:59] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=0
+[2026-06-06 14:59:04] [INFO] dms.interior: MODEL RESULT face=detected ear=0.331 mar=0.603 yaw=37.0 pitch=19.0 roll=-165.6 drowsiness=ear_fallback ear_thr=0.289 perclos=0.00 mar_thr=0.657 yolo_detections=0
+[2026-06-06 14:59:09] [INFO] dms.interior: MODEL RESULT face=detected ear=0.375 mar=0.591 yaw=41.4 pitch=17.1 roll=-169.3 drowsiness=ear_fallback ear_thr=0.289 perclos=0.00 mar_thr=0.657 yolo_detections=0
+[2026-06-06 14:59:11] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=44.3°, pitch=17.4°) | confidence=0.800 | metadata={'yaw': 44.27, 'pitch': 17.35}
+[2026-06-06 14:59:14] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=46.1°, pitch=15.2°) | confidence=0.800 | metadata={'yaw': 46.12, 'pitch': 15.23}
+[2026-06-06 14:59:14] [INFO] dms.interior: MODEL RESULT face=detected ear=0.393 mar=0.591 yaw=49.0 pitch=15.8 roll=-167.8 drowsiness=ear_fallback ear_thr=0.289 perclos=0.00 mar_thr=0.657 yolo_detections=0
+[2026-06-06 14:59:19] [INFO] dms.interior: MODEL RESULT face=detected ear=0.373 mar=0.605 yaw=-10.4 pitch=-13.6 roll=-4.1 drowsiness=ear_fallback ear_thr=0.289 perclos=0.03 mar_thr=0.657 yolo_detections=0
+[2026-06-06 14:59:24] [INFO] dms.interior: MODEL RESULT face=detected ear=0.371 mar=0.615 yaw=30.5 pitch=26.1 roll=-165.9 drowsiness=ear_fallback ear_thr=0.289 perclos=0.00 mar_thr=0.657 yolo_detections=0
+[2026-06-06 14:59:26] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=28.7°, pitch=36.8°) | confidence=0.800 | metadata={'yaw': 28.69, 'pitch': 36.83}
+[2026-06-06 14:59:29] [INFO] dms.interior: MODEL RESULT face=detected ear=0.343 mar=0.592 yaw=34.1 pitch=23.7 roll=-166.1 drowsiness=ear_fallback ear_thr=0.289 perclos=0.00 mar_thr=0.657 yolo_detections=0
+[2026-06-06 14:59:34] [INFO] dms.interior: MODEL RESULT face=detected ear=0.370 mar=0.596 yaw=31.0 pitch=28.1 roll=-165.4 drowsiness=ear_fallback ear_thr=0.289 perclos=0.00 mar_thr=0.657 yolo_detections=0
+[2026-06-06 14:59:39] [INFO] dms.interior: MODEL RESULT face=detected ear=0.327 mar=0.595 yaw=33.5 pitch=20.0 roll=-166.4 drowsiness=ear_fallback ear_thr=0.289 perclos=0.00 mar_thr=0.657 yolo_detections=0
+[2026-06-06 14:59:43] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=36.0°, pitch=23.1°) | confidence=0.800 | metadata={'yaw': 36.04, 'pitch': 23.11}
+[2026-06-06 14:59:44] [INFO] dms.interior: MODEL RESULT face=detected ear=0.373 mar=0.617 yaw=30.8 pitch=35.4 roll=-173.8 drowsiness=ear_fallback ear_thr=0.289 perclos=0.02 mar_thr=0.657 yolo_detections=0
+[2026-06-06 14:59:49] [INFO] dms.interior: MODEL RESULT face=detected ear=0.389 mar=0.620 yaw=-1.2 pitch=-8.1 roll=-0.7 drowsiness=ear_fallback ear_thr=0.289 perclos=0.00 mar_thr=0.657 yolo_detections=0
+[2026-06-06 14:59:54] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=0
+[2026-06-06 14:59:55] [CRITICAL] dms.alerts: MODEL EVENT NO_DRIVER: No driver detected in frame | confidence=1.000 | metadata={}
+[2026-06-06 15:00:00] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=0
+[2026-06-06 15:00:05] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=0
+[2026-06-06 15:00:10] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=0
+[2026-06-06 15:00:15] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=0
+[2026-06-06 15:00:20] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=0
+[2026-06-06 15:00:25] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=0
+[2026-06-06 15:00:25] [CRITICAL] dms.alerts: MODEL EVENT NO_DRIVER: No driver detected in frame | confidence=1.000 | metadata={}
+[2026-06-06 15:00:30] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=0
+[2026-06-06 15:00:35] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=0
+[2026-06-06 15:00:40] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=0
+[2026-06-06 15:00:41] [CRITICAL] dms.alerts: MODEL EVENT NO_DRIVER: No driver detected in frame | confidence=1.000 | metadata={}
+[2026-06-06 15:00:45] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=0
+[2026-06-06 15:00:46] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=56.4°, pitch=26.6°) | confidence=0.800 | metadata={'yaw': 56.39, 'pitch': 26.58}
+[2026-06-06 15:00:50] [INFO] dms.interior: MODEL RESULT face=detected ear=0.308 mar=0.602 yaw=27.8 pitch=28.0 roll=-165.8 drowsiness=ear_fallback ear_thr=0.289 perclos=0.06 mar_thr=0.657 yolo_detections=0
+[2026-06-06 15:00:55] [INFO] dms.interior: MODEL RESULT face=detected ear=0.352 mar=0.602 yaw=32.7 pitch=36.6 roll=-167.0 drowsiness=ear_fallback ear_thr=0.289 perclos=0.00 mar_thr=0.657 yolo_detections=0
+[2026-06-06 15:00:55] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=31.4°, pitch=34.6°) | confidence=0.800 | metadata={'yaw': 31.42, 'pitch': 34.59}
+[2026-06-06 15:00:59] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=22.5°, pitch=47.7°) | confidence=0.800 | metadata={'yaw': 22.47, 'pitch': 47.73}
+[2026-06-06 15:01:00] [INFO] dms.interior: MODEL RESULT face=detected ear=0.354 mar=0.602 yaw=30.2 pitch=25.7 roll=-169.6 drowsiness=ear_fallback ear_thr=0.289 perclos=0.07 mar_thr=0.657 yolo_detections=0
+[2026-06-06 15:01:05] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=0
+[2026-06-06 15:01:06] [CRITICAL] dms.alerts: MODEL EVENT NO_DRIVER: No driver detected in frame | confidence=1.000 | metadata={}
+[2026-06-06 15:01:10] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=0
+[2026-06-06 15:01:15] [INFO] dms.interior: MODEL RESULT face=detected ear=0.360 mar=0.580 yaw=-6.0 pitch=-14.1 roll=9.3 drowsiness=ear_fallback ear_thr=0.289 perclos=0.11 mar_thr=0.657 yolo_detections=0
+[2026-06-06 15:01:19] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=-2.9°, pitch=-23.1°) | confidence=0.800 | metadata={'yaw': -2.91, 'pitch': -23.13}
+[2026-06-06 15:01:20] [INFO] dms.interior: MODEL RESULT face=detected ear=0.290 mar=0.645 yaw=-2.3 pitch=-24.8 roll=7.6 drowsiness=ear_fallback ear_thr=0.289 perclos=0.00 mar_thr=0.657 yolo_detections=0
+[2026-06-06 15:01:23] [WARNING] dms.behaviors: FATIGUE detected — method=PERCLOS EAR=0.281 threshold=0.289 frames=9 perclos=0.35
+[2026-06-06 15:01:23] [CRITICAL] dms.alerts: MODEL EVENT FATIGUE_DRIVING: Driver fatigue detected (PERCLOS, EAR=0.281) | confidence=0.350 | metadata={'ear': 0.2811, 'ear_threshold': 0.289445, 'perclos': 0.35, 'method': 'PERCLOS', 'consec_frames': 9}
+[2026-06-06 15:01:25] [INFO] dms.interior: MODEL RESULT face=detected ear=0.312 mar=0.647 yaw=-0.6 pitch=-27.0 roll=4.0 drowsiness=ear_fallback ear_thr=0.289 perclos=0.45 mar_thr=0.657 yolo_detections=0
+[2026-06-06 15:01:30] [INFO] dms.interior: MODEL RESULT face=detected ear=0.296 mar=0.648 yaw=2.6 pitch=-25.8 roll=-4.7 drowsiness=ear_fallback ear_thr=0.289 perclos=0.57 mar_thr=0.657 yolo_detections=0
+[2026-06-06 15:01:35] [INFO] dms.interior: MODEL RESULT face=detected ear=0.312 mar=0.580 yaw=56.0 pitch=-4.6 roll=178.9 drowsiness=ear_fallback ear_thr=0.289 perclos=0.02 mar_thr=0.657 yolo_detections=0
+[2026-06-06 15:01:37] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=4.5°, pitch=-20.7°) | confidence=0.800 | metadata={'yaw': 4.55, 'pitch': -20.71}
+[2026-06-06 15:01:40] [INFO] dms.interior: MODEL RESULT face=detected ear=0.296 mar=0.585 yaw=6.6 pitch=-23.4 roll=-5.3 drowsiness=ear_fallback ear_thr=0.289 perclos=0.30 mar_thr=0.657 yolo_detections=0
+[2026-06-06 15:01:42] [WARNING] dms.behaviors: FATIGUE detected — method=PERCLOS EAR=0.287 threshold=0.289 frames=1 perclos=0.35
+[2026-06-06 15:01:42] [CRITICAL] dms.alerts: MODEL EVENT FATIGUE_DRIVING: Driver fatigue detected (PERCLOS, EAR=0.287) | confidence=0.350 | metadata={'ear': 0.2869, 'ear_threshold': 0.289445, 'perclos': 0.35, 'method': 'PERCLOS', 'consec_frames': 1}
+[2026-06-06 15:01:45] [INFO] dms.interior: MODEL RESULT face=detected ear=0.298 mar=0.582 yaw=6.2 pitch=-23.9 roll=-5.7 drowsiness=ear_fallback ear_thr=0.289 perclos=0.42 mar_thr=0.657 yolo_detections=0
+[2026-06-06 15:01:50] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=0
+[2026-06-06 15:01:53] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=6.0°, pitch=-26.3°) | confidence=0.800 | metadata={'yaw': 5.97, 'pitch': -26.32}
+[2026-06-06 15:01:55] [INFO] dms.interior: MODEL RESULT face=detected ear=0.300 mar=0.584 yaw=7.7 pitch=-25.5 roll=-4.9 drowsiness=ear_fallback ear_thr=0.289 perclos=0.23 mar_thr=0.657 yolo_detections=0
+[2026-06-06 15:02:00] [INFO] dms.interior: MODEL RESULT face=detected ear=0.344 mar=0.583 yaw=41.9 pitch=9.5 roll=-177.8 drowsiness=ear_fallback ear_thr=0.289 perclos=0.07 mar_thr=0.657 yolo_detections=0
+[2026-06-06 15:02:00] [INFO] dms: Shutdown signal received.
+[2026-06-06 15:02:00] [INFO] dms.web: Web dashboard stopped.
+[2026-06-06 15:02:00] [INFO] dms.mediapipe: FaceMeshDetector released
+[2026-06-06 15:02:00] [INFO] dms.interior: InteriorPipeline stopped.
+[2026-06-06 15:02:00] [INFO] dms.camera: Camera stopped. Captured=6083, Dropped=0
+[2026-06-06 15:02:00] [INFO] dms.system: SystemPipeline stopped.
+[2026-06-06 15:02:00] [INFO] dms: System stopped cleanly.
+[2026-06-06 15:12:58] [INFO] dms: Logging to /home/pi/Driver-Monitoring-System/logs/dms.log
+[2026-06-06 15:12:58] [INFO] dms: === Driver Monitoring System Starting ===
+[2026-06-06 15:12:58] [INFO] dms.system: Starting SystemPipeline...
+[2026-06-06 15:12:58] [INFO] dms.camera: Opening rpicam-vid CSI camera index=0 at 640x480
+[2026-06-06 15:12:58] [INFO] dms.camera: Camera capture thread started
+[2026-06-06 15:12:58] [INFO] dms.interior: Initialising InteriorPipeline...
+[2026-06-06 15:12:58] [INFO] dms.interior: Loading FaceMesh...
+[2026-06-06 15:12:58] [INFO] dms.mediapipe: FaceMeshDetector initialised
+[2026-06-06 15:12:58] [INFO] dms.interior: Loading YOLO...
+[2026-06-06 15:12:58] [WARNING] dms.interior: YOLO failed to load: ultralytics is not installed.
+Run: pip install ultralytics — running without YOLO
+[2026-06-06 15:12:58] [INFO] dms.interior: Loading drowsiness model...
+[2026-06-06 15:12:58] [WARNING] dms.interior: Drowsiness model failed to load: tensorflow is required. Install with: pip install tensorflow
+[2026-06-06 15:12:58] [INFO] dms.interior: InteriorPipeline ready.
+[2026-06-06 15:12:58] [INFO] dms.system: Waiting for first camera frame...
+[2026-06-06 15:12:59] [INFO] dms.system: SystemPipeline running.
+[2026-06-06 15:12:59] [INFO] dms.web: Web dashboard listening on http://0.0.0.0:5000
+[2026-06-06 15:12:59] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=0
+[2026-06-06 15:13:01] [CRITICAL] dms.alerts: MODEL EVENT NO_DRIVER: No driver detected in frame | confidence=1.000 | metadata={}
+[2026-06-06 15:13:03] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=42.1°, pitch=3.4°) | confidence=0.800 | metadata={'yaw': 42.15, 'pitch': 3.41}
+[2026-06-06 15:13:04] [INFO] dms.interior: MODEL RESULT face=detected ear=0.425 mar=0.581 yaw=56.1 pitch=15.6 roll=-169.0 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:13:09] [INFO] dms.interior: MODEL RESULT face=detected ear=0.376 mar=0.589 yaw=22.9 pitch=4.4 roll=-178.7 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:13:14] [INFO] dms.interior: MODEL RESULT face=detected ear=0.357 mar=0.571 yaw=14.6 pitch=-22.2 roll=-10.2 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:13:15] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=14.7°, pitch=-21.0°) | confidence=0.800 | metadata={'yaw': 14.65, 'pitch': -20.98}
+[2026-06-06 15:13:19] [INFO] dms.interior: MODEL RESULT face=detected ear=0.365 mar=0.581 yaw=17.7 pitch=-16.4 roll=-14.2 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:13:24] [INFO] dms.interior: MODEL RESULT face=detected ear=0.364 mar=0.576 yaw=11.7 pitch=-19.4 roll=-12.5 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:13:26] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=11.5°, pitch=-21.8°) | confidence=0.800 | metadata={'yaw': 11.54, 'pitch': -21.84}
+[2026-06-06 15:13:29] [INFO] dms.interior: MODEL RESULT face=detected ear=0.324 mar=0.601 yaw=-0.5 pitch=-8.3 roll=-2.7 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:13:34] [INFO] dms.interior: MODEL RESULT face=detected ear=0.326 mar=0.587 yaw=26.3 pitch=5.4 roll=-179.6 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:13:39] [INFO] dms.interior: MODEL RESULT face=detected ear=0.319 mar=0.590 yaw=9.1 pitch=-10.9 roll=-5.8 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:13:44] [INFO] dms.interior: MODEL RESULT face=detected ear=0.345 mar=0.580 yaw=8.9 pitch=-15.1 roll=-8.6 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:13:49] [INFO] dms.interior: MODEL RESULT face=detected ear=0.352 mar=0.591 yaw=8.8 pitch=-13.1 roll=-8.3 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:13:51] [WARNING] dms.behaviors: FATIGUE detected — EAR=0.199, frames=20
+[2026-06-06 15:13:51] [CRITICAL] dms.alerts: MODEL EVENT FATIGUE_DRIVING: Driver fatigue detected (EAR=0.199) | confidence=0.500 | metadata={'ear': 0.1989, 'consec_frames': 20}
+[2026-06-06 15:13:54] [INFO] dms.interior: MODEL RESULT face=detected ear=0.317 mar=0.581 yaw=7.5 pitch=-17.6 roll=-8.8 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:13:56] [WARNING] dms.alerts: MODEL EVENT DRIVER_YAWNS: Driver yawning detected (MAR=0.623) | confidence=0.850 | metadata={'mar': 0.6232}
+[2026-06-06 15:13:56] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=10.0°, pitch=-23.4°) | confidence=0.800 | metadata={'yaw': 10.04, 'pitch': -23.35}
+[2026-06-06 15:13:59] [INFO] dms.interior: MODEL RESULT face=detected ear=0.331 mar=0.631 yaw=8.8 pitch=-24.7 roll=-9.3 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:14:04] [INFO] dms.interior: MODEL RESULT face=detected ear=0.344 mar=0.590 yaw=8.3 pitch=-10.6 roll=-8.1 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:14:09] [INFO] dms.interior: MODEL RESULT face=detected ear=0.389 mar=0.584 yaw=8.2 pitch=-14.8 roll=-6.5 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:14:14] [INFO] dms.interior: MODEL RESULT face=detected ear=0.318 mar=0.586 yaw=7.2 pitch=-14.6 roll=-7.6 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:14:19] [INFO] dms.interior: MODEL RESULT face=detected ear=0.366 mar=0.584 yaw=7.5 pitch=-9.8 roll=-6.9 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:14:23] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=6.5°, pitch=-20.8°) | confidence=0.800 | metadata={'yaw': 6.51, 'pitch': -20.76}
+[2026-06-06 15:14:24] [INFO] dms.interior: MODEL RESULT face=detected ear=0.322 mar=0.599 yaw=1.7 pitch=-19.4 roll=-4.9 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:14:29] [INFO] dms.interior: MODEL RESULT face=detected ear=0.258 mar=0.597 yaw=4.7 pitch=-10.8 roll=-3.9 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:14:34] [INFO] dms.interior: MODEL RESULT face=detected ear=0.272 mar=0.600 yaw=4.5 pitch=-9.9 roll=-5.1 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:14:39] [INFO] dms.interior: MODEL RESULT face=detected ear=0.297 mar=0.591 yaw=0.9 pitch=-10.1 roll=-5.2 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:14:44] [INFO] dms.interior: MODEL RESULT face=detected ear=0.351 mar=0.578 yaw=13.8 pitch=-12.1 roll=-10.1 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:14:49] [INFO] dms.interior: MODEL RESULT face=detected ear=0.286 mar=0.587 yaw=27.0 pitch=11.3 roll=177.4 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:14:54] [INFO] dms.interior: MODEL RESULT face=detected ear=0.335 mar=0.592 yaw=9.3 pitch=-13.3 roll=-6.7 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:14:59] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=0
+[2026-06-06 15:15:04] [INFO] dms.interior: MODEL RESULT face=detected ear=0.288 mar=0.591 yaw=23.3 pitch=-14.2 roll=-10.4 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:15:08] [WARNING] dms.alerts: MODEL EVENT DRIVER_YAWNS: Driver yawning detected (MAR=0.620) | confidence=0.850 | metadata={'mar': 0.62}
+[2026-06-06 15:15:08] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=23.5°, pitch=-25.5°) | confidence=0.800 | metadata={'yaw': 23.46, 'pitch': -25.47}
+[2026-06-06 15:15:09] [INFO] dms.interior: MODEL RESULT face=detected ear=0.310 mar=0.626 yaw=22.8 pitch=-26.9 roll=-14.6 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:15:12] [WARNING] dms.behaviors: FATIGUE detected — EAR=0.205, frames=20
+[2026-06-06 15:15:12] [CRITICAL] dms.alerts: MODEL EVENT FATIGUE_DRIVING: Driver fatigue detected (EAR=0.205) | confidence=0.500 | metadata={'ear': 0.2049, 'consec_frames': 20}
+[2026-06-06 15:15:14] [INFO] dms.interior: MODEL RESULT face=detected ear=0.202 mar=0.586 yaw=21.9 pitch=-28.4 roll=-14.3 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:15:19] [INFO] dms.interior: MODEL RESULT face=detected ear=0.317 mar=0.586 yaw=19.5 pitch=-22.6 roll=-15.4 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:15:22] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=21.0°, pitch=-24.7°) | confidence=0.800 | metadata={'yaw': 20.99, 'pitch': -24.68}
+[2026-06-06 15:15:24] [INFO] dms.interior: MODEL RESULT face=detected ear=0.344 mar=0.585 yaw=22.0 pitch=-28.7 roll=-17.0 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:15:29] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=14.4°, pitch=-21.2°) | confidence=0.800 | metadata={'yaw': 14.45, 'pitch': -21.25}
+[2026-06-06 15:15:29] [INFO] dms.interior: MODEL RESULT face=detected ear=0.349 mar=0.581 yaw=14.7 pitch=-20.4 roll=-14.9 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:15:32] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=17.4°, pitch=-26.3°) | confidence=0.800 | metadata={'yaw': 17.43, 'pitch': -26.3}
+[2026-06-06 15:15:34] [INFO] dms.interior: MODEL RESULT face=detected ear=0.306 mar=0.589 yaw=16.0 pitch=-26.7 roll=-15.6 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:15:38] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=16.4°, pitch=-23.8°) | confidence=0.800 | metadata={'yaw': 16.39, 'pitch': -23.76}
+[2026-06-06 15:15:39] [INFO] dms.interior: MODEL RESULT face=detected ear=0.344 mar=0.582 yaw=17.2 pitch=-23.7 roll=-15.6 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:15:44] [INFO] dms.interior: MODEL RESULT face=detected ear=0.358 mar=0.584 yaw=17.1 pitch=-28.3 roll=-14.2 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:15:49] [INFO] dms.interior: MODEL RESULT face=detected ear=0.331 mar=0.597 yaw=6.4 pitch=-20.0 roll=-4.3 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:15:51] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=6.6°, pitch=-20.9°) | confidence=0.800 | metadata={'yaw': 6.57, 'pitch': -20.93}
+[2026-06-06 15:15:54] [INFO] dms.interior: MODEL RESULT face=detected ear=0.322 mar=0.592 yaw=6.0 pitch=-21.6 roll=-3.1 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:15:59] [INFO] dms.interior: MODEL RESULT face=detected ear=0.317 mar=0.594 yaw=5.6 pitch=-20.4 roll=-2.7 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:16:04] [INFO] dms.interior: MODEL RESULT face=detected ear=0.338 mar=0.596 yaw=6.8 pitch=-19.4 roll=-3.1 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:16:09] [INFO] dms.interior: MODEL RESULT face=detected ear=0.306 mar=0.596 yaw=4.5 pitch=-19.0 roll=-0.8 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:16:14] [INFO] dms.interior: MODEL RESULT face=detected ear=0.328 mar=0.595 yaw=5.1 pitch=-17.8 roll=-1.1 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:16:17] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=48.4°, pitch=-13.7°) | confidence=0.800 | metadata={'yaw': 48.39, 'pitch': -13.7}
+[2026-06-06 15:16:19] [INFO] dms.interior: MODEL RESULT face=detected ear=0.382 mar=0.579 yaw=48.5 pitch=-13.2 roll=164.1 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:16:24] [INFO] dms.interior: MODEL RESULT face=detected ear=0.341 mar=0.586 yaw=21.6 pitch=-26.3 roll=-19.1 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:16:25] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=22.0°, pitch=-26.5°) | confidence=0.800 | metadata={'yaw': 22.04, 'pitch': -26.54}
+[2026-06-06 15:16:29] [INFO] dms.interior: MODEL RESULT face=detected ear=0.355 mar=0.578 yaw=22.1 pitch=-26.0 roll=-20.5 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:16:34] [INFO] dms.interior: MODEL RESULT face=detected ear=0.293 mar=0.589 yaw=10.5 pitch=-22.0 roll=-7.3 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:16:36] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=9.7°, pitch=-21.5°) | confidence=0.800 | metadata={'yaw': 9.65, 'pitch': -21.49}
+[2026-06-06 15:16:38] [WARNING] dms.alerts: MODEL EVENT DRIVER_YAWNS: Driver yawning detected (MAR=0.613) | confidence=0.850 | metadata={'mar': 0.6125}
+[2026-06-06 15:16:38] [WARNING] dms.behaviors: FATIGUE detected — EAR=0.161, frames=20
+[2026-06-06 15:16:38] [CRITICAL] dms.alerts: MODEL EVENT FATIGUE_DRIVING: Driver fatigue detected (EAR=0.161) | confidence=0.500 | metadata={'ear': 0.1606, 'consec_frames': 20}
+[2026-06-06 15:16:39] [INFO] dms.interior: MODEL RESULT face=detected ear=0.162 mar=0.612 yaw=11.4 pitch=-25.0 roll=-8.5 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:16:43] [WARNING] dms.alerts: MODEL EVENT DRIVER_YAWNS: Driver yawning detected (MAR=0.625) | confidence=0.850 | metadata={'mar': 0.6254}
+[2026-06-06 15:16:44] [INFO] dms.interior: MODEL RESULT face=detected ear=0.317 mar=0.591 yaw=17.9 pitch=-18.0 roll=-15.1 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:16:49] [INFO] dms.interior: MODEL RESULT face=detected ear=0.313 mar=0.587 yaw=14.5 pitch=-19.6 roll=-10.2 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:16:52] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=15.6°, pitch=-20.6°) | confidence=0.800 | metadata={'yaw': 15.56, 'pitch': -20.56}
+[2026-06-06 15:16:54] [INFO] dms.interior: MODEL RESULT face=detected ear=0.321 mar=0.591 yaw=13.3 pitch=-20.3 roll=-8.9 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:16:59] [INFO] dms.interior: MODEL RESULT face=detected ear=0.313 mar=0.588 yaw=17.4 pitch=-21.7 roll=-10.1 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:17:00] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=16.4°, pitch=-21.8°) | confidence=0.800 | metadata={'yaw': 16.37, 'pitch': -21.75}
+[2026-06-06 15:17:01] [WARNING] dms.alerts: MODEL EVENT DRIVER_YAWNS: Driver yawning detected (MAR=0.605) | confidence=0.850 | metadata={'mar': 0.6047}
+[2026-06-06 15:17:04] [INFO] dms.interior: MODEL RESULT face=detected ear=0.218 mar=0.600 yaw=13.4 pitch=-11.4 roll=-5.6 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:17:09] [INFO] dms.interior: MODEL RESULT face=detected ear=0.324 mar=0.592 yaw=17.8 pitch=-12.9 roll=-8.5 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:17:14] [INFO] dms.interior: MODEL RESULT face=detected ear=0.315 mar=0.592 yaw=17.6 pitch=-17.3 roll=-9.7 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:17:19] [CRITICAL] dms.alerts: MODEL EVENT NO_DRIVER: No driver detected in frame | confidence=1.000 | metadata={}
+[2026-06-06 15:17:19] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=0
+[2026-06-06 15:17:24] [INFO] dms.interior: MODEL RESULT face=detected ear=0.326 mar=0.596 yaw=18.4 pitch=-18.3 roll=-12.8 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:17:29] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=0
+[2026-06-06 15:17:33] [CRITICAL] dms.alerts: MODEL EVENT NO_DRIVER: No driver detected in frame | confidence=1.000 | metadata={}
+[2026-06-06 15:17:34] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=0
+[2026-06-06 15:17:39] [INFO] dms.interior: MODEL RESULT face=detected ear=0.406 mar=0.598 yaw=46.5 pitch=-9.9 roll=-178.8 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:17:40] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=47.2°, pitch=-8.0°) | confidence=0.800 | metadata={'yaw': 47.24, 'pitch': -8.0}
+[2026-06-06 15:17:41] [WARNING] dms.alerts: MODEL EVENT DRIVER_YAWNS: Driver yawning detected (MAR=0.604) | confidence=0.850 | metadata={'mar': 0.6038}
+[2026-06-06 15:17:44] [INFO] dms.interior: MODEL RESULT face=detected ear=0.342 mar=0.618 yaw=40.1 pitch=-11.6 roll=179.8 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:17:45] [WARNING] dms.alerts: MODEL EVENT DRIVER_YAWNS: Driver yawning detected (MAR=0.629) | confidence=0.850 | metadata={'mar': 0.6288}
+[2026-06-06 15:17:46] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=38.8°, pitch=-11.6°) | confidence=0.800 | metadata={'yaw': 38.8, 'pitch': -11.59}
+[2026-06-06 15:17:49] [INFO] dms.interior: MODEL RESULT face=detected ear=0.376 mar=0.622 yaw=38.6 pitch=-9.5 roll=180.0 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:17:51] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=39.5°, pitch=-9.6°) | confidence=0.800 | metadata={'yaw': 39.47, 'pitch': -9.57}
+[2026-06-06 15:17:54] [INFO] dms.interior: MODEL RESULT face=detected ear=0.330 mar=0.599 yaw=12.0 pitch=-21.5 roll=-12.4 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:17:56] [WARNING] dms.alerts: MODEL EVENT DRIVER_YAWNS: Driver yawning detected (MAR=0.610) | confidence=0.850 | metadata={'mar': 0.6099}
+[2026-06-06 15:17:59] [INFO] dms.interior: MODEL RESULT face=detected ear=0.337 mar=0.607 yaw=16.2 pitch=-18.6 roll=-11.6 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:18:01] [WARNING] dms.alerts: MODEL EVENT DRIVER_YAWNS: Driver yawning detected (MAR=0.607) | confidence=0.850 | metadata={'mar': 0.6069}
+[2026-06-06 15:18:04] [INFO] dms.interior: MODEL RESULT face=detected ear=0.310 mar=0.598 yaw=17.1 pitch=-18.6 roll=-12.3 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:18:09] [WARNING] dms.alerts: MODEL EVENT DRIVER_YAWNS: Driver yawning detected (MAR=0.610) | confidence=0.850 | metadata={'mar': 0.6098}
+[2026-06-06 15:18:09] [INFO] dms.interior: MODEL RESULT face=detected ear=0.221 mar=0.618 yaw=8.8 pitch=-13.0 roll=-5.2 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:18:11] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=11.6°, pitch=-24.6°) | confidence=0.800 | metadata={'yaw': 11.62, 'pitch': -24.65}
+[2026-06-06 15:18:14] [INFO] dms.interior: MODEL RESULT face=detected ear=0.333 mar=0.584 yaw=13.9 pitch=-22.3 roll=-11.4 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:18:19] [WARNING] dms.alerts: MODEL EVENT DRIVER_YAWNS: Driver yawning detected (MAR=0.627) | confidence=0.850 | metadata={'mar': 0.6269}
+[2026-06-06 15:18:19] [INFO] dms.interior: MODEL RESULT face=detected ear=0.228 mar=0.604 yaw=7.1 pitch=-11.4 roll=-3.8 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:18:24] [INFO] dms.interior: MODEL RESULT face=detected ear=0.264 mar=0.596 yaw=13.8 pitch=-10.8 roll=-14.1 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:18:29] [INFO] dms.interior: MODEL RESULT face=detected ear=0.325 mar=0.587 yaw=14.5 pitch=-15.7 roll=-10.9 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:18:34] [INFO] dms.interior: MODEL RESULT face=detected ear=0.272 mar=0.597 yaw=13.3 pitch=-19.0 roll=-11.9 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:18:37] [WARNING] dms.alerts: MODEL EVENT DRIVER_YAWNS: Driver yawning detected (MAR=0.610) | confidence=0.850 | metadata={'mar': 0.6096}
+[2026-06-06 15:18:39] [INFO] dms.interior: MODEL RESULT face=detected ear=0.235 mar=0.606 yaw=11.5 pitch=-9.8 roll=-8.4 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:18:44] [INFO] dms.interior: MODEL RESULT face=detected ear=0.297 mar=0.588 yaw=14.4 pitch=-17.2 roll=-12.3 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:18:49] [INFO] dms.interior: MODEL RESULT face=detected ear=0.343 mar=0.583 yaw=13.1 pitch=-14.9 roll=-13.9 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:18:54] [INFO] dms.interior: MODEL RESULT face=detected ear=0.328 mar=0.586 yaw=14.4 pitch=-21.1 roll=-15.2 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:18:59] [INFO] dms.interior: MODEL RESULT face=detected ear=0.335 mar=0.588 yaw=17.4 pitch=-13.3 roll=-9.9 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:19:01] [WARNING] dms.alerts: MODEL EVENT DRIVER_YAWNS: Driver yawning detected (MAR=0.605) | confidence=0.850 | metadata={'mar': 0.6052}
+[2026-06-06 15:19:04] [INFO] dms.interior: MODEL RESULT face=detected ear=0.363 mar=0.588 yaw=39.6 pitch=-0.1 roll=176.2 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:19:06] [WARNING] dms.alerts: MODEL EVENT DRIVER_YAWNS: Driver yawning detected (MAR=0.604) | confidence=0.850 | metadata={'mar': 0.6044}
+[2026-06-06 15:19:06] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=61.1°, pitch=5.5°) | confidence=0.800 | metadata={'yaw': 61.09, 'pitch': 5.46}
+[2026-06-06 15:19:09] [INFO] dms.interior: MODEL RESULT face=detected ear=0.373 mar=0.602 yaw=62.6 pitch=-6.6 roll=175.6 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:19:14] [INFO] dms.interior: MODEL RESULT face=detected ear=0.364 mar=0.605 yaw=9.3 pitch=-7.3 roll=-3.3 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:19:19] [INFO] dms.interior: MODEL RESULT face=detected ear=0.374 mar=0.601 yaw=25.0 pitch=8.1 roll=178.2 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:19:24] [INFO] dms.interior: MODEL RESULT face=detected ear=0.419 mar=0.609 yaw=42.9 pitch=8.6 roll=-178.7 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:19:26] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=56.6°, pitch=14.3°) | confidence=0.800 | metadata={'yaw': 56.64, 'pitch': 14.28}
+[2026-06-06 15:19:27] [WARNING] dms.alerts: MODEL EVENT DRIVER_YAWNS: Driver yawning detected (MAR=0.607) | confidence=0.850 | metadata={'mar': 0.6072}
+[2026-06-06 15:19:29] [INFO] dms.interior: MODEL RESULT face=detected ear=0.378 mar=0.616 yaw=44.3 pitch=16.3 roll=-174.2 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:19:30] [WARNING] dms.alerts: MODEL EVENT DRIVER_YAWNS: Driver yawning detected (MAR=0.610) | confidence=0.850 | metadata={'mar': 0.61}
+[2026-06-06 15:19:33] [WARNING] dms.alerts: MODEL EVENT DRIVER_YAWNS: Driver yawning detected (MAR=0.611) | confidence=0.850 | metadata={'mar': 0.6112}
+[2026-06-06 15:19:34] [INFO] dms.interior: MODEL RESULT face=detected ear=0.412 mar=0.607 yaw=44.7 pitch=16.6 roll=-176.5 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:19:39] [INFO] dms.interior: MODEL RESULT face=detected ear=0.323 mar=0.617 yaw=33.4 pitch=9.3 roll=179.1 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:19:41] [WARNING] dms.alerts: MODEL EVENT DRIVER_YAWNS: Driver yawning detected (MAR=0.625) | confidence=0.850 | metadata={'mar': 0.6248}
+[2026-06-06 15:19:44] [INFO] dms.interior: MODEL RESULT face=detected ear=0.321 mar=0.598 yaw=9.8 pitch=-9.4 roll=-7.2 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:19:45] [WARNING] dms.alerts: MODEL EVENT DRIVER_YAWNS: Driver yawning detected (MAR=0.603) | confidence=0.850 | metadata={'mar': 0.6026}
+[2026-06-06 15:19:49] [INFO] dms.interior: MODEL RESULT face=detected ear=0.393 mar=0.606 yaw=34.4 pitch=15.6 roll=179.4 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:19:49] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=34.4°, pitch=15.6°) | confidence=0.800 | metadata={'yaw': 34.37, 'pitch': 15.58}
+[2026-06-06 15:19:50] [WARNING] dms.alerts: MODEL EVENT DRIVER_YAWNS: Driver yawning detected (MAR=0.605) | confidence=0.850 | metadata={'mar': 0.605}
+[2026-06-06 15:19:54] [INFO] dms.interior: MODEL RESULT face=detected ear=0.403 mar=0.610 yaw=43.7 pitch=13.8 roll=-176.1 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:19:58] [WARNING] dms.alerts: MODEL EVENT DRIVER_YAWNS: Driver yawning detected (MAR=0.606) | confidence=0.850 | metadata={'mar': 0.6057}
+[2026-06-06 15:19:59] [INFO] dms.interior: MODEL RESULT face=detected ear=0.339 mar=0.600 yaw=19.2 pitch=11.6 roll=179.5 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:20:04] [INFO] dms.interior: MODEL RESULT face=detected ear=0.250 mar=0.603 yaw=5.6 pitch=-6.5 roll=-6.2 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:20:05] [WARNING] dms.alerts: MODEL EVENT DRIVER_YAWNS: Driver yawning detected (MAR=0.603) | confidence=0.850 | metadata={'mar': 0.6033}
+[2026-06-06 15:20:09] [INFO] dms.interior: MODEL RESULT face=detected ear=0.358 mar=0.593 yaw=21.2 pitch=9.2 roll=177.3 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:20:11] [WARNING] dms.alerts: MODEL EVENT DRIVER_YAWNS: Driver yawning detected (MAR=0.604) | confidence=0.850 | metadata={'mar': 0.6039}
+[2026-06-06 15:20:14] [INFO] dms.interior: MODEL RESULT face=detected ear=0.326 mar=0.588 yaw=7.1 pitch=-8.6 roll=-7.5 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:20:17] [WARNING] dms.alerts: MODEL EVENT DRIVER_YAWNS: Driver yawning detected (MAR=0.605) | confidence=0.850 | metadata={'mar': 0.6052}
+[2026-06-06 15:20:19] [INFO] dms.interior: MODEL RESULT face=detected ear=0.261 mar=0.607 yaw=7.0 pitch=-4.7 roll=-7.0 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:20:24] [INFO] dms.interior: MODEL RESULT face=detected ear=0.270 mar=0.597 yaw=7.8 pitch=-8.5 roll=-8.1 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:20:27] [WARNING] dms.alerts: MODEL EVENT DRIVER_YAWNS: Driver yawning detected (MAR=0.604) | confidence=0.850 | metadata={'mar': 0.6038}
+[2026-06-06 15:20:29] [INFO] dms.interior: MODEL RESULT face=detected ear=0.338 mar=0.598 yaw=24.0 pitch=8.7 roll=176.5 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:20:34] [WARNING] dms.alerts: MODEL EVENT DRIVER_YAWNS: Driver yawning detected (MAR=0.604) | confidence=0.850 | metadata={'mar': 0.6035}
+[2026-06-06 15:20:34] [INFO] dms.interior: MODEL RESULT face=detected ear=0.279 mar=0.601 yaw=7.5 pitch=-8.1 roll=-8.2 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:20:39] [INFO] dms.interior: MODEL RESULT face=detected ear=0.362 mar=0.586 yaw=10.9 pitch=-10.6 roll=-8.0 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:20:44] [INFO] dms.interior: MODEL RESULT face=detected ear=0.366 mar=0.591 yaw=28.3 pitch=4.1 roll=177.4 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:20:50] [INFO] dms.interior: MODEL RESULT face=detected ear=0.281 mar=0.600 yaw=9.3 pitch=-6.6 roll=-7.0 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:20:52] [WARNING] dms.alerts: MODEL EVENT DRIVER_YAWNS: Driver yawning detected (MAR=0.619) | confidence=0.850 | metadata={'mar': 0.6187}
+[2026-06-06 15:20:55] [INFO] dms.interior: MODEL RESULT face=detected ear=0.359 mar=0.590 yaw=46.6 pitch=0.9 roll=176.7 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:21:00] [INFO] dms.interior: MODEL RESULT face=detected ear=0.346 mar=0.594 yaw=-1.7 pitch=-5.7 roll=-9.6 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:21:05] [INFO] dms.interior: MODEL RESULT face=detected ear=0.305 mar=0.596 yaw=-6.3 pitch=-6.4 roll=-8.5 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:21:07] [INFO] dms: Shutdown signal received.
+[2026-06-06 15:21:08] [INFO] dms.web: Web dashboard stopped.
+[2026-06-06 15:21:08] [INFO] dms.mediapipe: FaceMeshDetector released
+[2026-06-06 15:21:08] [INFO] dms.interior: InteriorPipeline stopped.
+[2026-06-06 15:21:08] [INFO] dms.camera: Camera stopped. Captured=7322, Dropped=3
+[2026-06-06 15:21:08] [INFO] dms.system: SystemPipeline stopped.
+[2026-06-06 15:21:08] [INFO] dms: System stopped cleanly.
+[2026-06-06 15:21:12] [INFO] dms: Logging to /home/pi/Driver-Monitoring-System/logs/dms.log
+[2026-06-06 15:21:12] [INFO] dms: === Driver Monitoring System Starting ===
+[2026-06-06 15:21:12] [INFO] dms.system: Starting SystemPipeline...
+[2026-06-06 15:21:12] [INFO] dms.camera: Opening rpicam-vid CSI camera index=0 at 640x480
+[2026-06-06 15:21:13] [INFO] dms.camera: Camera capture thread started
+[2026-06-06 15:21:13] [INFO] dms.interior: Initialising InteriorPipeline...
+[2026-06-06 15:21:13] [INFO] dms.interior: Loading FaceMesh...
+[2026-06-06 15:21:13] [INFO] dms.mediapipe: FaceMeshDetector initialised
+[2026-06-06 15:21:13] [INFO] dms.interior: Loading YOLO...
+[2026-06-06 15:21:13] [WARNING] dms.interior: YOLO failed to load: ultralytics is not installed.
+Run: pip install ultralytics — running without YOLO
+[2026-06-06 15:21:13] [INFO] dms.interior: Loading drowsiness model...
+[2026-06-06 15:21:13] [WARNING] dms.interior: Drowsiness model failed to load: tensorflow is required. Install with: pip install tensorflow
+[2026-06-06 15:21:13] [INFO] dms.interior: InteriorPipeline ready.
+[2026-06-06 15:21:13] [INFO] dms.system: Waiting for first camera frame...
+[2026-06-06 15:21:14] [INFO] dms.system: SystemPipeline running.
+[2026-06-06 15:21:14] [INFO] dms.web: Web dashboard listening on http://0.0.0.0:5000
+[2026-06-06 15:21:14] [INFO] dms.interior: MODEL RESULT face=detected ear=0.347 mar=0.588 yaw=50.1 pitch=5.7 roll=179.5 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:21:19] [INFO] dms.interior: MODEL RESULT face=detected ear=0.302 mar=0.590 yaw=-0.3 pitch=-17.4 roll=-3.7 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:21:24] [INFO] dms.interior: MODEL RESULT face=detected ear=0.277 mar=0.605 yaw=3.3 pitch=-5.0 roll=-4.5 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:21:29] [INFO] dms.interior: MODEL RESULT face=detected ear=0.277 mar=0.606 yaw=3.2 pitch=-6.8 roll=-3.8 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:21:34] [INFO] dms.interior: MODEL RESULT face=detected ear=0.308 mar=0.597 yaw=7.2 pitch=-9.0 roll=-5.2 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:21:39] [INFO] dms.interior: MODEL RESULT face=detected ear=0.367 mar=0.594 yaw=9.8 pitch=-14.2 roll=-6.4 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:21:44] [INFO] dms.interior: MODEL RESULT face=detected ear=0.355 mar=0.592 yaw=18.2 pitch=-16.7 roll=-10.2 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:21:49] [INFO] dms.interior: MODEL RESULT face=detected ear=0.391 mar=0.585 yaw=14.2 pitch=-16.7 roll=-9.9 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:21:53] [WARNING] dms.alerts: MODEL EVENT DRIVER_YAWNS: Driver yawning detected (MAR=0.621) | confidence=0.850 | metadata={'mar': 0.6214}
+[2026-06-06 15:21:54] [INFO] dms.interior: MODEL RESULT face=detected ear=0.259 mar=0.610 yaw=8.9 pitch=16.0 roll=178.2 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:21:59] [INFO] dms.interior: MODEL RESULT face=detected ear=0.337 mar=0.581 yaw=8.8 pitch=-14.3 roll=-6.6 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:22:04] [INFO] dms.interior: MODEL RESULT face=detected ear=0.326 mar=0.582 yaw=7.4 pitch=-14.7 roll=-6.7 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:22:09] [INFO] dms.interior: MODEL RESULT face=detected ear=0.361 mar=0.575 yaw=9.5 pitch=-15.2 roll=-7.5 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:22:14] [INFO] dms.interior: MODEL RESULT face=detected ear=0.342 mar=0.583 yaw=6.8 pitch=-14.1 roll=-6.9 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:22:19] [INFO] dms.interior: MODEL RESULT face=detected ear=0.287 mar=0.602 yaw=4.7 pitch=-10.3 roll=-7.0 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:22:24] [INFO] dms.interior: MODEL RESULT face=detected ear=0.319 mar=0.602 yaw=5.3 pitch=-6.0 roll=-6.0 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:22:29] [INFO] dms.interior: MODEL RESULT face=detected ear=0.312 mar=0.600 yaw=4.7 pitch=-8.3 roll=-6.3 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:22:34] [INFO] dms.interior: MODEL RESULT face=detected ear=0.314 mar=0.597 yaw=5.2 pitch=-8.7 roll=-7.2 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:22:39] [INFO] dms.interior: MODEL RESULT face=detected ear=0.336 mar=0.590 yaw=6.4 pitch=-10.2 roll=-8.6 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:22:44] [INFO] dms.interior: MODEL RESULT face=detected ear=0.336 mar=0.598 yaw=6.2 pitch=-9.7 roll=-7.8 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:22:49] [INFO] dms.interior: MODEL RESULT face=detected ear=0.365 mar=0.589 yaw=7.7 pitch=-8.7 roll=-8.6 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:22:54] [INFO] dms.interior: MODEL RESULT face=detected ear=0.366 mar=0.578 yaw=8.9 pitch=-12.2 roll=-9.3 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:22:59] [INFO] dms.interior: MODEL RESULT face=detected ear=0.349 mar=0.589 yaw=6.3 pitch=-10.5 roll=-7.6 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:23:04] [INFO] dms.interior: MODEL RESULT face=detected ear=0.351 mar=0.587 yaw=7.6 pitch=-11.4 roll=-7.5 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:23:10] [INFO] dms.interior: MODEL RESULT face=detected ear=0.338 mar=0.586 yaw=26.1 pitch=9.6 roll=179.2 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:23:15] [INFO] dms.interior: MODEL RESULT face=detected ear=0.348 mar=0.588 yaw=26.0 pitch=11.4 roll=-179.4 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:23:20] [INFO] dms.interior: MODEL RESULT face=detected ear=0.306 mar=0.599 yaw=-2.2 pitch=18.6 roll=-177.3 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:23:25] [INFO] dms.interior: MODEL RESULT face=detected ear=0.357 mar=0.599 yaw=3.9 pitch=-1.5 roll=1.1 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:23:30] [INFO] dms.interior: MODEL RESULT face=detected ear=0.311 mar=0.600 yaw=0.3 pitch=19.4 roll=-178.5 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:23:35] [INFO] dms.interior: MODEL RESULT face=detected ear=0.326 mar=0.608 yaw=3.4 pitch=-7.4 roll=-1.7 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:23:40] [INFO] dms.interior: MODEL RESULT face=detected ear=0.355 mar=0.583 yaw=13.8 pitch=-13.0 roll=-7.0 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:23:45] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=0
+[2026-06-06 15:23:48] [CRITICAL] dms.alerts: MODEL EVENT NO_DRIVER: No driver detected in frame | confidence=1.000 | metadata={}
+[2026-06-06 15:23:50] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=0
+[2026-06-06 15:23:55] [INFO] dms.interior: MODEL RESULT face=detected ear=0.346 mar=0.610 yaw=11.2 pitch=-21.7 roll=-1.6 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:24:00] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=0
+[2026-06-06 15:24:05] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=0
+[2026-06-06 15:24:06] [CRITICAL] dms.alerts: MODEL EVENT NO_DRIVER: No driver detected in frame | confidence=1.000 | metadata={}
+[2026-06-06 15:24:10] [INFO] dms.interior: MODEL RESULT face=detected ear=0.279 mar=0.616 yaw=17.4 pitch=24.9 roll=175.8 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:24:12] [WARNING] dms.alerts: MODEL EVENT DRIVER_YAWNS: Driver yawning detected (MAR=0.645) | confidence=0.850 | metadata={'mar': 0.6454}
+[2026-06-06 15:24:15] [INFO] dms.interior: MODEL RESULT face=detected ear=0.327 mar=0.622 yaw=10.9 pitch=47.2 roll=175.0 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:24:18] [WARNING] dms.alerts: MODEL EVENT DRIVER_YAWNS: Driver yawning detected (MAR=0.646) | confidence=0.850 | metadata={'mar': 0.6458}
+[2026-06-06 15:24:20] [INFO] dms.interior: MODEL RESULT face=detected ear=0.318 mar=0.626 yaw=8.9 pitch=29.7 roll=-176.8 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:24:20] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=8.9°, pitch=29.7°) | confidence=0.800 | metadata={'yaw': 8.93, 'pitch': 29.68}
+[2026-06-06 15:24:25] [INFO] dms.interior: MODEL RESULT face=detected ear=0.339 mar=0.632 yaw=12.3 pitch=31.7 roll=-178.8 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:24:31] [INFO] dms.interior: MODEL RESULT face=detected ear=0.359 mar=0.610 yaw=19.0 pitch=28.0 roll=177.9 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:24:36] [INFO] dms.interior: MODEL RESULT face=detected ear=0.330 mar=0.606 yaw=17.3 pitch=25.6 roll=175.4 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:24:38] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=16.4°, pitch=33.9°) | confidence=0.800 | metadata={'yaw': 16.39, 'pitch': 33.85}
+[2026-06-06 15:24:40] [WARNING] dms.alerts: MODEL EVENT DRIVER_YAWNS: Driver yawning detected (MAR=0.618) | confidence=0.850 | metadata={'mar': 0.6176}
+[2026-06-06 15:24:41] [INFO] dms.interior: MODEL RESULT face=detected ear=0.356 mar=0.629 yaw=15.2 pitch=27.1 roll=176.2 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:24:45] [WARNING] dms.alerts: MODEL EVENT DRIVER_YAWNS: Driver yawning detected (MAR=0.636) | confidence=0.850 | metadata={'mar': 0.6358}
+[2026-06-06 15:24:46] [INFO] dms.interior: MODEL RESULT face=detected ear=0.287 mar=0.624 yaw=9.2 pitch=34.8 roll=179.7 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:24:51] [INFO] dms.interior: MODEL RESULT face=detected ear=0.284 mar=0.612 yaw=15.8 pitch=21.0 roll=176.6 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:24:56] [INFO] dms.interior: MODEL RESULT face=detected ear=0.330 mar=0.609 yaw=12.4 pitch=23.7 roll=178.8 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:24:59] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=18.7°, pitch=20.4°) | confidence=0.800 | metadata={'yaw': 18.68, 'pitch': 20.36}
+[2026-06-06 15:25:01] [INFO] dms.interior: MODEL RESULT face=detected ear=0.288 mar=0.606 yaw=17.1 pitch=20.6 roll=177.1 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:25:06] [INFO] dms.interior: MODEL RESULT face=detected ear=0.308 mar=0.606 yaw=18.7 pitch=19.1 roll=177.5 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:25:11] [INFO] dms.interior: MODEL RESULT face=detected ear=0.312 mar=0.605 yaw=20.9 pitch=18.8 roll=176.9 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:25:13] [WARNING] dms.alerts: MODEL EVENT DRIVER_YAWNS: Driver yawning detected (MAR=0.606) | confidence=0.850 | metadata={'mar': 0.6058}
+[2026-06-06 15:25:16] [INFO] dms.interior: MODEL RESULT face=detected ear=0.297 mar=0.602 yaw=21.8 pitch=18.7 roll=177.3 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:25:21] [INFO] dms.interior: MODEL RESULT face=detected ear=0.306 mar=0.600 yaw=20.9 pitch=17.6 roll=176.5 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:25:26] [INFO] dms.interior: MODEL RESULT face=detected ear=0.318 mar=0.601 yaw=18.8 pitch=19.8 roll=177.5 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:25:31] [INFO] dms.interior: MODEL RESULT face=detected ear=0.300 mar=0.621 yaw=12.6 pitch=17.6 roll=178.4 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:25:32] [WARNING] dms.alerts: MODEL EVENT DRIVER_YAWNS: Driver yawning detected (MAR=0.614) | confidence=0.850 | metadata={'mar': 0.6135}
+[2026-06-06 15:25:36] [INFO] dms.interior: MODEL RESULT face=detected ear=0.337 mar=0.598 yaw=23.8 pitch=13.1 roll=178.9 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:25:41] [INFO] dms.interior: MODEL RESULT face=detected ear=0.354 mar=0.607 yaw=17.8 pitch=17.6 roll=178.8 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:25:46] [INFO] dms.interior: MODEL RESULT face=detected ear=0.373 mar=0.585 yaw=13.1 pitch=-16.7 roll=-13.0 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:25:51] [INFO] dms.interior: MODEL RESULT face=detected ear=0.406 mar=0.592 yaw=42.1 pitch=9.0 roll=179.4 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:25:56] [INFO] dms.interior: MODEL RESULT face=detected ear=0.299 mar=0.592 yaw=8.6 pitch=-13.8 roll=-11.8 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:26:01] [INFO] dms.interior: MODEL RESULT face=detected ear=0.384 mar=0.606 yaw=10.6 pitch=-11.9 roll=-17.3 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:26:06] [INFO] dms.interior: MODEL RESULT face=detected ear=0.388 mar=0.585 yaw=12.4 pitch=-23.2 roll=-15.7 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:26:11] [INFO] dms.interior: MODEL RESULT face=detected ear=0.397 mar=0.591 yaw=10.0 pitch=-7.2 roll=-2.6 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:26:16] [INFO] dms.interior: MODEL RESULT face=detected ear=0.316 mar=0.594 yaw=8.0 pitch=-9.6 roll=-6.3 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:26:16] [INFO] dms: Shutdown signal received.
+[2026-06-06 15:26:17] [INFO] dms.web: Web dashboard stopped.
+[2026-06-06 15:26:17] [INFO] dms.mediapipe: FaceMeshDetector released
+[2026-06-06 15:26:17] [INFO] dms.interior: InteriorPipeline stopped.
+[2026-06-06 15:26:17] [INFO] dms.camera: Camera stopped. Captured=1514, Dropped=1
+[2026-06-06 15:26:17] [INFO] dms.system: SystemPipeline stopped.
+[2026-06-06 15:26:17] [INFO] dms: System stopped cleanly.
+[2026-06-06 15:33:15] [INFO] dms: Logging to /home/pi/Driver-Monitoring-System/logs/dms.log
+[2026-06-06 15:33:15] [INFO] dms: === Driver Monitoring System Starting ===
+[2026-06-06 15:33:15] [INFO] dms.system: Starting SystemPipeline...
+[2026-06-06 15:33:15] [INFO] dms.camera: Opening rpicam-vid CSI camera index=0 at 640x480
+[2026-06-06 15:33:16] [INFO] dms.camera: Camera capture thread started
+[2026-06-06 15:33:16] [INFO] dms.interior: Initialising InteriorPipeline...
+[2026-06-06 15:33:16] [INFO] dms.interior: Loading FaceMesh...
+[2026-06-06 15:33:16] [INFO] dms.mediapipe: FaceMeshDetector initialised
+[2026-06-06 15:33:16] [INFO] dms.interior: Loading YOLO...
+[2026-06-06 15:33:16] [WARNING] dms.interior: YOLO failed to load: ultralytics is not installed.
+Run: pip install ultralytics — running without YOLO
+[2026-06-06 15:33:16] [INFO] dms.interior: Loading drowsiness model...
+[2026-06-06 15:33:16] [WARNING] dms.interior: Drowsiness model failed to load: tensorflow is required. Install with: pip install tensorflow
+[2026-06-06 15:33:16] [INFO] dms.interior: InteriorPipeline ready.
+[2026-06-06 15:33:16] [INFO] dms.system: Waiting for first camera frame...
+[2026-06-06 15:33:17] [INFO] dms.system: SystemPipeline running.
+[2026-06-06 15:33:17] [INFO] dms.web: Web dashboard listening on http://0.0.0.0:5000
+[2026-06-06 15:33:17] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=0
+[2026-06-06 15:33:22] [INFO] dms.interior: MODEL RESULT face=detected ear=0.316 mar=0.600 yaw=-9.1 pitch=-13.0 roll=-5.1 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:33:27] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=0
+[2026-06-06 15:33:32] [INFO] dms.interior: MODEL RESULT face=detected ear=0.327 mar=0.589 yaw=7.5 pitch=-23.4 roll=-5.5 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:33:34] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=7.6°, pitch=-23.5°) | confidence=0.800 | metadata={'yaw': 7.61, 'pitch': -23.48}
+[2026-06-06 15:33:37] [INFO] dms.interior: MODEL RESULT face=detected ear=0.322 mar=0.592 yaw=6.2 pitch=-23.8 roll=-4.2 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:33:42] [INFO] dms.interior: MODEL RESULT face=detected ear=0.333 mar=0.591 yaw=2.7 pitch=-22.5 roll=-1.2 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:33:47] [INFO] dms.interior: MODEL RESULT face=detected ear=0.315 mar=0.597 yaw=2.6 pitch=-22.8 roll=-1.0 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:33:48] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=3.1°, pitch=-24.4°) | confidence=0.800 | metadata={'yaw': 3.15, 'pitch': -24.41}
+[2026-06-06 15:33:52] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=0
+[2026-06-06 15:33:57] [INFO] dms.interior: MODEL RESULT face=detected ear=0.343 mar=0.581 yaw=53.9 pitch=5.9 roll=-178.5 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:34:02] [INFO] dms.interior: MODEL RESULT face=detected ear=0.313 mar=0.593 yaw=-5.5 pitch=-22.8 roll=-3.2 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:34:02] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=-5.4°, pitch=-23.1°) | confidence=0.800 | metadata={'yaw': -5.39, 'pitch': -23.07}
+[2026-06-06 15:34:07] [INFO] dms.interior: MODEL RESULT face=detected ear=0.337 mar=0.590 yaw=-7.0 pitch=-23.4 roll=-1.1 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:34:12] [INFO] dms.interior: MODEL RESULT face=detected ear=0.314 mar=0.597 yaw=-5.8 pitch=-14.2 roll=-0.9 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:34:17] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=0
+[2026-06-06 15:34:21] [CRITICAL] dms.alerts: MODEL EVENT NO_DRIVER: No driver detected in frame | confidence=1.000 | metadata={}
+[2026-06-06 15:34:22] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=0
+[2026-06-06 15:34:27] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=0
+[2026-06-06 15:34:32] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=0
+[2026-06-06 15:34:37] [INFO] dms.interior: MODEL RESULT face=detected ear=0.400 mar=0.601 yaw=41.5 pitch=22.7 roll=-164.6 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:34:42] [WARNING] dms.alerts: MODEL EVENT DRIVER_YAWNS: Driver yawning detected (MAR=0.615) | confidence=0.850 | metadata={'mar': 0.6152}
+[2026-06-06 15:34:42] [INFO] dms.interior: MODEL RESULT face=detected ear=0.330 mar=0.607 yaw=33.0 pitch=19.0 roll=-165.6 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:34:47] [INFO] dms.interior: MODEL RESULT face=detected ear=0.336 mar=0.605 yaw=39.1 pitch=18.5 roll=-167.4 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:34:49] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=36.5°, pitch=20.6°) | confidence=0.800 | metadata={'yaw': 36.47, 'pitch': 20.57}
+[2026-06-06 15:34:52] [INFO] dms.interior: MODEL RESULT face=detected ear=0.340 mar=0.608 yaw=35.5 pitch=18.5 roll=-167.1 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:34:57] [INFO] dms.interior: MODEL RESULT face=detected ear=0.379 mar=0.598 yaw=34.2 pitch=19.7 roll=-165.7 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:35:02] [INFO] dms.interior: MODEL RESULT face=detected ear=0.404 mar=0.614 yaw=44.8 pitch=27.6 roll=-168.0 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:35:03] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=45.9°, pitch=24.3°) | confidence=0.800 | metadata={'yaw': 45.92, 'pitch': 24.33}
+[2026-06-06 15:35:04] [WARNING] dms.alerts: MODEL EVENT DRIVER_YAWNS: Driver yawning detected (MAR=0.605) | confidence=0.850 | metadata={'mar': 0.6053}
+[2026-06-06 15:35:07] [INFO] dms.interior: MODEL RESULT face=detected ear=0.321 mar=0.589 yaw=45.9 pitch=2.4 roll=179.1 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:35:10] [INFO] dms: Shutdown signal received.
+[2026-06-06 15:35:10] [INFO] dms.web: Web dashboard stopped.
+[2026-06-06 15:35:10] [INFO] dms.mediapipe: FaceMeshDetector released
+[2026-06-06 15:35:10] [INFO] dms.interior: InteriorPipeline stopped.
+[2026-06-06 15:35:11] [INFO] dms.camera: Camera stopped. Captured=567, Dropped=2
+[2026-06-06 15:35:11] [INFO] dms.system: SystemPipeline stopped.
+[2026-06-06 15:35:11] [INFO] dms: System stopped cleanly.
+[2026-06-06 15:40:47] [INFO] dms: Logging to /home/pi/Driver-Monitoring-System/logs/dms.log
+[2026-06-06 15:40:47] [INFO] dms: === Driver Monitoring System Starting ===
+[2026-06-06 15:40:47] [INFO] dms.system: Starting SystemPipeline...
+[2026-06-06 15:40:47] [INFO] dms.camera: Opening rpicam-vid CSI camera index=0 at 640x480
+[2026-06-06 15:40:47] [INFO] dms.camera: Camera capture thread started
+[2026-06-06 15:40:47] [INFO] dms.interior: Initialising InteriorPipeline...
+[2026-06-06 15:40:47] [INFO] dms.interior: Loading FaceMesh...
+[2026-06-06 15:40:47] [INFO] dms.mediapipe: FaceMeshDetector initialised
+[2026-06-06 15:40:47] [INFO] dms.interior: Loading YOLO...
+[2026-06-06 15:40:47] [WARNING] dms.interior: YOLO failed to load: ultralytics is not installed.
+Run: pip install ultralytics — running without YOLO
+[2026-06-06 15:40:47] [INFO] dms.interior: Loading drowsiness model...
+[2026-06-06 15:40:47] [WARNING] dms.interior: Drowsiness model failed to load: tensorflow is required. Install with: pip install tensorflow
+[2026-06-06 15:40:47] [INFO] dms.interior: InteriorPipeline ready.
+[2026-06-06 15:40:47] [INFO] dms.system: Waiting for first camera frame...
+[2026-06-06 15:40:49] [INFO] dms.system: SystemPipeline running.
+[2026-06-06 15:40:49] [INFO] dms.web: Web dashboard listening on http://0.0.0.0:5000
+[2026-06-06 15:40:49] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=0
+[2026-06-06 15:40:54] [INFO] dms.interior: MODEL RESULT face=detected ear=0.032 mar=0.638 yaw=-10.1 pitch=-36.7 roll=8.2 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:40:59] [INFO] dms.interior: MODEL RESULT face=detected ear=0.328 mar=0.592 yaw=-6.8 pitch=-24.3 roll=-0.1 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:41:00] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=-5.0°, pitch=-26.6°) | confidence=0.800 | metadata={'yaw': -5.02, 'pitch': -26.59}
+[2026-06-06 15:41:04] [INFO] dms.interior: MODEL RESULT face=detected ear=0.259 mar=0.591 yaw=-5.5 pitch=-25.0 roll=-0.4 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:41:09] [INFO] dms.interior: MODEL RESULT face=detected ear=0.361 mar=0.594 yaw=0.2 pitch=-11.1 roll=-5.9 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:41:14] [INFO] dms.interior: MODEL RESULT face=detected ear=0.316 mar=0.589 yaw=-11.1 pitch=-24.8 roll=-0.2 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:41:14] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=-11.1°, pitch=-24.8°) | confidence=0.800 | metadata={'yaw': -11.05, 'pitch': -24.76}
+[2026-06-06 15:41:19] [INFO] dms.interior: MODEL RESULT face=detected ear=0.335 mar=0.591 yaw=-6.9 pitch=-24.5 roll=-2.9 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:41:24] [INFO] dms.interior: MODEL RESULT face=detected ear=0.345 mar=0.587 yaw=-6.7 pitch=-24.2 roll=-0.5 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:41:29] [INFO] dms.interior: MODEL RESULT face=detected ear=0.302 mar=0.590 yaw=13.3 pitch=10.4 roll=178.8 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:41:34] [WARNING] dms.behaviors: FATIGUE detected — EAR=0.190, frames=20
+[2026-06-06 15:41:34] [CRITICAL] dms.alerts: MODEL EVENT FATIGUE_DRIVING: Driver fatigue detected (EAR=0.190) | confidence=0.500 | metadata={'ear': 0.1895, 'consec_frames': 20}
+[2026-06-06 15:41:34] [INFO] dms.interior: MODEL RESULT face=detected ear=0.198 mar=0.598 yaw=0.7 pitch=-28.1 roll=-3.3 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:41:35] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=-0.1°, pitch=-26.5°) | confidence=0.800 | metadata={'yaw': -0.09, 'pitch': -26.49}
+[2026-06-06 15:41:39] [INFO] dms.interior: MODEL RESULT face=detected ear=0.171 mar=0.604 yaw=0.4 pitch=-26.0 roll=-3.3 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:41:44] [INFO] dms.interior: MODEL RESULT face=detected ear=0.423 mar=0.605 yaw=12.0 pitch=-6.1 roll=-5.9 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 15:41:49] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=0
+[2026-06-06 15:41:51] [CRITICAL] dms.alerts: MODEL EVENT NO_DRIVER: No driver detected in frame | confidence=1.000 | metadata={}
+[2026-06-06 15:41:54] [INFO] dms: Shutdown signal received.
+[2026-06-06 15:41:54] [INFO] dms.web: Web dashboard stopped.
+[2026-06-06 15:41:54] [INFO] dms.mediapipe: FaceMeshDetector released
+[2026-06-06 15:41:54] [INFO] dms.interior: InteriorPipeline stopped.
+[2026-06-06 15:41:54] [INFO] dms.camera: Camera stopped. Captured=327, Dropped=2
+[2026-06-06 15:41:54] [INFO] dms.system: SystemPipeline stopped.
+[2026-06-06 15:41:54] [INFO] dms: System stopped cleanly.
