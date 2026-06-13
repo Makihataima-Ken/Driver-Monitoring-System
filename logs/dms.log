@@ -778,3 +778,1229 @@ Run: pip install ultralytics — running without YOLO
 [2026-06-06 15:41:54] [INFO] dms.camera: Camera stopped. Captured=327, Dropped=2
 [2026-06-06 15:41:54] [INFO] dms.system: SystemPipeline stopped.
 [2026-06-06 15:41:54] [INFO] dms: System stopped cleanly.
+[2026-06-06 16:13:35] [INFO] dms: Logging to /home/pi/Driver-Monitoring-System/logs/dms.log
+[2026-06-06 16:13:35] [INFO] dms: === Driver Monitoring System Starting ===
+[2026-06-06 16:13:35] [INFO] dms.system: Starting SystemPipeline...
+[2026-06-06 16:13:35] [INFO] dms.camera: Opening rpicam-vid CSI camera index=0 at 640x480
+[2026-06-06 16:13:36] [INFO] dms.camera: Camera capture thread started
+[2026-06-06 16:13:36] [INFO] dms.interior: Initialising InteriorPipeline...
+[2026-06-06 16:13:36] [INFO] dms.interior: Loading FaceMesh...
+[2026-06-06 16:13:36] [INFO] dms.mediapipe: FaceMeshDetector initialised
+[2026-06-06 16:13:36] [INFO] dms.interior: Loading YOLO...
+[2026-06-06 16:13:40] [WARNING] dms.yolo: Weights not found at 'weights/yolov8n.pt' — downloading YOLOv8n...
+[2026-06-06 16:21:28] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:21:34] [WARNING] dms.camera: Camera: 30 dropped frames
+[2026-06-06 16:21:40] [WARNING] dms.camera: Camera: 60 dropped frames
+[2026-06-06 16:21:46] [WARNING] dms.camera: Camera: 90 dropped frames
+[2026-06-06 16:21:48] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:21:50] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:21:50] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:21:51] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:21:51] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:21:52] [WARNING] dms.camera: Camera: 120 dropped frames
+[2026-06-06 16:21:52] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:21:53] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:21:53] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:21:53] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:21:53] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:21:54] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:21:54] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:21:54] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:21:54] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:21:54] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:21:54] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:21:54] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:21:54] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:21:54] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:21:54] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:21:54] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:21:54] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:21:54] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:21:54] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:21:54] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:21:54] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:21:54] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:21:54] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:21:54] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:21:54] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:21:56] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:21:56] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:21:56] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:21:57] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:21:57] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:21:57] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:21:57] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:21:57] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:21:57] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:21:57] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:21:57] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:21:57] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:21:57] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:21:57] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:21:57] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:21:57] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:21:57] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:21:57] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:21:57] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:21:57] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:21:57] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:21:57] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:21:57] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:21:57] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:21:58] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:21:58] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:21:58] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:21:58] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:21:58] [WARNING] dms.camera: Camera: 150 dropped frames
+[2026-06-06 16:21:58] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:21:59] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:21:59] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:21:59] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:21:59] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:21:59] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:22:00] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:22:00] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:22:01] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:22:01] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:22:01] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:22:01] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:22:01] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:22:01] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:22:01] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:22:01] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:22:01] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:22:01] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:22:01] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:22:01] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:22:02] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:22:02] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:22:02] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:22:02] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:22:02] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:22:02] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:22:02] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:22:04] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:22:04] [WARNING] dms.camera: Camera: 180 dropped frames
+[2026-06-06 16:22:10] [WARNING] dms.camera: Camera: 210 dropped frames
+[2026-06-06 16:22:16] [WARNING] dms.camera: Camera: 240 dropped frames
+[2026-06-06 16:22:19] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:22:20] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:22:22] [WARNING] dms.camera: Camera: 270 dropped frames
+[2026-06-06 16:22:28] [WARNING] dms.camera: Camera: 300 dropped frames
+[2026-06-06 16:22:34] [WARNING] dms.camera: Camera: 330 dropped frames
+[2026-06-06 16:22:40] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:22:40] [WARNING] dms.camera: Camera: 360 dropped frames
+[2026-06-06 16:22:46] [WARNING] dms.camera: Camera: 390 dropped frames
+[2026-06-06 16:22:52] [WARNING] dms.camera: Camera: 420 dropped frames
+[2026-06-06 16:22:58] [WARNING] dms.camera: Camera: 450 dropped frames
+[2026-06-06 16:23:01] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:23:02] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:23:02] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:23:02] [WARNING] dms.interior: YOLO failed to load: ❌  Download failure for https://github.com/ultralytics/assets/releases/download/v8.4.0/yolov8n.pt. Retry limit reached. Curl return value -2 — running without YOLO
+[2026-06-06 16:23:02] [INFO] dms.interior: Loading drowsiness model...
+[2026-06-06 16:23:02] [WARNING] dms.interior: Drowsiness model failed to load: tensorflow is required. Install with: pip install tensorflow
+[2026-06-06 16:23:02] [INFO] dms.interior: InteriorPipeline ready.
+[2026-06-06 16:23:02] [INFO] dms.system: Waiting for first camera frame...
+[2026-06-06 16:23:02] [INFO] dms.system: SystemPipeline running.
+[2026-06-06 16:23:02] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:23:02] [INFO] dms.web: Web dashboard listening on http://0.0.0.0:5000
+[2026-06-06 16:23:02] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:23:03] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:23:03] [INFO] dms.web: Web dashboard stopped.
+[2026-06-06 16:23:03] [INFO] dms.mediapipe: FaceMeshDetector released
+[2026-06-06 16:23:03] [INFO] dms.interior: InteriorPipeline stopped.
+[2026-06-06 16:23:03] [INFO] dms.camera: Camera stopped. Captured=2346, Dropped=471
+[2026-06-06 16:23:03] [INFO] dms.system: SystemPipeline stopped.
+[2026-06-06 16:23:03] [INFO] dms: System stopped cleanly.
+[2026-06-06 16:35:48] [INFO] dms: Logging to /home/pi/Driver-Monitoring-System/logs/dms.log
+[2026-06-06 16:35:48] [INFO] dms: === Driver Monitoring System Starting ===
+[2026-06-06 16:35:48] [INFO] dms.system: Starting SystemPipeline...
+[2026-06-06 16:35:48] [INFO] dms.camera: Opening rpicam-vid CSI camera index=0 at 640x480
+[2026-06-06 16:35:48] [INFO] dms.camera: Camera capture thread started
+[2026-06-06 16:35:48] [INFO] dms.interior: Initialising InteriorPipeline...
+[2026-06-06 16:35:48] [INFO] dms.interior: Loading FaceMesh...
+[2026-06-06 16:35:48] [INFO] dms.mediapipe: FaceMeshDetector initialised
+[2026-06-06 16:35:48] [INFO] dms.interior: Loading YOLO...
+[2026-06-06 16:35:51] [WARNING] dms.yolo: Weights not found at 'weights/yolov8n.pt' — downloading YOLOv8n...
+[2026-06-06 16:35:55] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:36:01] [WARNING] dms.camera: Camera: 30 dropped frames
+[2026-06-06 16:36:04] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:36:05] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:36:05] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:36:05] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:36:05] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:36:05] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:36:05] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:36:05] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:36:05] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:36:05] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:36:05] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:36:06] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:36:06] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:36:06] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:36:06] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:36:06] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:36:06] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:36:06] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:36:07] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:36:07] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:36:07] [WARNING] dms.camera: Camera: 60 dropped frames
+[2026-06-06 16:36:07] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:36:07] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:36:07] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:36:08] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:36:08] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:36:13] [WARNING] dms.camera: Camera: 90 dropped frames
+[2026-06-06 16:36:19] [WARNING] dms.camera: Camera: 120 dropped frames
+[2026-06-06 16:36:25] [WARNING] dms.camera: Camera: 150 dropped frames
+[2026-06-06 16:36:31] [WARNING] dms.camera: Camera: 180 dropped frames
+[2026-06-06 16:36:37] [WARNING] dms.camera: Camera: 210 dropped frames
+[2026-06-06 16:36:43] [WARNING] dms.camera: Camera: 240 dropped frames
+[2026-06-06 16:36:49] [WARNING] dms.camera: Camera: 270 dropped frames
+[2026-06-06 16:36:55] [WARNING] dms.camera: Camera: 300 dropped frames
+[2026-06-06 16:37:01] [WARNING] dms.camera: Camera: 330 dropped frames
+[2026-06-06 16:37:07] [WARNING] dms.camera: Camera: 360 dropped frames
+[2026-06-06 16:37:13] [WARNING] dms.camera: Camera: 390 dropped frames
+[2026-06-06 16:37:19] [WARNING] dms.camera: Camera: 420 dropped frames
+[2026-06-06 16:37:25] [WARNING] dms.camera: Camera: 450 dropped frames
+[2026-06-06 16:37:31] [WARNING] dms.camera: Camera: 480 dropped frames
+[2026-06-06 16:37:37] [WARNING] dms.camera: Camera: 510 dropped frames
+[2026-06-06 16:37:43] [WARNING] dms.camera: Camera: 540 dropped frames
+[2026-06-06 16:37:49] [WARNING] dms.camera: Camera: 570 dropped frames
+[2026-06-06 16:37:55] [WARNING] dms.camera: Camera: 600 dropped frames
+[2026-06-06 16:38:01] [WARNING] dms.camera: Camera: 630 dropped frames
+[2026-06-06 16:38:07] [WARNING] dms.camera: Camera: 660 dropped frames
+[2026-06-06 16:38:13] [WARNING] dms.camera: Camera: 690 dropped frames
+[2026-06-06 16:38:19] [WARNING] dms.camera: Camera: 720 dropped frames
+[2026-06-06 16:38:25] [WARNING] dms.camera: Camera: 750 dropped frames
+[2026-06-06 16:38:31] [WARNING] dms.camera: Camera: 780 dropped frames
+[2026-06-06 16:38:37] [WARNING] dms.camera: Camera: 810 dropped frames
+[2026-06-06 16:38:43] [WARNING] dms.camera: Camera: 840 dropped frames
+[2026-06-06 16:38:49] [WARNING] dms.camera: Camera: 870 dropped frames
+[2026-06-06 16:38:55] [WARNING] dms.camera: Camera: 900 dropped frames
+[2026-06-06 16:39:01] [WARNING] dms.camera: Camera: 930 dropped frames
+[2026-06-06 16:39:07] [WARNING] dms.camera: Camera: 960 dropped frames
+[2026-06-06 16:39:13] [WARNING] dms.camera: Camera: 990 dropped frames
+[2026-06-06 16:39:19] [WARNING] dms.camera: Camera: 1020 dropped frames
+[2026-06-06 16:39:25] [WARNING] dms.camera: Camera: 1050 dropped frames
+[2026-06-06 16:39:31] [WARNING] dms.camera: Camera: 1080 dropped frames
+[2026-06-06 16:39:35] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:39:35] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:39:35] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:39:35] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:39:35] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:39:35] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:39:36] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:39:36] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:39:36] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:39:36] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:39:36] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:39:36] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:39:36] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:39:36] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:39:37] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:39:37] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:39:37] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:39:37] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:39:37] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:39:37] [WARNING] dms.camera: Camera: 1110 dropped frames
+[2026-06-06 16:39:37] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:39:37] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:39:37] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:39:40] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:39:41] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:39:43] [WARNING] dms.camera: Camera: 1140 dropped frames
+[2026-06-06 16:39:49] [WARNING] dms.camera: Camera: 1170 dropped frames
+[2026-06-06 16:39:55] [WARNING] dms.camera: Camera: 1200 dropped frames
+[2026-06-06 16:40:01] [WARNING] dms.camera: Camera: 1230 dropped frames
+[2026-06-06 16:40:07] [WARNING] dms.camera: Camera: 1260 dropped frames
+[2026-06-06 16:40:13] [WARNING] dms.camera: Camera: 1290 dropped frames
+[2026-06-06 16:40:19] [WARNING] dms.camera: Camera: 1320 dropped frames
+[2026-06-06 16:40:25] [WARNING] dms.camera: Camera: 1350 dropped frames
+[2026-06-06 16:40:31] [WARNING] dms.camera: Camera: 1380 dropped frames
+[2026-06-06 16:40:37] [WARNING] dms.camera: Camera: 1410 dropped frames
+[2026-06-06 16:40:43] [WARNING] dms.camera: Camera: 1440 dropped frames
+[2026-06-06 16:40:49] [WARNING] dms.camera: Camera: 1470 dropped frames
+[2026-06-06 16:40:55] [WARNING] dms.camera: Camera: 1500 dropped frames
+[2026-06-06 16:41:01] [WARNING] dms.camera: Camera: 1530 dropped frames
+[2026-06-06 16:41:07] [WARNING] dms.camera: Camera: 1560 dropped frames
+[2026-06-06 16:41:13] [WARNING] dms.camera: Camera: 1590 dropped frames
+[2026-06-06 16:41:19] [WARNING] dms.camera: Camera: 1620 dropped frames
+[2026-06-06 16:41:25] [WARNING] dms.camera: Camera: 1650 dropped frames
+[2026-06-06 16:41:31] [WARNING] dms.camera: Camera: 1680 dropped frames
+[2026-06-06 16:41:37] [WARNING] dms.camera: Camera: 1710 dropped frames
+[2026-06-06 16:41:43] [WARNING] dms.camera: Camera: 1740 dropped frames
+[2026-06-06 16:41:49] [WARNING] dms.camera: Camera: 1770 dropped frames
+[2026-06-06 16:41:55] [WARNING] dms.camera: Camera: 1800 dropped frames
+[2026-06-06 16:42:01] [WARNING] dms.camera: Camera: 1830 dropped frames
+[2026-06-06 16:42:07] [WARNING] dms.camera: Camera: 1860 dropped frames
+[2026-06-06 16:42:13] [WARNING] dms.camera: Camera: 1890 dropped frames
+[2026-06-06 16:42:19] [WARNING] dms.camera: Camera: 1920 dropped frames
+[2026-06-06 16:42:25] [WARNING] dms.camera: Camera: 1950 dropped frames
+[2026-06-06 16:42:31] [WARNING] dms.camera: Camera: 1980 dropped frames
+[2026-06-06 16:42:37] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:37] [WARNING] dms.camera: Camera: 2010 dropped frames
+[2026-06-06 16:42:37] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:37] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:37] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:37] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:37] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:38] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:38] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:38] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:38] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:38] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:38] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:38] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:38] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:38] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:38] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:38] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:38] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:38] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:38] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:38] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:38] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:38] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:38] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:40] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:40] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:40] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:41] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:41] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:41] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:41] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:41] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:41] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:41] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:41] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:41] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:41] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:41] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:42] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:42] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:42] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:42] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:42] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:42] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:42] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:42] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:42] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:42] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:42] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:42] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:42] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:42] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:42] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:42] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:42] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:42] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:42] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:43] [WARNING] dms.camera: Camera: 2040 dropped frames
+[2026-06-06 16:42:44] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:44] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:44] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:45] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:45] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:45] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:46] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:46] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:46] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:46] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:46] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:46] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:46] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:46] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:46] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:46] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:46] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:46] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:46] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:46] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:46] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:47] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:48] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:49] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:49] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:49] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:49] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:50] [WARNING] dms.camera: Camera: 2070 dropped frames
+[2026-06-06 16:42:50] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:50] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:50] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:50] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:50] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:51] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:51] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:55] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:55] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:56] [WARNING] dms.camera: Camera: 2100 dropped frames
+[2026-06-06 16:42:56] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:57] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:57] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:57] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:57] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:57] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:57] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:57] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:57] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:57] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:57] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:57] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:57] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:57] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:57] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:57] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:57] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:57] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:57] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:57] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:57] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:57] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:57] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:57] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:57] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:58] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:58] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:58] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:58] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:58] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:58] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:58] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:42:59] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:43:01] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:43:01] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:43:02] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:43:02] [WARNING] dms.camera: Camera: 2130 dropped frames
+[2026-06-06 16:43:02] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:43:02] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:43:02] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:43:02] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:43:07] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:43:07] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:43:07] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:43:08] [WARNING] dms.camera: Camera: 2160 dropped frames
+[2026-06-06 16:43:14] [WARNING] dms.camera: Camera: 2190 dropped frames
+[2026-06-06 16:43:16] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:43:16] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:43:17] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:43:17] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:43:17] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:43:17] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:43:17] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:43:20] [WARNING] dms.camera: Camera: 2220 dropped frames
+[2026-06-06 16:43:26] [WARNING] dms.camera: Camera: 2250 dropped frames
+[2026-06-06 16:43:27] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:43:27] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:43:32] [WARNING] dms.camera: Camera: 2280 dropped frames
+[2026-06-06 16:43:38] [WARNING] dms.camera: Camera: 2310 dropped frames
+[2026-06-06 16:43:38] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:43:38] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:43:44] [WARNING] dms.camera: Camera: 2340 dropped frames
+[2026-06-06 16:43:47] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:43:48] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:43:48] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:43:50] [WARNING] dms.camera: Camera: 2370 dropped frames
+[2026-06-06 16:43:56] [WARNING] dms.camera: Camera: 2400 dropped frames
+[2026-06-06 16:44:01] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:02] [WARNING] dms.camera: Camera: 2430 dropped frames
+[2026-06-06 16:44:02] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:02] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:06] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:07] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:08] [WARNING] dms.camera: Camera: 2460 dropped frames
+[2026-06-06 16:44:13] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:13] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:13] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:14] [WARNING] dms.camera: Camera: 2490 dropped frames
+[2026-06-06 16:44:18] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:19] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:20] [WARNING] dms.camera: Camera: 2520 dropped frames
+[2026-06-06 16:44:23] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:23] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:23] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:23] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:23] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:23] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:23] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:23] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:23] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:23] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:23] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:23] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:23] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:23] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:23] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:23] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:23] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:23] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:24] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:24] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:24] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:24] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:24] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:24] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:24] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:24] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:24] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:24] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:24] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:24] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:24] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:24] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:24] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:24] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:24] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:24] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:24] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:24] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:24] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:24] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:24] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:24] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:24] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:24] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:24] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:24] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:24] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:24] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:24] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:24] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:24] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:25] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:25] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:25] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:25] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:25] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:25] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:25] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:25] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:25] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:25] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:25] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:25] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:25] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:25] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:25] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:25] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:25] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:25] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:25] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:25] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:25] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:25] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:25] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:25] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:25] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:25] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:25] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:25] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:25] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:25] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:25] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:25] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:26] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:26] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:26] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:26] [WARNING] dms.camera: Camera: 2550 dropped frames
+[2026-06-06 16:44:26] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:26] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:26] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:26] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:26] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:26] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:26] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:26] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:26] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:26] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:26] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:26] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:26] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:26] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:26] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:26] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:26] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:26] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:26] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:26] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:26] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:26] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:26] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:26] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:26] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:26] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:26] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:26] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:26] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:26] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:27] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:27] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:27] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:27] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:27] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:27] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:27] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:27] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:27] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:27] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:27] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:27] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:27] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:27] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:27] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:27] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:27] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:27] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:27] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:27] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:27] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:27] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:27] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:27] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:27] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:27] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:27] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:27] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:27] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:27] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:27] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:27] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:28] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:28] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:28] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:28] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:28] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:28] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:28] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:28] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:28] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:28] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:28] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:28] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:28] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:28] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:28] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:28] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:28] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:28] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:28] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:28] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:28] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:28] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:28] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:28] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:28] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:28] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:28] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:28] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:28] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:28] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:28] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:28] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:28] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:28] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:29] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:29] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:29] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:29] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:29] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:29] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:29] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:29] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:29] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:29] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:29] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:29] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:29] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:29] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:29] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:29] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:29] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:29] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:29] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:29] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:29] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:29] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:29] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:29] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:29] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:29] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:29] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:29] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:29] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:29] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:31] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:31] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:31] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:31] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:31] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:31] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:31] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:31] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:31] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:31] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:31] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:31] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:31] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:31] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:32] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:32] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:32] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:32] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:32] [WARNING] dms.camera: Camera: 2580 dropped frames
+[2026-06-06 16:44:32] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:32] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:32] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:32] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:32] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:32] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:32] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:32] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:32] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:32] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:32] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:32] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:32] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:32] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:32] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:32] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:32] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:32] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:32] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:32] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:32] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:32] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:32] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:32] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:32] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:32] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:32] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:32] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:32] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:32] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:33] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:33] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:33] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:33] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:33] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:33] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:33] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:33] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:33] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:33] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:33] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:33] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:33] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:33] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:33] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:33] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:33] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:33] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:33] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:33] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:33] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:33] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:33] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:33] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:33] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:33] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:33] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:33] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:33] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:33] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:33] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:33] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:33] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:34] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:34] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:34] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:34] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:34] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:34] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:34] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:34] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:34] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:34] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:34] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:34] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:34] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:34] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:34] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:34] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:34] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:34] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:34] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:34] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:34] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:34] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:34] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:34] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:34] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:34] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:34] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:34] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:34] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:34] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:34] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:34] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:34] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:35] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:35] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:35] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:35] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:35] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:35] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:35] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:35] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:35] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:35] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:35] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:35] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:35] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:35] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:35] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:35] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:35] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:35] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:35] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:35] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:35] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:35] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:35] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:35] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:35] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:35] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:35] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:35] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:35] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:35] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:35] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:36] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:36] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:36] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:36] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:36] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:36] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:36] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:36] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:36] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:36] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:36] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:36] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:36] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:36] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:36] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:36] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:36] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:36] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:36] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:36] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:36] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:36] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:36] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:36] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:36] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:36] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:36] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:36] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:36] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:36] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:36] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:36] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:36] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:36] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:37] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:37] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:37] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:37] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:37] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:37] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:37] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:37] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:37] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:37] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:37] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:37] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:37] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:37] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:37] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:37] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:37] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:37] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:37] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:37] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:37] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:37] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:37] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:37] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:37] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:37] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:37] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:37] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:37] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:37] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:37] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:37] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:37] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:38] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:38] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:38] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:38] [WARNING] dms.camera: Camera: 2610 dropped frames
+[2026-06-06 16:44:38] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:38] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:38] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:38] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:38] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:38] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:38] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:38] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:38] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:38] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:38] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:38] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:38] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:38] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:38] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:38] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:38] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:38] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:38] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:38] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:38] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:38] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:38] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:38] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:38] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:38] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:38] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:38] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:38] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:38] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:39] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:40] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:40] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:40] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:40] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:40] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:40] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:40] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:40] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:40] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:40] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:40] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:40] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:40] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:40] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:40] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:40] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:40] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:40] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:40] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:40] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:40] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:40] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:40] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:40] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:40] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:40] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:40] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:40] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:40] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:40] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:40] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:40] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:40] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:41] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:41] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:41] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:41] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:41] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:41] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:41] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:41] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:41] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:41] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:41] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:41] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:41] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:41] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:41] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:41] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:41] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:41] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:41] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:42] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:42] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:42] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:42] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:43] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:43] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:43] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:44] [WARNING] dms.camera: Camera: 2640 dropped frames
+[2026-06-06 16:44:44] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:44] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:44] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:45] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:45] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:45] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:45] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:45] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:45] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:45] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:45] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:45] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:45] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:45] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:45] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:45] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:45] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:45] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:45] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:45] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:45] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:45] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:45] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:45] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:45] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:45] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:45] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:45] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:45] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:45] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:45] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:46] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:46] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:46] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:46] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:46] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:46] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:46] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:46] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:46] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:46] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:46] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:46] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:46] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:47] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:50] [WARNING] dms.camera: Camera: 2670 dropped frames
+[2026-06-06 16:44:50] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:50] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:50] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:50] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:51] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:51] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:51] [WARNING] dms.interior: YOLO failed to load: ❌  Download failure for https://github.com/ultralytics/assets/releases/download/v8.4.0/yolov8n.pt. Retry limit reached. Curl return value -2 — running without YOLO
+[2026-06-06 16:44:51] [INFO] dms.interior: Loading drowsiness model...
+[2026-06-06 16:44:51] [WARNING] dms.interior: Drowsiness model failed to load: tensorflow is required. Install with: pip install tensorflow
+[2026-06-06 16:44:51] [INFO] dms.interior: InteriorPipeline ready.
+[2026-06-06 16:44:51] [INFO] dms.system: Waiting for first camera frame...
+[2026-06-06 16:44:51] [INFO] dms.system: SystemPipeline running.
+[2026-06-06 16:44:51] [INFO] dms.web: Web dashboard listening on http://0.0.0.0:5000
+[2026-06-06 16:44:51] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=0
+[2026-06-06 16:44:51] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:52] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:44:52] [INFO] dms.web: Web dashboard stopped.
+[2026-06-06 16:44:52] [INFO] dms.mediapipe: FaceMeshDetector released
+[2026-06-06 16:44:52] [INFO] dms.interior: InteriorPipeline stopped.
+[2026-06-06 16:44:52] [INFO] dms.camera: Camera stopped. Captured=27, Dropped=2681
+[2026-06-06 16:44:52] [INFO] dms.system: SystemPipeline stopped.
+[2026-06-06 16:44:52] [INFO] dms: System stopped cleanly.
+[2026-06-06 16:45:16] [INFO] dms: Logging to /home/pi/Driver-Monitoring-System/logs/dms.log
+[2026-06-06 16:45:16] [INFO] dms: === Driver Monitoring System Starting ===
+[2026-06-06 16:45:16] [INFO] dms.system: Starting SystemPipeline...
+[2026-06-06 16:45:16] [INFO] dms.camera: Opening rpicam-vid CSI camera index=0 at 640x480
+[2026-06-06 16:45:16] [INFO] dms.camera: Camera capture thread started
+[2026-06-06 16:45:16] [INFO] dms.interior: Initialising InteriorPipeline...
+[2026-06-06 16:45:16] [INFO] dms.interior: Loading FaceMesh...
+[2026-06-06 16:45:16] [INFO] dms.mediapipe: FaceMeshDetector initialised
+[2026-06-06 16:45:16] [INFO] dms.interior: Loading YOLO...
+[2026-06-06 16:45:16] [WARNING] dms.interior: YOLO failed to load: ultralytics is not installed.
+Run: pip install ultralytics — running without YOLO
+[2026-06-06 16:45:16] [INFO] dms.interior: Loading drowsiness model...
+[2026-06-06 16:45:16] [WARNING] dms.interior: Drowsiness model failed to load: tensorflow is required. Install with: pip install tensorflow
+[2026-06-06 16:45:16] [INFO] dms.interior: InteriorPipeline ready.
+[2026-06-06 16:45:16] [INFO] dms.system: Waiting for first camera frame...
+[2026-06-06 16:45:16] [INFO] dms.system: SystemPipeline running.
+[2026-06-06 16:45:17] [INFO] dms.web: Web dashboard listening on http://0.0.0.0:5000
+[2026-06-06 16:45:17] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=0
+[2026-06-06 16:45:19] [CRITICAL] dms.alerts: MODEL EVENT NO_DRIVER: No driver detected in frame | confidence=1.000 | metadata={}
+[2026-06-06 16:45:22] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=0
+[2026-06-06 16:45:27] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=0
+[2026-06-06 16:45:32] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=0
+[2026-06-06 16:45:37] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=0
+[2026-06-06 16:45:42] [INFO] dms.interior: MODEL RESULT face=detected ear=0.310 mar=0.589 yaw=-6.8 pitch=15.6 roll=176.9 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 16:45:43] [WARNING] dms.alerts: MODEL EVENT DRIVER_YAWNS: Driver yawning detected (MAR=0.602) | confidence=0.850 | metadata={'mar': 0.6017}
+[2026-06-06 16:45:46] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=10.5°, pitch=34.3°) | confidence=0.800 | metadata={'yaw': 10.5, 'pitch': 34.31}
+[2026-06-06 16:45:47] [INFO] dms.interior: MODEL RESULT face=detected ear=0.293 mar=0.589 yaw=-1.6 pitch=-31.9 roll=-7.5 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 16:45:52] [INFO] dms.interior: MODEL RESULT face=detected ear=0.221 mar=0.598 yaw=2.7 pitch=-30.3 roll=-1.4 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 16:45:53] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=2.6°, pitch=-25.7°) | confidence=0.800 | metadata={'yaw': 2.65, 'pitch': -25.67}
+[2026-06-06 16:45:57] [INFO] dms.interior: MODEL RESULT face=detected ear=0.209 mar=0.606 yaw=10.8 pitch=8.8 roll=-177.5 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 16:45:57] [WARNING] dms.alerts: MODEL EVENT DRIVER_YAWNS: Driver yawning detected (MAR=0.605) | confidence=0.850 | metadata={'mar': 0.6051}
+[2026-06-06 16:45:58] [WARNING] dms.behaviors: FATIGUE detected — EAR=0.172, frames=20
+[2026-06-06 16:45:58] [CRITICAL] dms.alerts: MODEL EVENT FATIGUE_DRIVING: Driver fatigue detected (EAR=0.172) | confidence=0.500 | metadata={'ear': 0.172, 'consec_frames': 20}
+[2026-06-06 16:46:00] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=2.0°, pitch=-21.8°) | confidence=0.800 | metadata={'yaw': 1.98, 'pitch': -21.81}
+[2026-06-06 16:46:02] [INFO] dms.interior: MODEL RESULT face=detected ear=0.295 mar=0.597 yaw=18.7 pitch=10.5 roll=-177.7 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 16:46:07] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=3.0°, pitch=-24.9°) | confidence=0.800 | metadata={'yaw': 3.05, 'pitch': -24.9}
+[2026-06-06 16:46:07] [INFO] dms.interior: MODEL RESULT face=detected ear=0.407 mar=0.592 yaw=2.8 pitch=-24.8 roll=-10.6 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 16:46:12] [INFO] dms.interior: MODEL RESULT face=detected ear=0.382 mar=0.587 yaw=4.8 pitch=28.6 roll=-178.4 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 16:46:17] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=0
+[2026-06-06 16:46:22] [INFO] dms.interior: MODEL RESULT face=detected ear=0.344 mar=0.604 yaw=-2.8 pitch=-18.2 roll=-5.7 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 16:46:22] [WARNING] dms.alerts: MODEL EVENT DRIVER_YAWNS: Driver yawning detected (MAR=0.610) | confidence=0.850 | metadata={'mar': 0.6101}
+[2026-06-06 16:46:27] [INFO] dms.interior: MODEL RESULT face=detected ear=0.359 mar=0.580 yaw=-9.5 pitch=-14.7 roll=-5.9 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 16:46:32] [INFO] dms.interior: MODEL RESULT face=detected ear=0.438 mar=0.589 yaw=18.9 pitch=18.6 roll=174.2 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 16:46:35] [CRITICAL] dms.alerts: MODEL EVENT NO_DRIVER: No driver detected in frame | confidence=1.000 | metadata={}
+[2026-06-06 16:46:37] [INFO] dms.interior: MODEL RESULT face=detected ear=0.309 mar=0.586 yaw=23.4 pitch=4.1 roll=-176.5 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 16:46:42] [INFO] dms.interior: MODEL RESULT face=detected ear=0.327 mar=0.592 yaw=-4.2 pitch=-23.9 roll=3.4 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 16:46:42] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=-4.9°, pitch=-22.4°) | confidence=0.800 | metadata={'yaw': -4.87, 'pitch': -22.38}
+[2026-06-06 16:46:47] [INFO] dms.interior: MODEL RESULT face=detected ear=0.367 mar=0.600 yaw=-6.2 pitch=-2.8 roll=-3.5 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 16:46:50] [CRITICAL] dms.alerts: MODEL EVENT NO_DRIVER: No driver detected in frame | confidence=1.000 | metadata={}
+[2026-06-06 16:46:52] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=0
+[2026-06-06 16:46:57] [INFO] dms.interior: MODEL RESULT face=detected ear=0.401 mar=0.640 yaw=10.8 pitch=48.7 roll=178.6 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 16:47:02] [INFO] dms.interior: MODEL RESULT face=detected ear=0.364 mar=0.598 yaw=2.4 pitch=-5.3 roll=-0.8 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 16:47:06] [WARNING] dms.alerts: MODEL EVENT DRIVER_YAWNS: Driver yawning detected (MAR=0.647) | confidence=0.850 | metadata={'mar': 0.6472}
+[2026-06-06 16:47:07] [INFO] dms.interior: MODEL RESULT face=detected ear=0.374 mar=0.652 yaw=5.3 pitch=-12.3 roll=0.9 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 16:47:11] [WARNING] dms.alerts: MODEL EVENT DRIVER_YAWNS: Driver yawning detected (MAR=0.654) | confidence=0.850 | metadata={'mar': 0.6543}
+[2026-06-06 16:47:12] [INFO] dms.interior: MODEL RESULT face=detected ear=0.229 mar=0.587 yaw=2.2 pitch=-21.7 roll=2.2 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 16:47:16] [WARNING] dms.behaviors: FATIGUE detected — EAR=0.200, frames=20
+[2026-06-06 16:47:16] [CRITICAL] dms.alerts: MODEL EVENT FATIGUE_DRIVING: Driver fatigue detected (EAR=0.200) | confidence=0.500 | metadata={'ear': 0.1997, 'consec_frames': 20}
+[2026-06-06 16:47:17] [INFO] dms.interior: MODEL RESULT face=detected ear=0.200 mar=0.604 yaw=3.6 pitch=-16.8 roll=4.1 drowsiness=ear_fallback yolo_detections=0
+[2026-06-06 16:47:20] [CRITICAL] dms.alerts: MODEL EVENT NO_DRIVER: No driver detected in frame | confidence=1.000 | metadata={}
+[2026-06-06 16:47:20] [INFO] dms: Shutdown signal received.
+[2026-06-06 16:47:20] [INFO] dms.web: Web dashboard stopped.
+[2026-06-06 16:47:20] [INFO] dms.mediapipe: FaceMeshDetector released
+[2026-06-06 16:47:20] [INFO] dms.interior: InteriorPipeline stopped.
+[2026-06-06 16:47:20] [INFO] dms.camera: Camera stopped. Captured=1852, Dropped=3
+[2026-06-06 16:47:20] [INFO] dms.system: SystemPipeline stopped.
+[2026-06-06 16:47:20] [INFO] dms: System stopped cleanly.
+[2026-06-06 17:02:23] [INFO] dms: Logging to /home/pi/Driver-Monitoring-System/logs/dms.log
+[2026-06-06 17:02:23] [INFO] dms: === Driver Monitoring System Starting ===
+[2026-06-06 17:02:23] [INFO] dms.system: Starting SystemPipeline...
+[2026-06-06 17:02:23] [INFO] dms.camera: Opening rpicam-vid CSI camera index=0 at 640x480
+[2026-06-06 17:02:24] [INFO] dms.camera: Camera capture thread started
+[2026-06-06 17:02:24] [INFO] dms.interior: Initialising InteriorPipeline...
+[2026-06-06 17:02:24] [INFO] dms.interior: Loading FaceMesh...
+[2026-06-06 17:02:24] [INFO] dms.mediapipe: FaceMeshDetector initialised
+[2026-06-06 17:02:24] [INFO] dms.interior: Loading YOLO...
+[2026-06-06 17:02:27] [INFO] dms.yolo: YOLO model loaded from: weights/yolov8n.pt
+[2026-06-06 17:02:27] [INFO] dms.interior: Loading drowsiness model...
+[2026-06-06 17:02:27] [WARNING] dms.interior: Drowsiness model failed to load: tensorflow is required. Install with: pip install tensorflow
+[2026-06-06 17:02:27] [INFO] dms.interior: InteriorPipeline ready.
+[2026-06-06 17:02:27] [INFO] dms.system: Waiting for first camera frame...
+[2026-06-06 17:02:27] [INFO] dms.system: SystemPipeline running.
+[2026-06-06 17:02:27] [INFO] dms.web: Web dashboard listening on http://0.0.0.0:5000
+[2026-06-06 17:02:27] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=0
+[2026-06-06 17:02:32] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=1
+[2026-06-06 17:02:34] [CRITICAL] dms.alerts: MODEL EVENT NO_DRIVER: No driver detected in frame | confidence=1.000 | metadata={}
+[2026-06-06 17:02:37] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=1
+[2026-06-06 17:02:42] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=1
+[2026-06-06 17:02:47] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=1
+[2026-06-06 17:02:52] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=1
+[2026-06-06 17:02:57] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=1
+[2026-06-06 17:03:03] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=1
+[2026-06-06 17:03:08] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=0
+[2026-06-06 17:03:12] [WARNING] dms.alerts: MODEL EVENT DRIVER_CALL: Phone use detected (conf=0.66) | confidence=0.662 | metadata={'bbox': (180, 40, 426, 471)}
+[2026-06-06 17:03:13] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=1
+[2026-06-06 17:03:18] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=0
+[2026-06-06 17:03:23] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=2
+[2026-06-06 17:03:28] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=1
+[2026-06-06 17:03:33] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=1
+[2026-06-06 17:03:38] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=1
+[2026-06-06 17:03:43] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=1
+[2026-06-06 17:03:48] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=1
+[2026-06-06 17:03:54] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=1
+[2026-06-06 17:03:59] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=1
+[2026-06-06 17:04:04] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=1
+[2026-06-06 17:04:09] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=1
+[2026-06-06 17:04:14] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=1
+[2026-06-06 17:04:19] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=1
+[2026-06-06 17:04:24] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=1
+[2026-06-06 17:04:29] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=1
+[2026-06-06 17:04:34] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=1
+[2026-06-06 17:04:40] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=1
+[2026-06-06 17:04:45] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=1
+[2026-06-06 17:04:50] [INFO] dms.interior: MODEL RESULT face=not_detected yolo_detections=1
+[2026-06-06 17:04:55] [INFO] dms.interior: MODEL RESULT face=detected ear=0.227 mar=0.611 yaw=-3.5 pitch=40.7 roll=-178.7 drowsiness=ear_fallback yolo_detections=1
+[2026-06-06 17:04:56] [WARNING] dms.alerts: MODEL EVENT DRIVER_YAWNS: Driver yawning detected (MAR=0.609) | confidence=0.850 | metadata={'mar': 0.6091}
+[2026-06-06 17:04:58] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=-7.9°, pitch=42.4°) | confidence=0.800 | metadata={'yaw': -7.86, 'pitch': 42.43}
+[2026-06-06 17:05:00] [INFO] dms.interior: MODEL RESULT face=detected ear=0.271 mar=0.595 yaw=4.7 pitch=-27.3 roll=-4.0 drowsiness=ear_fallback yolo_detections=1
+[2026-06-06 17:05:03] [WARNING] dms.alerts: MODEL EVENT DRIVER_YAWNS: Driver yawning detected (MAR=0.620) | confidence=0.850 | metadata={'mar': 0.6201}
+[2026-06-06 17:05:05] [INFO] dms.interior: MODEL RESULT face=detected ear=0.231 mar=0.633 yaw=11.2 pitch=-29.2 roll=0.7 drowsiness=ear_fallback yolo_detections=1
+[2026-06-06 17:05:10] [INFO] dms.interior: MODEL RESULT face=detected ear=0.278 mar=0.610 yaw=9.2 pitch=-13.6 roll=-8.9 drowsiness=ear_fallback yolo_detections=2
+[2026-06-06 17:05:13] [WARNING] dms.alerts: MODEL EVENT DRIVER_YAWNS: Driver yawning detected (MAR=0.640) | confidence=0.850 | metadata={'mar': 0.6402}
+[2026-06-06 17:05:15] [INFO] dms.interior: MODEL RESULT face=detected ear=0.263 mar=0.593 yaw=4.0 pitch=-33.3 roll=-9.2 drowsiness=ear_fallback yolo_detections=1
+[2026-06-06 17:05:17] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=6.2°, pitch=-31.0°) | confidence=0.800 | metadata={'yaw': 6.15, 'pitch': -31.03}
+[2026-06-06 17:05:20] [INFO] dms.interior: MODEL RESULT face=detected ear=0.322 mar=0.588 yaw=8.6 pitch=-27.9 roll=-7.0 drowsiness=ear_fallback yolo_detections=1
+[2026-06-06 17:05:25] [INFO] dms.interior: MODEL RESULT face=detected ear=0.327 mar=0.582 yaw=-3.2 pitch=-18.8 roll=-8.0 drowsiness=ear_fallback yolo_detections=2
+[2026-06-06 17:05:31] [INFO] dms.interior: MODEL RESULT face=detected ear=0.346 mar=0.598 yaw=50.9 pitch=16.1 roll=-167.4 drowsiness=ear_fallback yolo_detections=1
+[2026-06-06 17:05:32] [INFO] dms: Shutdown signal received.
+[2026-06-06 17:05:33] [INFO] dms.web: Web dashboard stopped.
+[2026-06-06 17:05:33] [INFO] dms.mediapipe: FaceMeshDetector released
+[2026-06-06 17:05:33] [INFO] dms.interior: InteriorPipeline stopped.
+[2026-06-06 17:05:33] [INFO] dms.camera: Camera stopped. Captured=937, Dropped=2
+[2026-06-06 17:05:33] [INFO] dms.system: SystemPipeline stopped.
+[2026-06-06 17:05:33] [INFO] dms: System stopped cleanly.
