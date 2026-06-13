@@ -16,6 +16,10 @@ weights/*.tflite
 screenshot_*.jpg
 /logs
 *.log
+/logs/*.log
+/logs/dms.log
+
+
 
 
 # IDE

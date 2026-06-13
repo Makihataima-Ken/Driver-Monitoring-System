@@ -2004,3 +2004,56 @@ Run: pip install ultralytics — running without YOLO
 [2026-06-06 17:05:33] [INFO] dms.camera: Camera stopped. Captured=937, Dropped=2
 [2026-06-06 17:05:33] [INFO] dms.system: SystemPipeline stopped.
 [2026-06-06 17:05:33] [INFO] dms: System stopped cleanly.
+[2026-06-13 15:36:58] [INFO] dms: Logging to /home/pi/Driver-Monitoring-System/logs/dms.log
+[2026-06-13 15:36:58] [INFO] dms: === Driver Monitoring System Starting ===
+[2026-06-13 15:36:58] [INFO] dms.system: Starting SystemPipeline...
+[2026-06-13 15:36:58] [INFO] dms.camera: Opening rpicam-vid CSI camera index=0 at 640x480
+[2026-06-13 15:36:59] [INFO] dms.camera: Camera capture thread started
+[2026-06-13 15:36:59] [INFO] dms.inference: Inference thread: initialising FaceMeshDetector...
+[2026-06-13 15:36:59] [INFO] dms.inference: InferenceRunner thread started
+[2026-06-13 15:36:59] [INFO] dms.mediapipe: FaceMeshDetector initialised
+[2026-06-13 15:36:59] [INFO] dms.system: Waiting for first camera frame...
+[2026-06-13 15:36:59] [INFO] dms.inference: Inference thread: initialising YOLODetector...
+[2026-06-13 15:37:00] [INFO] dms.system: SystemPipeline running.
+[2026-06-13 15:37:01] [INFO] dms.web: Web dashboard listening on http://0.0.0.0:5000
+[2026-06-13 15:37:02] [INFO] dms.yolo: YOLO model loaded from: weights/yolov8n.pt
+[2026-06-13 15:37:42] [WARNING] dms.alerts: MODEL EVENT DRIVER_YAWNS: Driver yawning detected (MAR=0.609) | confidence=0.850 | metadata={'mar': 0.6085}
+[2026-06-13 15:37:44] [WARNING] dms.alerts: MODEL EVENT DRIVER_UNDER_DISTRACTION: Driver distracted (yaw=52.1°, pitch=23.5°) | confidence=0.800 | metadata={'yaw': 52.14, 'pitch': 23.48}
+[2026-06-13 15:37:49] [WARNING] dms.alerts: MODEL EVENT DRIVER_YAWNS: Driver yawning detected (MAR=0.627) | confidence=0.850 | metadata={'mar': 0.6274}
+[2026-06-13 15:38:03] [INFO] dms: Shutdown signal received.
+[2026-06-13 15:38:03] [INFO] dms.web: Web dashboard stopped.
+[2026-06-13 15:38:03] [INFO] dms.system: SystemPipeline stop() initiated
+[2026-06-13 15:38:03] [INFO] dms.inference: InferenceRunner stop() requested
+[2026-06-13 15:38:03] [INFO] dms.mediapipe: FaceMeshDetector released
+[2026-06-13 15:38:03] [INFO] dms.inference: Inference models released
+[2026-06-13 15:38:03] [INFO] dms.inference: Inference thread exiting
+[2026-06-13 15:38:03] [INFO] dms.inference: InferenceRunner stopped. Processed=304, DroppedResults=4
+[2026-06-13 15:38:03] [INFO] dms.camera: CameraManager stop() requested
+[2026-06-13 15:38:03] [INFO] dms.camera: Camera stopped. Captured=313, QueueDropped=8
+[2026-06-13 15:38:03] [INFO] dms.system: SystemPipeline stopped.
+[2026-06-13 15:38:03] [INFO] dms: System stopped cleanly.
+[2026-06-13 15:39:08] [INFO] dms: Logging to /home/pi/Driver-Monitoring-System/logs/dms.log
+[2026-06-13 15:39:08] [INFO] dms: === Driver Monitoring System Starting ===
+[2026-06-13 15:39:08] [INFO] dms.system: Starting SystemPipeline...
+[2026-06-13 15:39:08] [INFO] dms.camera: Opening rpicam-vid CSI camera index=0 at 640x480
+[2026-06-13 15:39:08] [INFO] dms.camera: Camera capture thread started
+[2026-06-13 15:39:08] [INFO] dms.inference: Inference thread: initialising FaceMeshDetector...
+[2026-06-13 15:39:08] [INFO] dms.inference: InferenceRunner thread started
+[2026-06-13 15:39:08] [INFO] dms.mediapipe: FaceMeshDetector initialised
+[2026-06-13 15:39:08] [INFO] dms.system: Waiting for first camera frame...
+[2026-06-13 15:39:08] [INFO] dms.inference: Inference thread: initialising YOLODetector...
+[2026-06-13 15:39:10] [INFO] dms.system: SystemPipeline running.
+[2026-06-13 15:39:10] [INFO] dms.web: Web dashboard listening on http://0.0.0.0:5000
+[2026-06-13 15:39:11] [INFO] dms.yolo: YOLO model loaded from: weights/yolov8n.pt
+[2026-06-13 15:39:37] [INFO] dms: Shutdown signal received.
+[2026-06-13 15:39:37] [INFO] dms.web: Web dashboard stopped.
+[2026-06-13 15:39:37] [INFO] dms.system: SystemPipeline stop() initiated
+[2026-06-13 15:39:37] [INFO] dms.inference: InferenceRunner stop() requested
+[2026-06-13 15:39:37] [INFO] dms.mediapipe: FaceMeshDetector released
+[2026-06-13 15:39:37] [INFO] dms.inference: Inference models released
+[2026-06-13 15:39:37] [INFO] dms.inference: Inference thread exiting
+[2026-06-13 15:39:37] [INFO] dms.inference: InferenceRunner stopped. Processed=130, DroppedResults=2
+[2026-06-13 15:39:37] [INFO] dms.camera: CameraManager stop() requested
+[2026-06-13 15:39:37] [INFO] dms.camera: Camera stopped. Captured=137, QueueDropped=6
+[2026-06-13 15:39:37] [INFO] dms.system: SystemPipeline stopped.
+[2026-06-13 15:39:37] [INFO] dms: System stopped cleanly.
