@@ -19,6 +19,10 @@ scikit-learn>=1.3.0
 # Configuration
 pyyaml>=6.0
 
+# Web API
+fastapi>=0.109.0
+uvicorn>=0.23.0
+
 # System metrics
 psutil>=5.9.0
 

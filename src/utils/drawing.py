@@ -52,11 +52,19 @@ def draw_hud(
     cpu: float,
     ram_mb: float,
     events: List[str],
+    elapsed_seconds: float = 0,
 ):
     """Draw top-left performance HUD and active events."""
     h, w = frame.shape[:2]
 
+    # Format elapsed time as HH:MM:SS
+    hours = int(elapsed_seconds // 3600)
+    minutes = int((elapsed_seconds % 3600) // 60)
+    seconds = int(elapsed_seconds % 60)
+    elapsed_str = f"{hours:02d}:{minutes:02d}:{seconds:02d}"
+
     lines = [
+        f"Timer: {elapsed_str}",
         f"FPS: {fps:.1f}",
         f"Latency: {latency_ms:.1f}ms",
         f"CPU: {cpu:.1f}%",

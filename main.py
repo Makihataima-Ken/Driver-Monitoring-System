@@ -8,6 +8,7 @@ import argparse
 import signal
 import logging
 
+from src.alerts.alert_manager import AlertManager
 from src.config.settings import SystemConfig
 from src.pipelines.system_pipeline import SystemPipeline
 from src.utils.logger import setup_logger
@@ -51,6 +52,18 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--log-file", type=str, default="logs/dms.log",
         help="Application log file path (default: logs/dms.log)"
+    )
+    parser.add_argument(
+        "--http-api", action="store_true", default=False,
+        help="Start FastAPI HTTP alert API"
+    )
+    parser.add_argument(
+        "--api-host", type=str, default="0.0.0.0",
+        help="HTTP API host"
+    )
+    parser.add_argument(
+        "--api-port", type=int, default=8000,
+        help="HTTP API port"
     )
     parser.add_argument(
         "--width", type=int, default=640,
@@ -102,8 +115,26 @@ def main():
     if args.web_port is not None:
         config.web.port = args.web_port
 
-    pipeline = SystemPipeline(config)
+    alert_manager = AlertManager(config.alert)
+    pipeline = SystemPipeline(config, alert_manager=alert_manager)
     web_server = None
+
+    api_server = None
+    if args.http_api:
+        try:
+            from src.api.server import ApiServer
+        except ImportError as e:
+            raise RuntimeError(
+                "FastAPI is required for --http-api. Install it with: "
+                "uv pip install fastapi uvicorn"
+            ) from e
+        logger.info("Starting HTTP alert API...")
+        api_server = ApiServer(
+            alert_manager=alert_manager,
+            host=args.api_host,
+            port=args.api_port,
+        )
+        api_server.start()
 
     # Graceful shutdown
     def _shutdown(sig, frame):
@@ -132,6 +163,8 @@ def main():
         pipeline.request_stop()
         if web_server:
             web_server.stop()
+        if api_server:
+            api_server.stop()
         pipeline.stop()
         logger.info("System stopped cleanly.")
 
