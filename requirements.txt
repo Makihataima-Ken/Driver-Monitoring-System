@@ -9,7 +9,18 @@ numpy>=1.24.0
 mediapipe==0.10.14
 
 # YOLO inference
-ultralytics>=8.0.0
+# ultralytics is used as the *wrapper*; on the Pi the actual compute runs
+# through NCNN, so you do NOT need PyTorch at runtime.
+ultralytics>=8.2.0
+
+# Pi 4 runtime backend (fast ARM NEON inference, ~40 MB instead of ~1 GB)
+ncnn>=1.0.20240410
+
+# Optional alternative backend:
+# onnxruntime>=1.17.0
+
+# NOTE: torch/torchvision are only needed on the machine where you EXPORT
+# the model (tools/export_ncnn.py). Do not install them on the Pi.
 
 # Configuration
 pyyaml>=6.0
