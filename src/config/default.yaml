@@ -1,38 +1,59 @@
-# Driver Monitoring System - Default Configuration
-# Edit this file to tune thresholds for your hardware.
+# Driver Monitoring System - Raspberry Pi 4 (interior pipeline) config
+# Tuned for real-time inference on a Pi 4 / 8 GB, CPU only.
 
 camera:
   index: 0
-  width: 640
+  width: 640                  # Capture res: keep for display + ROI quality
   height: 480
-  fps_target: 20
-  use_picamera2: false        # true to force Picamera2 on Pi
+  fps_target: 15              # Pi 4 realistic ceiling for the full loop
+  use_picamera2: false
   auto_detect_pi: true
-  buffer_size: 2
+  buffer_size: 1
   flip_horizontal: false
   flip_vertical: false
 
 mediapipe:
   max_faces: 1
-  refine_landmarks: false     # Set true for iris tracking (more CPU)
+  refine_landmarks: false     # Iris tracking costs ~20% CPU - keep off
   min_detection_confidence: 0.6
   min_tracking_confidence: 0.5
+  process_width: 256          # PERF: downscale before FaceMesh (0 = native)
   ear_threshold: 0.22
-  ear_consec_frames: 20
+  ear_consec_frames: 15       # ~1.0 s at 15 FPS
   mar_threshold: 0.60
-  mar_consec_frames: 15
+  mar_consec_frames: 12
   yaw_threshold: 30.0
   pitch_threshold: 20.0
-  distraction_consec_frames: 25
+  distraction_consec_frames: 20
 
 yolo:
-  model_path: weights/yolov8n.pt
-  conf_threshold: 0.45
+  # PERF: NCNN export, NOT a .pt file. Create it with:
+  #   python tools/export_ncnn.py --model yolo11n.pt --imgsz 192
+  model_path: weights/yolo11n_ncnn_model
+  backend: auto               # auto | ncnn | onnx | pytorch
+  conf_threshold: 0.35        # Lower is safe once we detect on a face crop
   iou_threshold: 0.45
-  imgsz: 320                  # 320 for Pi, 640 for PC
+  imgsz: 192                  # MUST match the export imgsz
   device: cpu
   half: false
-  classes_of_interest: [0, 2, 5, 7, 67]
+  interval: 3                 # Run YOLO every Nth frame
+  adaptive_interval: true     # Back off automatically when throttled
+  max_interval: 10
+  latency_budget_ms: 45.0
+  warmup_iterations: 2
+  roi_enabled: true           # PERF: detect on a crop around the face
+  roi_scale: 1.6
+  roi_min_size: 96
+  roi_fallback_full_frame: false   # No face -> skip YOLO entirely
+  classes_of_interest: [67]   # cell phone only (interior)
+
+runtime:
+  cv_num_threads: 2           # Leave cores for MediaPipe + NCNN
+  torch_num_threads: 2
+  omp_num_threads: 2
+  ncnn_num_threads: 3
+  profile: false              # true -> log per-stage latency every 5 s
+  profile_interval_s: 5.0
 
 alert:
   sound_enabled: false
@@ -50,6 +71,6 @@ display:
   overlay_alpha: 0.6
 
 pipeline:
-  mode: interior              # interior | exterior | both
+  mode: interior
   interior_enabled: true
   exterior_enabled: false
