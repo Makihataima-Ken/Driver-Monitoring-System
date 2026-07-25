@@ -11,7 +11,7 @@ import logging
 
 from src.alerts.alert_manager import AlertManager
 from src.api.server import ApiServer
-from src.config.settings import SystemConfig
+from src.config.settings import SystemConfig, apply_runtime_tuning
 from src.pipelines.system_pipeline import SystemPipeline
 from src.utils.logger import setup_logger
 
@@ -66,8 +66,29 @@ def parse_args() -> argparse.Namespace:
         help="Frame height"
     )
     parser.add_argument(
-        "--fps-target", type=int, default=20,
+        "--fps-target", type=int, default=15,
         help="Target FPS (lower = less CPU)"
+    )
+    # ---- Performance tuning flags (Raspberry Pi) ----
+    parser.add_argument(
+        "--yolo-interval", type=int, default=None,
+        help="Run YOLO every Nth frame (higher = less CPU). Default from config."
+    )
+    parser.add_argument(
+        "--no-yolo", action="store_true",
+        help="Disable YOLO entirely (FaceMesh-only fatigue/yawn/distraction)"
+    )
+    parser.add_argument(
+        "--no-roi", action="store_true",
+        help="Disable face-ROI cropping and run YOLO on the full frame"
+    )
+    parser.add_argument(
+        "--process-width", type=int, default=None,
+        help="Downscale width fed to FaceMesh (0 = native). Default from config."
+    )
+    parser.add_argument(
+        "--profile", action="store_true",
+        help="Log a per-stage latency breakdown every few seconds"
     )
     return parser.parse_args()
 
@@ -86,6 +107,23 @@ def main():
     config.camera.fps_target = args.fps_target
     config.display.show = args.show
     config.pipeline.mode = args.pipeline
+
+    # ---- Performance overrides ----
+    if args.yolo_interval is not None:
+        config.yolo.interval = max(1, args.yolo_interval)
+    if args.no_roi:
+        config.yolo.roi_enabled = False
+    if args.process_width is not None:
+        config.mediapipe.process_width = args.process_width
+    if args.profile:
+        config.runtime.profile = True
+    if args.no_yolo:
+        # Cheapest possible interior pipeline: FaceMesh only.
+        config.yolo.model_path = ""
+
+    # PERF: must run before OpenCV / MediaPipe / NCNN spin up their thread
+    # pools, otherwise they each grab all 4 Pi cores and fight each other.
+    apply_runtime_tuning(config.runtime)
 
     alert_manager = AlertManager(config.alert)
     pipeline = SystemPipeline(config, alert_manager=alert_manager)
