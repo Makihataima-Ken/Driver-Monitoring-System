@@ -103,21 +103,29 @@ class SystemPipeline:
         Pulls inference results from the worker thread, dispatches alerts,
         renders overlays, and handles display / user input.
         """
-        fps_target = self._cfg.camera.fps_target
-        frame_interval = 1.0 / fps_target
-
+        # PERF: the camera thread already paces capture at fps_target and the
+        # inference thread is the real bottleneck, so the old sleep-to-target
+        # at the bottom of this loop only ADDED latency. The loop is now
+        # driven by the inference results queue instead of a timer.
         while self._running:
             self._metrics.frame_start()
-            t0 = time.perf_counter()
 
             result = self._get_latest_result()
             if result is None:
-                # No inference result yet; don't block the UI
-                time.sleep(0.005)
-                continue
+                # PERF: block briefly on the queue instead of spinning at
+                # 200 Hz with time.sleep(0.005), which burned a whole core
+                # doing nothing on a Pi 4.
+                result = self._inference.get_result(timeout=0.05) if self._inference else None
+                if result is None:
+                    if self._cfg.display.show:
+                        cv2.waitKey(1)
+                    continue
 
             all_events = []
-            display_frame = result.frame.copy()
+            # PERF: no .copy() here - InteriorResultProcessor already copies
+            # the frame when it needs to draw on it. Copying a 640x480x3
+            # frame twice per iteration cost ~2-4 ms of pure waste.
+            display_frame = result.frame
 
             # ── Process inference result into events & overlays ─────────
             if self._interior_processor is not None:
@@ -184,11 +192,8 @@ class SystemPipeline:
                 except Exception:
                     pass
 
-            # ── FPS throttle ────────────────────────────────────────────
-            elapsed = time.perf_counter() - t0
-            sleep = frame_interval - elapsed
-            if sleep > 0:
-                time.sleep(sleep)
+            # PERF: no FPS throttle here. Pacing happens in CameraManager;
+            # throttling the consumer only increases end-to-end latency.
 
         cv2.destroyAllWindows()
 
