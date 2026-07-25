@@ -78,7 +78,12 @@ class InteriorResultProcessor:
             ``(events, annotated_frame)``
         """
         events: List[DmsEvent] = []
-        display_frame = result.frame.copy()
+
+        # PERF: only pay for the frame copy when we are actually going to
+        # draw on it. In headless mode (--no-show) this saves a full
+        # 640x480x3 memcpy on every single frame.
+        drawing = self._cfg.display.show
+        display_frame = result.frame.copy() if drawing else result.frame
 
         face: Optional[FaceResult] = result.face_result
         dets: List[Detection] = result.yolo_detections
@@ -103,7 +108,7 @@ class InteriorResultProcessor:
                 events.append(evt)
 
         # -- Drawing ---------------------------------------------------
-        if self._cfg.display.show:
+        if drawing:
             self._draw(display_frame, face, dets)
 
         return events, display_frame
