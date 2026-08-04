@@ -37,4 +37,4 @@ Driver-Monitoring-System-output.txt
 
 
 # model data generatable
-weights\yolo11n_ncnn_model/*
+weights/yolo11n_ncnn_model/*
